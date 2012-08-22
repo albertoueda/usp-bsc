@@ -1,0 +1,54 @@
+body {
+	font: 80% Arial, Helvetica, sans-serif;
+}
+
+h1,h2 {
+	margin: 20px 0 10px;
+}
+
+h1 {
+	font-size: 2.5em;
+}
+
+p {
+	margin: 10px 0;
+	padding: 0;
+}
+
+#header-wrap {
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 80px;
+	background: #2f2f2f;
+	color: #c6c6c6;
+}
+
+#header {
+	width: 940px;
+	margin: 0 auto;
+}
+
+#header h1 {
+	display: inline;
+	text-align: left;
+}
+
+#header ul {
+	list-style: none;
+}
+
+#header ul li {
+	float: left;
+	margin-right: 5px;
+}
+
+#header .subsection {
+	float: right;
+	margin: 20px;
+	font-weight: bold;
+}
+
+#container {
+	margin: 15px;
+}
