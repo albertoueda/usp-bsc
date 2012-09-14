@@ -141,6 +141,13 @@ class GameWindow < Gosu::Window
     segmentShape = CP::Shape::Segment.new(segmentBody, vectorA, vectorB, 0.1)
     @space.add_shape(segmentShape)     
 
+    # GB : Para parar o canhao de ir pra frente
+    segmentBody = CP::StaticBody.new()
+    vectorA = CP::Vec2.new(150.0, 470.0)
+    vectorB = CP::Vec2.new(150.0, 480.0)
+    segmentShape = CP::Shape::Segment.new(segmentBody, vectorA, vectorB, 0.1)
+    @space.add_shape(segmentShape)     
+
     body2 = CP::Body.new(0.1, 0.0001)
     shape2 = CP::Shape::Circle.new(body2, 25/2, CP::Vec2.new(0.0, 0.0))
     shape2.collision_type = :ball    
@@ -150,7 +157,7 @@ class GameWindow < Gosu::Window
     @ball = Ball.new(self, shape2)
 
     @space.add_collision_func(:canhao, :ball) do |cannon_shape, ball_shape| 
-      @canhao.armed = true
+      @canhao.armed = true    
       # @ball.shape.body.v = CP::Vec2.new(0.0, 0.0)      
     end
 
@@ -224,6 +231,7 @@ class GameWindow < Gosu::Window
     @font.draw("#{@feedbackMessage}", 10, 70, ZOrder::UI, 1.0, 1.0, 0xffffff00)    
     @font.draw("Wind: #{@wind_force/10.0} kM/h", 500, 10, ZOrder::UI, 1.0, 1.0, 0xffffff00)
     @font.draw("Steps: #{@steps}", 500, 30, ZOrder::UI, 1.0, 1.0, 0xffffff00)
+    @font.draw("Cannon (x, y): #{@canhao.shape.body.p}", 500, 50, ZOrder::UI, 1.0, 1.0, 0xffffff00)
 
     @path_points.each do |path_point| 
       @font.draw("'", path_point.x, path_point.y, ZOrder::Background, 1.0, 1.0, 0xffffffff)
