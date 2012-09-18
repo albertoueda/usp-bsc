@@ -2,7 +2,7 @@ require 'rubygems'
 require 'chipmunk'
 require 'chingu'
 require 'gosu'
-
+require 'forwardable'
 
 include CP
 include Chingu
@@ -12,12 +12,16 @@ $space = Space.new
 module Chingu
   module Traits
     module Physics
-
       include Chingu::Helpers::RotationCenter
+      extend Forwardable
 
-      attr_accessor :factor_x, :factor_y, :center_x, :center_y, :zorder, :mode, :color
+      attr_accessor :factor_x, :factor_y, :center_x, :center_y, :zorder, :mode, :color, :visible, :body
       attr_reader :factor, :center, :height, :width, :image
-      attr_accessor :visible
+      def_delegator :@body, :f, :force
+      def_delegator :@body, :i, :moment_inertia
+      def_delegator :@body, :m, :mass
+      def_delegator :@body, :w, :velocity_angle
+      def_delegator :@body, :a, :angle
 
       def setup_trait(options = {})
         @visible = true   unless options[:visible] == false
@@ -31,11 +35,11 @@ module Chingu
         self.factor_x = options[:factor_x].to_f if options[:factor_x]
         self.factor_y = options[:factor_y].to_f if options[:factor_y]
 
-        body = Body.new(options[:mass], options[:moment_inertia])
-        body.p = vec2(options[:x], options[:y]) 
-        body.add_to_space($space)
+        @body = Body.new(options[:mass], options[:moment_inertia])
+        @body.p = vec2(options[:x], options[:y])
+        @body.add_to_space($space)
 
-        @shape = Shape::Circle.new(body, options[:radius], Vec2::ZERO)
+        @shape = Shape::Circle.new(@body, options[:radius], Vec2::ZERO)
         @shape.body.a = options[:angle] || 0
         @shape.body.w = options[:velocity_angle] || 0
         @shape.add_to_space($space)
@@ -46,95 +50,26 @@ module Chingu
       def factor=(factor)
         @factor = @factor_x = @factor_y = factor
       end
-      
-      def body 
-        @shape.body
+
+      def position
+        @body.p
       end
 
-      def force
-        @shape.body.f
-      end
-
-      def force=(force)
-        @shape.body.f = force
-      end
-
-      def moment_inertia
-        @shape.body.i
-      end
-
-      def moment_inertia=(moment_inertia)
-        @shape.body.i = moment_inertia
-      end
-
-      def mass
-        @shape.body.m
-      end
-
-      def mass=(mass)
-        @shape.body.m = mass
-      end
-
-      def x
-        @shape.body.p.x
-      end
-
-      def x=(x)
-        @shape.body.p.x = x
-        super(x)
-      end
-
-      def y
-        @shape.body.p.y
-      end
-
-      def y=(y)
-        @shape.body.p.y = y
-        super(y)
-      end
-
-      def velocity_x
-        @shape.body.v.x
-      end
-
-      def velocity_x=(velocity_x)
-        @shape.body.v.x = velocity_x
-      end
-
-      def velocity_y
-        @shape.body.v.y
-      end
-
-      def velocity_y=(velocity_y)
-        @shape.body.v.y = velocity_y
-      end
-
-      def velocity_angle=(velocity_angle)
-        @shape.body.w = velocity_angle
-      end
-
-      def velocity_angle
-        @shape.body.w
-      end
-
-      def angle=(angle)
-        @shape.body.a = angle
-      end
-
-      def angle
-        @shape.body.a
+      def velocity
+        @body.v
       end
 
       def draw
-        @image.draw_rot(self.x, self.y, @zorder, self.angle, @center_x, @center_y, @factor_x, @factor_y, @color, @mode)  if @image
+        @image.draw_rot(position.x, position.y, @zorder, angle, @center_x, @center_y, @factor_x, @factor_y, @color, @mode)  if @image
+        
       end
 
       def apply_force(force_x, force_y, offset_x = 0, offset_y = 0)
-        @shape.body.apply_force(vec2(force_x, force_y), vec2(offset_x, offset_y))
+        @body.apply_force(vec2(force_x, force_y), vec2(offset_x, offset_y))
       end
 
       def apply_impulse(force_x, force_y, offset_x = 0, offset_y = 0)
-        @shape.body.apply_impulse(vec2(force_x, force_y), vec2(offset_x, offset_y))
+        @body.apply_impulse(vec2(force_x, force_y), vec2(offset_x, offset_y))
       end
     end
   end
