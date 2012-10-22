@@ -1,4 +1,4 @@
-module Config
+module ObjectConfig
   Rocket = {
     :x => 70,
     :y => 300,

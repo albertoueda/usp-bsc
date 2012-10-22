@@ -1,31 +1,8 @@
 #!/bin/env ruby
 # encoding: utf-8
 
-# require_relative was introduced in 1.9.2. This makes it
-# available to younger rubies.  It trys hard to not re-require
-# files.
-unless Kernel.respond_to?(:require_relative)
-  module Kernel
-    def require_relative(path)
-      desired_path = File.expand_path('../' + path.to_str, caller[0])
-      shortest = desired_path
-      $:.each do |path|
-        path += '/'
-        if desired_path.index(path) == 0
-          candidate = desired_path.sub(path, '')
-          shortest = candidate if candidate.size < shortest.size
-        end
-      end
-      require shortest
-    end
-  end
-end
-
-require_relative 'config'
+require_relative 'config/config'
 require_relative 'lib/physics'
-
-include CP
-include Chingu
 
 class Rocket < PhysicObject
 
@@ -44,7 +21,7 @@ class Rocket < PhysicObject
 
     @image = Gosu::Image["rocket.png"]
 
-    @rocket_info = Text.create("", :x => 300)
+    @rocket_info = Chingu::Text.create("", :x => 300)
   end
 
   def accelerate_to_moon
@@ -70,25 +47,20 @@ class Rocket < PhysicObject
   end
 end
 
-class RocketSimulation < Window
+class RocketSimulation < PhysicWindow
   def setup
     self.caption = "Rocket Simulation by Alberto & Issao"
-    self.input = {:esc => :exit}
+    self.input = {esc: :exit}
 
-    @rocket = Rocket.create(Config::Rocket)
+    @rocket = Rocket.create(ObjectConfig::Rocket)
 
-    @earth_info = Text.create("Terra", :x => 55, :y => 0)
-    @moon_info = Text.create("Lua", :x => 1000, :y =>0)
+    @earth_info = Chingu::Text.create("Terra", x: 55, y: 0)
+    @moon_info = Chingu::Text.create("Lua", x: 1000, y: 0)
 
-    @earth_segment = Shape::Segment.new(StaticBody.new, vec2(50, 0), vec2(50, 600), 1)
-    @moon_segment = Shape::Segment.new(StaticBody.new, vec2(975, 0), vec2(975, 600), 1)
+    @earth_segment = CP::Shape::Segment.new(CP::StaticBody.new, vec2(50, 0), vec2(50, 600), 1)
+    @moon_segment = CP::Shape::Segment.new(CP::StaticBody.new, vec2(975, 0), vec2(975, 600), 1)
     @earth_segment.add_to_space($space)
     @moon_segment.add_to_space($space)
-  end
-
-  def update
-    super
-    $space.step(1.0 / 40.0)
   end
 
   def draw

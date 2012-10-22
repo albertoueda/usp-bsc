@@ -1,4 +1,8 @@
+#!/bin/env ruby
+# encoding: utf-8
+
 require 'rubygems'
+require 'chingu'
 require 'gosu'
 require 'chipmunk'
 
@@ -27,7 +31,7 @@ class Canhao
   attr_accessor :angulo, :armed, :fired
 
   def initialize(window, shape)
-    @image = Gosu::Image.new(window, "media/canhao3.png", false)
+    @image = Gosu::Image["canhao3.png"]
     @shape = shape
     @shape.body.p = CP::Vec2.new(100.0, 300.0)
     @angulo = 45.0
@@ -60,7 +64,7 @@ class Ball
   attr_reader :shape, :img
   
   def initialize(window, shape)    
-    @img = Gosu::Image.new(window, "media/cannonball2.png", true)
+    @img = Gosu::Image["cannonball2.png"]
     @shape = shape
     @shape.body.p = CP::Vec2.new(140, 100)
     @shape.body.v = CP::Vec2.new(0.0, 0.0)
@@ -86,7 +90,7 @@ class Target
   attr_reader :shape
 
   def initialize(window, shape)
-    @alvo_image = Gosu::Image.new(window, "media/target2.png", true)
+    @alvo_image = Gosu::Image["target2.png"]
     @shape = shape 
     @shape.body.p = CP::Vec2.new(500 + rand(250), 100 + rand(300))
   end
@@ -96,15 +100,15 @@ class Target
   end
 end
 
-class GameWindow < Gosu::Window
+class GameWindow < Chingu::Window
 
   def initialize
     super(SCREEN_WIDTH, SCREEN_HEIGHT, false, 16)
     self.caption = "TCC Demo 1 - Alberto e Issao"
 
-    @background_image = Gosu::Image.new(self, "media/fundo-demo-1.png", true)    
-    @fire_sound= Gosu::Sample.new(self, "media/explosion.wav")   
-    @point_sound= Gosu::Sample.new(self, "media/Beep.wav")   
+    @background_image = Gosu::Image["fundo-demo-1.png"]
+    @fire_sound= Gosu::Sample["explosion.wav"]
+    @point_sound= Gosu::Sample["Beep.wav"]
     @score = 0    
     @wind_force = -1500 + rand(2500)
     @path_points = []

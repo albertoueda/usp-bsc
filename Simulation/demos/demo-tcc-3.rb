@@ -1,6 +1,10 @@
+#!/bin/env ruby
+# encoding: utf-8
+
 require 'rubygems'
 require 'gosu'
 require 'chipmunk'
+require 'chingu'
 
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
@@ -27,7 +31,7 @@ class Rocket
   attr_accessor :engaged
 
   def initialize(window, shape)
-    @image = Gosu::Image.new(window, "media/rocket.png", false)
+    @image = Gosu::Image["spaceship.png"]
     @shape = shape
     @shape.body.p = CP::Vec2.new(100.0, 300.0)
     @engaged = false
@@ -61,15 +65,15 @@ class Rocket
 end
 
 # TODO: Unificar windows
-class Demo3Window < Gosu::Window
+class Demo3Window < Chingu::Window
 
   def initialize
     super(SCREEN_WIDTH, SCREEN_HEIGHT, false, 16)
     self.caption = "TCC Demo 3 - Rocket Landing"
 
-    @background_image = Gosu::Image.new(self, "media/demo-tcc-3.jpg", true)    
-    @fire_sound= Gosu::Sample.new(self, "media/explosion.wav")   
-    @point_sound= Gosu::Sample.new(self, "media/Beep.wav")   
+    @background_image = Gosu::Image["demo-tcc-3.jpg"]
+    @fire_sound= Gosu::Sample["explosion.wav"]
+    @point_sound= Gosu::Sample["Beep.wav"]
     @score = 0    
     @steps = 0
 
