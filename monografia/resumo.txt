@@ -1,0 +1,29 @@
+1. Parte Técnica
+	- Introdução
+		* Objetivo/Motivação
+		* Ilustrar problemas
+		* Como resolver o problema
+		* Apresentação do programa
+	- Conceitos 
+		* Definições de conceitos
+		* Linguagem e Frameworks utilizados
+		* Apresentação de dois temas teóricos envolvendo física e computação: Tempo de simulação e detecção de colisão entre objetos
+	- Atividades realizadas
+		* Breve descrição
+	- Tempo de simulação
+		* "Time step problem": Dificuldade em criar interações reais
+		* Preemptive vs Corrective: Ajuste de colisão vs Correção dos objetos colididos.
+		* Problema de granulalidade: Qual deve ser o passo de simulação para ter uma boa velocidade de renderização e precisão física
+		* Frame rate variável: Vale a pena abordar?
+	- Detecção de coliões
+		* Alguns algoritmos: BSPTree, QuadTree (Implemetar um deles)
+		* Como chipmunk detecta colisão
+		* Comparação
+		* A posteriori (discrete) versus a priori (continuous) colision detection
+	- Resultados Obtiduso
+		* o quer deu! Mostrar o programa (com ep, professor, etc)
+	- Próximos passos
+	- Conclusão
+	- Bibliografia
+
+2. Parte Subjetiva
