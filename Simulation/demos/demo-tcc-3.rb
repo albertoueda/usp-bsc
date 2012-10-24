@@ -58,8 +58,8 @@ class Rocket
   end 
 
   def decrease_y_speed
-  	if @shape.body.v.y < 0
-  	    @shape.body.apply_force(CP::Vec2.new(0.0, 1.0) * 0.5/SUBSTEPS, CP::Vec2.new(0.0, 0.0))
+  	if @shape.body.v.y < 300
+  	    @shape.body.apply_force(CP::Vec2.new(0.0, 1.0) * 2/SUBSTEPS, CP::Vec2.new(0.0, 0.0))
   	end
   end
 end
