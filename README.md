@@ -5,9 +5,8 @@ Simulação e Integração de conceitos físicos na computação
 -----
   * Instalação do [RVM](https://rvm.io/rvm/install/)
     1. Baixar o script rvm e instalar
-      
-      	<!-- -->
-      	curl -L https://get.rvm.io | bash -s stable
+			
+			curl -L https://get.rvm.io | bash -s stable
 
     2. source ~/.rvm/scripts/rvm
 
