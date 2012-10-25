@@ -1,7 +1,7 @@
 Simulação e Integração de conceitos físicos na computação
 =========================================================
 
-0. Configuração do ambiente de desenvolvimento
+1. Configuração do ambiente de desenvolvimento
 ----------------------------------------------
 
 ### Ruby Version Manager (RVM) ###
@@ -21,18 +21,38 @@ Simulação e Integração de conceitos físicos na computação
 			type rvm | head -n 1
 			rvm is a function
 
+### Ruby 1.9.3 ###
+
+[Ruby 1.9.3](http://ruby-doc.org/core-1.9.3/) vem com atualizações interessantes que facilita e agiliza mais ainda o desenvolvimento de programas nesta linguagem.
+Vamos instalar utilizando o rvm
+
+1. Instalando o ruby 1.9.3 com rvm
+
+			rvm install 1.9.3
+
+2. Verificando as versões intaladas
+
+			rvm list
+
+3. Definindo a versão do ruby que será utilizado
+
+			rvm use 1.9.3
+
+> É possíve voltar para a verrsão do ruby instalada no sistema com o comando:
+> 			rvm use system
+
 		
 
 	
 
-1. Introdução
+2. Introdução
 -------------
   Projeto feito em Ruby integrado com:  
   * Chipmunk: Framework para simulações físicas
   * Gosu + Chingu: Framework para desenvolver jogos
   * Visual Ruby: Gem que facilita a integração entre Ruby e Glade 
 
-2. Organização do projeto
+3. Organização do projeto
 -------------------------
 
 * proposta: Página HTML com a proposta do projeto.
@@ -45,14 +65,14 @@ demonstração deve ficar nesta pasta
     * images/ Imagens
     * media/ Imagens + Sons
 
-3. Execução
+4. Execução
 -----------
 
 Para rodar a simulação, executar:
     ruby main.rb
 localizado em na pasta Simulation
 
-4. Tarefas
+5. Tarefas
 ----------
 
 1. Tutorial básico de criação de simulação.
