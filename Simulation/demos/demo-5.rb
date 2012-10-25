@@ -36,14 +36,16 @@ class Ball
   end
 
   def reset_position
-    @initial_velocity = CP::Vec2.new(0.0, 20 + rand(80))
+    @initial_velocity = CP::Vec2.new(0.0, 20 + rand(85))
     @shape.body.v = @initial_velocity
     @shape.body.p = CP::Vec2.new(140, 100)
     @waiting_success = true
   end
 
   def validate_position
-    if (@shape.body.p.x > SCREEN_WIDTH || @shape.body.p.x < 0 || @shape.body.p.y > SCREEN_HEIGHT)
+    if (@shape.body.p.x > SCREEN_WIDTH || @shape.body.p.x < 0 || 
+        @shape.body.p.y > SCREEN_HEIGHT || @shape.body.v.y == 0.0)
+
       reset_position
       return true
     end
@@ -54,7 +56,6 @@ class Ball
   def success
     if (@waiting_success && @shape.body.p.x > 700 && @shape.body.p.y > 300)
       @waiting_success = false
-      reset_position
       return true
     end
 
@@ -81,13 +82,14 @@ class GameWindow < Chingu::Window
     @segment_shapes = []
     segment_points = []
     @draw_segments = false
+    @simulation_speed = 0
+    @total = 0
 
     # ?
     @steps = 0;
 
     @font = Gosu::Font.new(self, Gosu::default_font_name, 20)
-    @dt = 1.0/60.0    
-  
+      
     @space = CP::Space.new
     @space.damping = 1.0
     @space.gravity = CP::Vec2.new(0.0, 10.0)
@@ -125,21 +127,27 @@ class GameWindow < Chingu::Window
 
   def update
    SUBSTEPS.times do
+      @dt = 1.0/60.0 + @simulation_speed
       @ball.shape.body.reset_forces      
       
       if @ball.validate_position
         @feedbackMessage = ""
+        @total += 1
       end
             
       if @ball.success
-        @feedbackMessage = "Success!" 
+        @feedbackMessage = "Success! (Vy = " + @ball.initial_velocity.y.to_s + ")"
         @point_sound.play         
-        @score += 20
+        @score += 1
+        @total += 1
+        @ball.reset_position
       end
 
       if button_down? Gosu::KbUp
+        @simulation_speed += 0.0001 if @simulation_speed < 0.2
       end
       if button_down? Gosu::KbDown
+        @simulation_speed -= 0.0001 if @simulation_speed > -0.015
       end
       
       if button_down? Gosu::KbSpace
@@ -167,10 +175,11 @@ class GameWindow < Chingu::Window
       } 
     end 
 
-    @font.draw("Score: #{@score}", 10, 10, ZOrder::UI, 1.0, 1.0, 0xffffff00)
+    @font.draw("Success: #{@score}/#{@total}", 10, 10, ZOrder::UI, 1.0, 1.0, 0xffffff00)
     @font.draw("Speed (x, y): (#{@ball.shape.body.v.x}, #{@ball.shape.body.v.y})", 10, 30, ZOrder::UI, 1.0, 1.0, 0xffffff00)
     @font.draw("Initial Vy: #{@ball.initial_velocity.y.to_s}", 10, 50, ZOrder::UI, 1.0, 1.0, 0xffffff00)
     @font.draw("#{@feedbackMessage}", 10, 70, ZOrder::UI, 1.0, 1.0, 0xffffff00)    
+    @font.draw("Speed of Simulation: #{'%.2f' % (@simulation_speed + 1)}", 500, 10, ZOrder::UI, 1.0, 1.0, 0xffffff00)    
   end
 
   def button_down(id)
