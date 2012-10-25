@@ -11,6 +11,8 @@ RVM (Ruby Version Manager) é um gerenciador de versões de Ruby. Podemos ter v�
 			
 			curl -L https://get.rvm.io | bash -s stable
 
+<!-- -->
+
 	2. Definir variaveis de ambiente (Colocar o comando no .bashrc)
 		
 			source ~/.rvm/scripts/rvm
