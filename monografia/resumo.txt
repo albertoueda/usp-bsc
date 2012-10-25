@@ -16,6 +16,7 @@
 		* Problema de granulalidade: Qual deve ser o passo de simulação para ter uma boa velocidade de renderização e precisão física
 		* Frame rate variável: Vale a pena abordar?
 	- Detecção de coliões
+		* Algoritmos que detectam colisão: Geometria computacional
 		* Alguns algoritmos: BSPTree, QuadTree (Implemetar um deles)
 		* Como chipmunk detecta colisão
 		* Comparação
