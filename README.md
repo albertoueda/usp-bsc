@@ -3,13 +3,26 @@ Simulação e Integração de conceitos físicos na computação
 
 0. aaa
 -----
+
+RVM (Ruby Version Manager) é um gerenciador de versões de Ruby. Podemos ter várias versões de ruby instalado na máquina e ainda podemos ter essa configuração por projeto.
+
   * Instalação do [RVM](https://rvm.io/rvm/install/)
     1. Baixar o script rvm e instalar
 			
 			curl -L https://get.rvm.io | bash -s stable
 
-    2. source ~/.rvm/scripts/rvm
+	2. Definir variaveis de ambiente (Colocar o comando no .bashrc)
+		
+			source ~/.rvm/scripts/rvm
+	
+	3. Verificar se o RVM foi instalado corretamente
 
+			type rvm | head -n 1
+			rvm is a function
+
+		
+
+	
 
 1. Introdução
 -------------
