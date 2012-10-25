@@ -41,6 +41,27 @@ Vamos instalar utilizando o rvm
 > É possíve voltar para a verrsão do ruby instalada no sistema com o comando:
 > 			rvm use system
 
+### Gem ###
+
+Dependências do simulador
+
+1. Chipmunk
+
+			gem install chipmunk
+
+2. Gosu
+	
+			gem install gosu
+
+3. Chingu
+
+			gem install chingu
+
+4. Visual Ruby
+
+			gem install visualruby
+
+
 		
 
 	
