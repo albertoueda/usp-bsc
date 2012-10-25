@@ -1,23 +1,22 @@
 Simulação e Integração de conceitos físicos na computação
 =========================================================
 
-0. aaa
------
+0. Configuração do ambiente de desenvolvimento
+----------------------------------------------
 
-RVM (Ruby Version Manager) é um gerenciador de versões de Ruby. Podemos ter várias versões de ruby instalado na máquina e ainda podemos ter essa configuração por projeto.
+### Ruby Version Manager (RVM) ###
 
-  * Instalação do [RVM](https://rvm.io/rvm/install/)
-    1. Baixar o script rvm e instalar
+[RVM](https://rvm.io/rvm/install) (Ruby Version Manager) é um gerenciador de versões de Ruby. Podemos ter várias versões de ruby instalado na máquina e ainda podemos ter essa configuração por projeto.
+
+1. Baixar o script rvm e instalar
 			
 			curl -L https://get.rvm.io | bash -s stable
 
-<!-- -->
-
-	2. Definir variaveis de ambiente (Colocar o comando no .bashrc)
+2. Definir variaveis de ambiente (Colocar o comando no .bashrc)
 		
 			source ~/.rvm/scripts/rvm
 	
-	3. Verificar se o RVM foi instalado corretamente
+3. Verificar se o RVM foi instalado corretamente
 
 			type rvm | head -n 1
 			rvm is a function
