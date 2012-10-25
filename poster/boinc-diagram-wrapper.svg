@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   id="svg2"
+   sodipodi:version="0.32"
+   inkscape:version="0.46"
+   sodipodi:docname="boinc-diagram-wrapper.svg"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape"
+   inkscape:export-filename="/home/rodrigo/Desktop/boinc-diagram.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
+  <defs
+     id="defs4">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient2442">
+      <stop
+         style="stop-color:#ff0000;stop-opacity:1;"
+         offset="0"
+         id="stop2444" />
+      <stop
+         style="stop-color:#ff0000;stop-opacity:0;"
+         offset="1"
+         id="stop2446" />
+    </linearGradient>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow1Lend"
+       style="overflow:visible;">
+      <path
+         id="path3812"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt;marker-start:none;"
+         transform="scale(0.8) rotate(180) translate(12.5,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow1Lstart"
+       style="overflow:visible">
+      <path
+         id="path3359"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt;marker-start:none"
+         transform="scale(0.8) translate(12.5,0)" />
+    </marker>
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 526.18109 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="744.09448 : 526.18109 : 1"
+       inkscape:persp3d-origin="372.04724 : 350.78739 : 1"
+       id="perspective10" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient2442"
+       id="linearGradient2448"
+       x1="796.29633"
+       y1="943.34186"
+       x2="924.07404"
+       y2="943.34186"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.54"
+     inkscape:cx="554.57515"
+     inkscape:cy="128.43118"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1280"
+     inkscape:window-height="723"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     showguides="true"
+     inkscape:guide-bbox="true">
+    <sodipodi:guide
+       orientation="0,1"
+       position="1244.4444,766.66667"
+       id="guide3338" />
+    <sodipodi:guide
+       orientation="0,1"
+       position="1509.2593,257.40741"
+       id="guide3340" />
+    <sodipodi:guide
+       orientation="-0.70710678,0.70710678"
+       position="-662.96296,912.96296"
+       id="guide3342" />
+    <sodipodi:guide
+       orientation="0,1"
+       position="-355.55556,1540.7407"
+       id="guide3344" />
+    <sodipodi:guide
+       orientation="1,0"
+       position="238.88889,431.48148"
+       id="guide3346" />
+    <sodipodi:guide
+       orientation="1,0"
+       position="970.37037,414.81481"
+       id="guide3348" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Camada 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     style="display:inline">
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot3294"
+       style="fill:black;stroke:none;stroke-opacity:1;stroke-width:1px;stroke-linejoin:miter;stroke-linecap:butt;fill-opacity:1;font-family:Bitstream Vera Sans;font-style:normal;font-weight:normal;font-size:11"><flowRegion
+         id="flowRegion3296"><rect
+           id="rect3298"
+           width="7.4074073"
+           height="14.814815"
+           x="1035.1852"
+           y="646.80664" /></flowRegion><flowPara
+         id="flowPara3300" /></flowRoot>    <rect
+       style="fill:#999999;fill-opacity:0.63973066;fill-rule:nonzero;stroke:none;stroke-opacity:1"
+       id="rect3159"
+       width="1189.5767"
+       height="1051.9398"
+       x="20.84656"
+       y="180.72195"
+       ry="288.63312"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <rect
+       ry="170.4532"
+       y="287.22952"
+       x="240.16299"
+       height="340.9064"
+       width="729.60339"
+       id="rect3306"
+       style="fill:#0000ff;fill-opacity:0.63973066;fill-rule:nonzero;stroke:none;stroke-opacity:1" />
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot2397"
+       style="font-size:11px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       transform="matrix(4.0096216,0,0,4.0096216,-1002.7031,-1093.145)"><flowRegion
+         id="flowRegion2399"><rect
+           id="rect2401"
+           width="568.51849"
+           height="161.11111"
+           x="329.62964"
+           y="380.13995" /></flowRegion><flowPara
+         id="flowPara2403">Núcleo do Cliente BOINC</flowPara></flowRoot>    <rect
+       style="fill:#0000ff;fill-opacity:0.63973066;fill-rule:nonzero;stroke:none;stroke-opacity:1"
+       id="rect3266"
+       width="625.89966"
+       height="308.91666"
+       x="243.05017"
+       y="788.25458"
+       ry="154.45833" />
+    <rect
+       style="fill:#ffff00;fill-opacity:0.63973066;fill-rule:nonzero;stroke:none;stroke-width:1.72000003;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect2425"
+       width="238.29524"
+       height="198.01334"
+       x="932.08984"
+       y="841.48608"
+       ry="99.006668" />
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot2427"
+       style="font-size:11px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       transform="matrix(2.1827651,0,0,2.3056602,-464.83484,-1167.8088)"><flowRegion
+         id="flowRegion2429"><rect
+           id="rect2431"
+           width="205.55556"
+           height="114.81481"
+           x="650"
+           y="904.21405" /></flowRegion><flowPara
+         id="flowPara2433">Programa em R</flowPara></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot2435"
+       style="font-size:11px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       transform="matrix(3.9978693,0,0,4.2229592,-960.89433,-2876.7839)"><flowRegion
+         id="flowRegion2437"><rect
+           id="rect2439"
+           width="274.07407"
+           height="129.62962"
+           x="322.22223"
+           y="896.80664" /></flowRegion><flowPara
+         id="flowPara2441">Wrapper</flowPara></flowRoot>    <rect
+       style="opacity:1;fill:url(#linearGradient2448);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.72000003000000001;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect2432"
+       width="196.29631"
+       height="177.29988"
+       x="600"
+       y="854.69189"
+       ry="67.707787" />
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot2434"
+       style="font-size:11px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
+       transform="matrix(2.9334426,0,0,2.9334426,-1237.3154,-1836.6583)"><flowRegion
+         id="flowRegion2436"><rect
+           id="rect2438"
+           width="129.62962"
+           height="37.037037"
+           x="638.88892"
+           y="941.2511" /></flowRegion><flowPara
+         id="flowPara2440">Runner</flowPara></flowRoot>    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend);marker-start:url(#Arrow1Lstart)"
+       d="M 932.08984,941.45416 L 796.29631,942.54988"
+       id="path2454"
+       inkscape:connector-type="polyline"
+       inkscape:connection-start="#rect2425"
+       inkscape:connection-end="#rect2432" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline;marker-start:url(#Arrow1Lstart);marker-end:url(#Arrow1Lend)"
+       d="M 559.25926,628.28811 L 557.60108,788.25458"
+       id="path4801"
+       inkscape:connector-type="polyline"
+       inkscape:connection-end="#rect3266" />
+  </g>
+</svg>
