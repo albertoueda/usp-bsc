@@ -15,7 +15,7 @@ class LunarRocket < PhysicObject
       :holding_up => :move_up, :holding_down => :move_down}
 
     @image = Gosu::Image["spaceship.png"]
-    @engaged = false
+    @engaged = true
   end
  
   def move_right
@@ -32,6 +32,18 @@ class LunarRocket < PhysicObject
 
   def move_down
     apply_impulse(0.0, 50.0)
+  end
+
+  def restart
+    @body.p = vec2(50 + rand(400), 100 + rand(100))  
+    @body.v = CP::Vec2::ZERO
+    @body.a = 0 
+    @body.w = 0 
+    @engaged = true
+
+    # TODO melhor fazer algo como
+    # $space.remove_body(@rocket.body)
+    # @rocket = LunarRocket.create(ObjectConfig::LunarRocket)   
   end
 end
 
@@ -80,15 +92,22 @@ class Demo3Window < PhysicWindow
     end
 
     $space.add_collision_func(:rocket, :soil) do |rocket_shape, soil_shape|
-      if (@rocket.velocity.x.abs > 10 || @rocket.velocity.x.abs > 10)
-        @fire_sound.play
-      else
+      if (@rocket.velocity.x.abs > 10 || @rocket.velocity.x.abs > 10) # deixar para rocket decidir
+        @fire_sound.play        
+        @rocket.engaged = false
+        @feedbackMessage = "Exploded."
+      else #if (@rocket.velocity.x.abs < 0.0001 and @rocket.velocity.y.abs < 0.0001 )
+        @point_sound.play
+        @rocket.engaged = false # TODO deixar ele parado
         @feedbackMessage = "Success!"
+        # @feedbackMessage = "Success! - Press the [Spacebar] to restart."
       end
     end  
 
     $space.add_collision_func(:rocket, :screen) do |rocket_shape, screen_shape|
-        @fire_sound.play
+        @fire_sound.play 
+        @rocket.engaged = false
+        @feedbackMessage = "Exploded."
     end  
 
   end
@@ -106,10 +125,11 @@ class Demo3Window < PhysicWindow
     @feedbackMessage = ""  
 
     if (@rocket.engaged)
-      @feedbackMessage = "Engaged."      
+      @feedbackMessage = "Engaged."
+    else
+      @rocket.restart
     end
   end
-
   def draw
     super
     @background_image.draw(0, 0, 0)
@@ -122,7 +142,6 @@ class Demo3Window < PhysicWindow
         } 
       end     
   end
-
 end
 
 Demo3Window.new(800, 600).show
