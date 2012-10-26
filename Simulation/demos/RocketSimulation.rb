@@ -13,8 +13,8 @@ class Rocket < PhysicObject
 
     self.body.velocity_func { |body, gravity, damping, dt|
       # G é considerado 1 e o vetor é sempre paralelo ao eixo x 
-      @earth_acceleration = -100000 / self.position.distsq(vec2(0, self.position.y))
-      @moon_acceleration = 100000 / self.position.distsq(vec2(1024, self.position.y))
+      @earth_acceleration = -5.973 * 10**5 / self.position.distsq(vec2(0, self.position.y))
+      @moon_acceleration =  7.349 * 10**4 / self.position.distsq(vec2(1024, self.position.y))
 
       self.body.update_velocity(vec2(@earth_acceleration + @moon_acceleration, 0), damping, dt)
     }
@@ -25,11 +25,11 @@ class Rocket < PhysicObject
   end
 
   def accelerate_to_moon
-    apply_impulse(10, 0)
+    apply_impulse(40000, 0)
   end
 
   def accelerate_to_earth
-    apply_impulse(-10, 0)
+    apply_impulse(-40000, 0)
   end
 
   def info
@@ -37,9 +37,9 @@ class Rocket < PhysicObject
     "INFO
     Aceleração Terra: #{(@earth_acceleration * 100).round / 100.0}
     Aceleração Lua: #{(@moon_acceleration * 100).round / 100.0}
-    Velocidade: #{velocity}
     Posição: #{position}
     Aceleração Resultante: #{acceleration}"
+    # Velocidade: #{velocity}
   end
 
   def update

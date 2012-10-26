@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
-  <requires lib="gtk+" version="2.16"/>
-  <!-- interface-naming-policy project-wide -->
+  <!-- interface-requires gtk+ 3.0 -->
   <object class="GtkWindow" id="window1">
     <property name="height_request">400</property>
     <property name="visible">True</property>
@@ -25,8 +24,9 @@
                 <property name="can_focus">False</property>
                 <property name="xalign">0.019999999552965164</property>
                 <property name="yalign">0</property>
+                <property name="xpad">2</property>
                 <property name="label" translatable="yes">&lt;big&gt;&lt;big&gt;&lt;big&gt;Demonstrações&lt;/big&gt;&lt;/big&gt;&lt;/big&gt;
-Clique duas vezes para iniciar a demonstração</property>
+Selecione a demonstração e clique em Iniciar.</property>
                 <property name="use_markup">True</property>
               </object>
               <packing>
@@ -39,8 +39,6 @@ Clique duas vezes para iniciar a demonstração</property>
               <object class="GtkScrolledWindow" id="demolist">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="hscrollbar_policy">automatic</property>
-                <property name="vscrollbar_policy">automatic</property>
                 <child>
                   <placeholder/>
                 </child>
@@ -66,6 +64,7 @@ Clique duas vezes para iniciar a demonstração</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
+                    <property name="use_action_appearance">False</property>
                   </object>
                   <packing>
                     <property name="expand">False</property>

@@ -10,7 +10,7 @@ require 'forwardable'
 # Variável global do CP::Space
 $space = CP::Space.new
 
-# Adição de método para faciliar a criação de Shapes do chipmun.
+# Adição de método para faciliar a criação de Shapes do chipmunk.
 #
 # @author rafaelim, albertoueda
 module CP
@@ -21,14 +21,14 @@ module CP
     #	  O método sabe o tipo do shape que deve ser construído dependendo do parâmetro
     # @option params [Float] :radius o raio da circunferência
     # @option params [Float] :thickness espessura do segmento
-    # @opions params [Array] :vectors uma lista de vetores Vec2 do chipmunk. (Vértices)
+    # @options params [Array] :vectors uma lista de vetores Vec2 do chipmunk. (Vértices)
     # @return Se existir o parâmetro :radius, devolve um Shape::Circle.
-    #   Se existir o parãmetro :thickness, devolve um Shape::Segment utilizando os dois primeiros itens do :vectors como vértice
+    #   Se existir o parâmetro :thickness, devolve um Shape::Segment utilizando os dois primeiros itens do :vectors como vértice
     #	  Se não acontecer nenhum dos casos anteriores, devolve um Shape.Polygon utilizando a lista de vetores.
     def self.factory(body, params = {})
       return Shape::Circle.new(body, params[:radius], Vec2::ZERO) if params.has_key? :radius
       return Shape::Segment.new(body, params[:vectors][0], params[:vectors][1], params[:thickness]) if params.has_key? :thickness
-      return Shape::Polygon.new(body, params[:vectors], Vec2::ZERO)
+      return Shape::Poly.new(body, params[:vectors], Vec2::ZERO)
     end
   end
 end
@@ -46,6 +46,7 @@ end
 # 	@return [Float] Massa do corpo
 # @!attribute rotational_velocity
 # 	@return [Float] Velocidade rotacional do corpo. É diferente de velocidade angular.
+#                                                   TODO Explicar melhor
 # @!attribute angle
 # 	@return [Float] Ângulo rotacional do corpo.
 module Chingu
@@ -61,9 +62,12 @@ module Chingu
       def_delegator :@body, :m, :mass
       def_delegator :@body, :w, :rotational_velocity
       def_delegator :@body, :a, :angle
+      def_delegator :@shape, :e, :elasticity
+      def_delegator :@shape, :u, :friction
+
 
       # @param [Hash] options mapa com as opções de configuração do objeto físico.
-      #		Além de aceitar as opçãões definidas em gosu e chingu, aceitam algumas propriedades físicas
+      #		Além de aceitar as opções definidas em gosu e chingu, aceitam algumas propriedades físicas
       # @option options [Float] :mass massa do corpo. Obrigatório
       # @option options [Float] :moment_inertia momento de inércia do corpo. Obrigatório.
       # @option options [Float] :x posição inicial em relação ao eixo x do corpo. Obrigatório.
@@ -86,9 +90,13 @@ module Chingu
         @body.p = vec2(options[:x], options[:y])
         @body.add_to_space($space)
 
-        @shape = CP::Shape.factory(body, options)
+        # TODO Verificar, mudei para @body ao invés de body, faz mais sentido
+        @shape = CP::Shape.factory(@body, options)
         @shape.body.a = options[:angle] || 0
         @shape.body.w = options[:rotational_velocity] || 0
+        @shape.collision_type = options[:collision_type] if options[:collision_type]        
+        @shape.e = options[:elasticity] if options[:elasticity]        
+        @shape.u = options[:friction] if options[:friction]        
         @shape.add_to_space($space)
         super(options)
       end

@@ -44,7 +44,7 @@ class Ball
 
   def validate_position
     if (@shape.body.p.x > SCREEN_WIDTH || @shape.body.p.x < 0 || 
-        @shape.body.p.y > SCREEN_HEIGHT || @shape.body.v.y == 0.0)
+        @shape.body.p.y > SCREEN_HEIGHT || @shape.body.v.y.abs < 0.0001)
 
       reset_position
       return true
@@ -111,6 +111,7 @@ class GameWindow < Chingu::Window
 
       segmentBody = CP::StaticBody.new()
       segmentShape = CP::Shape::Segment.new(segmentBody, segment_points[i], segment_points[i+1], 0.1)
+      segmentShape.u = 1.0
       @segment_shapes << segmentShape
       @space.add_shape(segmentShape)      
     end
@@ -119,6 +120,7 @@ class GameWindow < Chingu::Window
     shape2 = CP::Shape::Circle.new(body2, 25/2, CP::Vec2.new(0.0, 0.0))
     shape2.collision_type = :ball    
     shape2.e = 1.0
+    shape2.u = 1.0 # Não surtiu efeito
     @space.add_shape(shape2)
     @space.add_body(body2)
     @ball = Ball.new(self, shape2)
@@ -176,7 +178,7 @@ class GameWindow < Chingu::Window
     end 
 
     @font.draw("Success: #{@score}/#{@total}", 10, 10, ZOrder::UI, 1.0, 1.0, 0xffffff00)
-    @font.draw("Speed (x, y): (#{@ball.shape.body.v.x}, #{@ball.shape.body.v.y})", 10, 30, ZOrder::UI, 1.0, 1.0, 0xffffff00)
+    @font.draw("Speed (x, y): (#{'%.3f' % @ball.shape.body.v.x}, #{'%.3f' % @ball.shape.body.v.y})", 10, 30, ZOrder::UI, 1.0, 1.0, 0xffffff00)
     @font.draw("Initial Vy: #{@ball.initial_velocity.y.to_s}", 10, 50, ZOrder::UI, 1.0, 1.0, 0xffffff00)
     @font.draw("#{@feedbackMessage}", 10, 70, ZOrder::UI, 1.0, 1.0, 0xffffff00)    
     @font.draw("Speed of Simulation: #{'%.2f' % (@simulation_speed + 1)}", 500, 10, ZOrder::UI, 1.0, 1.0, 0xffffff00)    
