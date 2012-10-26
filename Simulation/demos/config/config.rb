@@ -11,15 +11,15 @@ module ObjectConfig
   }
 
   LunarRocket = {
-    :x => 50,
-    :y => 200,
+    :x => 100,
+    :y => 100,
     :mass => 100,
     :zorder => 10,
-    :moment_inertia => CP.moment_for_box(100, 100, 100),
-    :vectors => [vec2(-20,-45), vec2(-20,45), vec2(20,45), vec2(20,-45)],
+    :moment_inertia => CP.moment_for_box(100, 40, 90),
+    :vectors => [vec2(-20,-40), vec2(-20,40), vec2(20,40), vec2(20,-40)],
   	:collision_type => :rocket,
-  	:e => 1.0,
-  	:u => 1.0
+  	:elasticity => 0.0,
+  	:friction => 0.4
   }
 
 end

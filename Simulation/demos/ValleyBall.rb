@@ -77,6 +77,8 @@ class GameWindow < Chingu::Window
     @background_image = Gosu::Image["fundo-demo-5.png"]
     @foreground_image = Gosu::Image["fundo-demo-5-frente.png"]
     @point_sound= Gosu::Sample["Beep.wav"]
+    @font = Gosu::Font.new(self, Gosu::default_font_name, 20)
+
     @score = 0    
     @wind_force = 0
     @segment_shapes = []
@@ -84,11 +86,6 @@ class GameWindow < Chingu::Window
     @draw_segments = false
     @simulation_speed = 0
     @total = 0
-
-    # ?
-    @steps = 0;
-
-    @font = Gosu::Font.new(self, Gosu::default_font_name, 20)
       
     @space = CP::Space.new
     @space.damping = 1.0
@@ -105,13 +102,13 @@ class GameWindow < Chingu::Window
     segment_points << CP::Vec2.new(750.0, 295.0)
     segment_points << CP::Vec2.new(800.0, 310.0)
 
-
     for i in 0..segment_points.size-2
       next if i == 7 # hole
 
       segmentBody = CP::StaticBody.new()
       segmentShape = CP::Shape::Segment.new(segmentBody, segment_points[i], segment_points[i+1], 0.1)
-      segmentShape.u = 1.0
+      segmentShape.e = 0.1
+      segmentShape.u = 0.5
       @segment_shapes << segmentShape
       @space.add_shape(segmentShape)      
     end
@@ -119,7 +116,7 @@ class GameWindow < Chingu::Window
     body2 = CP::Body.new(1.0, 0.0001)
     shape2 = CP::Shape::Circle.new(body2, 25/2, CP::Vec2.new(0.0, 0.0))
     shape2.collision_type = :ball    
-    shape2.e = 1.0
+    shape2.e = 0.1
     shape2.u = 1.0 # Não surtiu efeito
     @space.add_shape(shape2)
     @space.add_body(body2)
