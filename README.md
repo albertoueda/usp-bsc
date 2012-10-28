@@ -39,3 +39,13 @@ localizado em na pasta Simulation
 5. Montar um ambiente fácil de demonstração para o professor usar nas
    aulas
 6. Criar aulas 'embutidas' no programa.
+
+5. Para discutir
+----------------
+
+1. Chipmunk C++
+	* Muitas referências na net estão em C++, além de ter bem mais métodos que o wrapper. Vale a pena mexer tbm no código em C++ se precisarmos? Devemos dar instruções na mono para modificações do código nativo?  
+2. Aulas embutidas
+
+
+

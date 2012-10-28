@@ -33,7 +33,7 @@ class LunarRocket < PhysicObject
   end
 
   def restart
-    @body.p = vec2(50 + rand(300), 100 + rand(100))  
+    @body.p = vec2(50 + rand(200), 100 + rand(100))  
     @body.v = CP::Vec2::ZERO
     @body.a = 0 
     @body.w = 0 
