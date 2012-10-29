@@ -63,12 +63,12 @@ module ObjectConfig
     :y => 0,
     :mass => 100,
     :zorder => 10,
-    :moment_inertia => CP.moment_for_box(100, 25, 25),
+    :moment_inertia => CP.moment_for_poly(100, [vec2(-12.5,-12.5), vec2(0,12.5), vec2(12.5,-12.5)], CP::Vec2::ZERO),
     :vectors => [vec2(-12.5,-12.5), vec2(0,12.5), vec2(12.5,-12.5)],
     :collision_type => :stone,
     :elasticity => 0.3,
     :friction => 0.4,
-    :rotational_velocity => 200.0
+    :rotational_velocity => 20.0
   }
 
   GemBall = {
@@ -77,10 +77,10 @@ module ObjectConfig
     :radius => 12.5,
     :mass => 100,
     :zorder => 10,
-    :moment_inertia => CP.moment_for_box(100, 25, 25),
+    :moment_inertia => CP.moment_for_circle(100, 0.0, 25, CP::Vec2::ZERO),
     :collision_type => :stone,
     :elasticity => 0.3,
     :friction => 0.4,
-    :rotational_velocity => 400.0
+    # :rotational_velocity => 10.0
   }
 end
