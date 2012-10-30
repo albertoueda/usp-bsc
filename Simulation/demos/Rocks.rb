@@ -31,7 +31,7 @@ class Rock < PhysicObject
 
     # Verificar física!
     # distance = Math::Sqrt((x-center_x)**2 + (y-center_y)**2)
-    k = 20
+    k = 25
     apply_impulse(k/2.0*(center_x-x)*(x-center_x).abs, k/2.0*(center_y-y)*(y-center_y).abs)
   end
 
@@ -88,7 +88,10 @@ class RocksSimulation < PhysicWindow
 
     @rock = Rock.create(ObjectConfig::Rock)
 
-    @segment_shapes= []
+    @segment_shapes = []
+    @all_target_shapes = []
+    @shapes_to_remove = []
+
     @draw_segments = false
     @aiming = false
 
@@ -105,8 +108,6 @@ class RocksSimulation < PhysicWindow
       segment.add_to_space($space)
     end
 
-
-
     @catapult = CP::Shape.factory(CP::StaticBody.new, {:vectors => [vec2(100, 500), vec2(100,400)], 
       :thickness => 5.0})
     @catapult.collision_type = :catapult
@@ -119,9 +120,15 @@ class RocksSimulation < PhysicWindow
 
     restart
 
-    # $space.add_collision_func(:rock, :catapult) do |rock_shape, catapult_stone|
-      # @point_sound.play
-    # end 
+    # $space.add_post_step_callback(
+    #   :keyxx, 
+    #   "do |space, key| puts('bla') end"
+    # )
+
+    $space.add_collision_func(:rock, :gem) do |rock_shape, gem_shape|
+      @point_sound.play
+      @shapes_to_remove << gem_shape
+    end 
 
   end
 
@@ -147,6 +154,12 @@ class RocksSimulation < PhysicWindow
       @rock.body.p = vec2(mouse_x, mouse_y)
       @rock.body.v = CP::Vec2::ZERO
     end
+
+    @shapes_to_remove.each do |shape|
+      $space.remove_shape(shape)
+      $space.remove_body(shape.body)
+    end
+
   end
 
   def left 
@@ -190,6 +203,13 @@ class RocksSimulation < PhysicWindow
   def restart
     @rock.restart
 
+    @all_target_shapes.each do |target|
+      target.visible = false
+      $space.remove_shape(target.shape)
+      $space.remove_body(target.body)
+    end
+    @all_target_shapes.clear
+
     $space.add_shape(@catapult)
 
     target_points = [vec2(300,200), vec2(330,200), vec2(360,200), 
@@ -198,19 +218,23 @@ class RocksSimulation < PhysicWindow
     target_points.each do |target|
       woodstone = WoodStone.create(ObjectConfig::WoodStone)
       woodstone.body.p = target
+      @all_target_shapes << woodstone
 
       stone = Stone.create(ObjectConfig::Stone)
       stone.body.p.x = target.x + 300
       stone.body.p.y = target.y
+      @all_target_shapes << stone
     end
       
     for i in 0..2
       gemballstone = GemBallStone.create(ObjectConfig::GemBall)
       gemballstone.body.p = vec2(380 + rand(200), 100 + rand(300))
+      @all_target_shapes << gemballstone
       next if i%2 == 0
 
       gemstone = GemStone.create(ObjectConfig::Gem)
       gemstone.body.p = vec2(380 + rand(200), 100 + rand(300))
+      @all_target_shapes << gemstone
     end
 
     gemstone = GemStone.create(ObjectConfig::Gem)

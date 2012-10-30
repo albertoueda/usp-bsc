@@ -55,7 +55,7 @@ module Chingu
       include Chingu::Helpers::RotationCenter
       extend Forwardable
 
-      attr_accessor :factor_x, :factor_y, :center_x, :center_y, :zorder, :mode, :color, :visible, :body
+      attr_accessor :factor_x, :factor_y, :center_x, :center_y, :zorder, :mode, :color, :visible, :body, :shape
       attr_reader :factor, :center, :height, :width, :image
       def_delegator :@body, :f, :force
       def_delegator :@body, :i, :moment_inertia
@@ -116,7 +116,7 @@ module Chingu
       end
 
       def draw
-        @image.draw_rot(position.x, position.y, @zorder, angle, @center_x, @center_y, @factor_x, @factor_y, @color, @mode)  if @image
+        @image.draw_rot(position.x, position.y, @zorder, angle, @center_x, @center_y, @factor_x, @factor_y, @color, @mode)  if @image && @visible
       end
 
       # Aplica uma força contínua no objeto.
