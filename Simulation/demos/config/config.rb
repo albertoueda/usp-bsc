@@ -25,10 +25,10 @@ module ObjectConfig
   Rock = {
     :x => 100,
     :y => 500,
+    :radius => 10,
     :mass => 100,
     :zorder => 10,
-    :moment_inertia => CP.moment_for_box(100, 20, 20),
-    :vectors => [vec2(-10,-10), vec2(-10,10), vec2(10,10), vec2(10,-10)],
+    :moment_inertia => CP.moment_for_circle(100, 0, 10, CP::Vec2::ZERO),
     :collision_type => :rock,
     :elasticity => 0.8,
     :friction => 0.4
@@ -53,9 +53,9 @@ module ObjectConfig
     :zorder => 10,
     :moment_inertia => CP.moment_for_box(10, 25, 25),
     :vectors => [vec2(-12.5,-12.5), vec2(-12.5,12.5), vec2(12.5,12.5), vec2(12.5,-12.5)],
-  	:collision_type => :stone,
-  	:elasticity => 0.3,
-  	:friction => 0.4
+    :collision_type => :stone,
+    :elasticity => 0.3,
+    :friction => 0.4
   }
 
   Gem = {

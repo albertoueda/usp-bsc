@@ -4,6 +4,7 @@
 require_relative 'config/config'
 require_relative 'lib/physics'
 
+
 class Rock < PhysicObject
   attr_accessor :engaged
   
@@ -17,16 +18,26 @@ class Rock < PhysicObject
   end
 
   def restart
-    @body.p = vec2(100, 300)  
+    @body.p = vec2(100, 200)  
     @body.v = CP::Vec2::ZERO
     @body.a = 0 
     @body.w = 0 
     @engaged = true
   end
 
-  def shoot
-    apply_impulse(20000, -15000 - rand(10000))
+  def shoot(x, y, catapult)
+    center_x = 100
+    center_y = 400
+
+    # Verificar física!
+    # distance = Math::Sqrt((x-center_x)**2 + (y-center_y)**2)
+    k = 20
+    apply_impulse(k/2.0*(center_x-x)*(x-center_x).abs, k/2.0*(center_y-y)*(y-center_y).abs)
   end
+
+  # def shoot
+  #   apply_impulse(20000, -15000 - rand(10000))
+  # end
 end
 
 class Stone < PhysicObject
@@ -65,12 +76,12 @@ class RocksSimulation < PhysicWindow
 
   def setup
     self.caption = "TCC Demo 2 - Rocks"
-    self.input = {esc: :exit, space: :shoot, r: :restart, d: :toggle_lines}
+    self.input = {esc: :exit, space: :shoot, r: :restart, d: :toggle_lines, holding_left: :left, holding_right: :right }
 
     @background_image = Gosu::Image["fundo-demo-2.png"]
     @fire_sound= Gosu::Sample["explosion.wav"]
     @point_sound= Gosu::Sample["Beep.wav"]
-    @info_area = Chingu::Text.create("", :x => 300, :color => Gosu::Color::BLUE)    
+    @info_area = Chingu::Text.create("", :x => 300, :color => Gosu::Color::YELLOW)    
 
     $space.damping = 0.9    
     $space.gravity = CP::Vec2.new(0.0, 150.0)
@@ -94,15 +105,22 @@ class RocksSimulation < PhysicWindow
       segment.add_to_space($space)
     end
 
-    catapult = CP::Shape.factory(CP::StaticBody.new, {:vectors => [vec2(100, 500), vec2(100,400)],
+
+
+    @catapult = CP::Shape.factory(CP::StaticBody.new, {:vectors => [vec2(100, 500), vec2(100,400)], 
       :thickness => 5.0})
-    @segment_shapes << catapult
-    catapult.add_to_space($space)
+    @catapult.collision_type = :catapult
+    @segment_shapes << @catapult
+    @catapult.add_to_space($space)
+
+    # spring = CP::Constraint::DampedSpring.new(@rock.body, @catapult.body, 
+    #   @rock.body.p, vec2(@catapult.body.p.x, @catapult.body.p.y - 60), 0.1, 40.0, 0.0)
+    # $space.add_constraint(spring)
 
     restart
 
-    # $space.add_collision_func(:rock, :stone) do |rock_shape, stone_stone|
-    #   @point_sound.play
+    # $space.add_collision_func(:rock, :catapult) do |rock_shape, catapult_stone|
+      # @point_sound.play
     # end 
 
   end
@@ -120,19 +138,29 @@ class RocksSimulation < PhysicWindow
     @feedbackMessage = ""  
 
     if (@rock.engaged)
-      @feedbackMessage = "Pressione [R]"
+      @feedbackMessage = "Pressione [r], [d]"
     else
       restart
     end
 
     if @aiming
       @rock.body.p = vec2(mouse_x, mouse_y)
+      @rock.body.v = CP::Vec2::ZERO
     end
+  end
+
+  def left 
+    @rock.apply_impulse(-1000, 0)
+  end
+
+  def right 
+    @rock.apply_impulse(1000, 0)
   end
 
   def draw
     super
     @background_image.draw(0, 0, 0)
+    # TODO Zorder
 
       if @draw_segments 
         @segment_shapes.each { |segment| 
@@ -141,6 +169,18 @@ class RocksSimulation < PhysicWindow
           $window.draw_line(vectorA.x, vectorA.y, Gosu::Color::BLUE, vectorB.x, vectorB.y, Gosu::Color::BLUE)
         } 
       end     
+
+    catapult_img = Gosu::Image["catapult.png"]
+    catapult_img.draw(@catapult.a.x - catapult_img.width/2.0, @catapult.a.y - catapult_img.height, 10) 
+
+    # Otimizar usando uma lib ou reduzindo os valores    
+    distance = Math::sqrt((@catapult.a.x - @rock.body.p.x)**2  + 
+      (@catapult.a.y - catapult_img.height - @rock.body.p.y)**2)
+
+    if (@aiming || distance < 50)
+      $window.draw_line(@catapult.a.x, @catapult.a.y - catapult_img.height, Gosu::Color::BLUE, 
+                        @rock.body.p.x, @rock.body.p.y, Gosu::Color::BLUE)
+    end
   end
 
   def shoot
@@ -149,6 +189,8 @@ class RocksSimulation < PhysicWindow
   
   def restart
     @rock.restart
+
+    $space.add_shape(@catapult)
 
     target_points = [vec2(300,200), vec2(330,200), vec2(360,200), 
                      vec2(315,170), vec2(345,170), vec2(330,140)]
@@ -177,15 +219,17 @@ class RocksSimulation < PhysicWindow
 
   def button_down(id)
     super
-    if id = Gosu::MsLeft && (@rock.body.p.x - mouse_x).abs < 10 && (@rock.body.p.y - mouse_y).abs < 10 
+    if id == Gosu::MsLeft && (@rock.body.p.x - mouse_x).abs < 10 && (@rock.body.p.y - mouse_y).abs < 10 
       @aiming = true    # TODO Como pegar o shape a partir do body?
+      $space.remove_shape(@catapult)
     end
   end
 
   def button_up(id)
     super
-    if id = Gosu::MsLeft
+    if id == Gosu::MsLeft && @aiming 
       @aiming = false
+      @rock.shoot(mouse_x, mouse_y, @catapult)
     end
   end
 
