@@ -6,15 +6,24 @@ require 'chipmunk'
 require 'chingu'
 require 'gosu'
 require 'forwardable'
+require 'texplay'
 
 # Variável global do CP::Space
 $space = CP::Space.new
+
+# Define se devem ser exibidas as linhas de contorno dos corpos
+$draw_segments = false
 
 # Adição de método para faciliar a criação de Shapes do chipmunk.
 #
 # @author rafaelim, albertoueda
 module CP
   module Shape
+  
+    Color = {CP::Shape::Circle => Gosu::Color::YELLOW, 
+            CP::Shape::Segment => Gosu::Color::RED, 
+            CP::Shape::Poly => Gosu::Color::GREEN, 
+           }
 
     # @param [Hash] body corpo físico do chipmunk
     # @param params parâmetros utilizados para criar o shape do chipmunk.
@@ -67,7 +76,7 @@ module Chingu
 
 
       # @param [Hash] options mapa com as opções de configuração do objeto físico.
-      #		Além de aceitar as opções definidas em gosu e chingu, aceitam algumas propriedades físicas
+      #   Além de aceitar as opções definidas em gosu e chingu, aceitam algumas propriedades físicas
       # @option options [Float] :mass massa do corpo. Obrigatório
       # @option options [Float] :moment_inertia momento de inércia do corpo. Obrigatório.
       # @option options [Float] :x posição inicial em relação ao eixo x do corpo. Obrigatório.
@@ -98,6 +107,14 @@ module Chingu
         @shape.e = options[:elasticity] if options[:elasticity]        
         @shape.u = options[:friction] if options[:friction]        
         @shape.add_to_space($space)
+
+        @circle_image = TexPlay.create_blank_image($window, (options[:radius]*3).ceil, 
+          (options[:radius]*3).ceil) if options[:radius]
+        @vectors = options[:vectors] if options[:vectors]
+
+        @image = Gosu::Image[options[:image_name]] if options[:image_name] 
+        @shape_color = options[:shape_color] ? options[:shape_color] : CP::Shape::Color[@shape.class] 
+
         super(options)
       end
 
@@ -116,7 +133,33 @@ module Chingu
       end
 
       def draw
-        @image.draw_rot(position.x, position.y, @zorder, angle, @center_x, @center_y, @factor_x, @factor_y, @color, @mode)  if @image && @visible
+        if $draw_segments
+
+          case @shape
+          when CP::Shape::Circle
+            radius = @shape.radius.floor
+
+            # Texplay painting
+            shape_color = @shape_color # TODO
+            @circle_image.paint {
+                circle radius, radius, radius, :color => shape_color
+            }
+
+            @circle_image.draw(position.x - radius, position.y - radius, 0)
+
+          when CP::Shape::Segment, CP::Shape::Poly
+            for i in 0..@vectors.size-1 
+              vectorA = @vectors[i] + @body.p
+              vectorB = @vectors[(i+1) % @vectors.size] + @body.p
+              $window.draw_line(vectorA.x, vectorA.y, @shape_color, vectorB.x, vectorB.y, @shape_color)
+            end
+          end
+
+        else
+            # TODO melhorar remoção de shapes e diminuir os if's
+          @image.draw_rot(position.x, position.y, @zorder, angle, @center_x, @center_y, 
+            @factor_x, @factor_y, @color, @mode) if @image && @visible && @body && @shape 
+        end
       end
 
       # Aplica uma força contínua no objeto.
@@ -149,11 +192,45 @@ end
 class PhysicObject < Chingu::BasicGameObject
   trait :physics
   include Chingu::Helpers::InputClient
+    
 end
 
 class PhysicWindow < Chingu::Window
+  def setup
+    # super
+    self.caption = "TCC Demos - Alberto e Issao"
+    self.input = { esc: :exit, d: :toggle_lines }
+
+    @dt = 1.0 / 60.0
+    @substeps = 6
+    @info_area = Chingu::Text.create("", :x => 300, :color => Gosu::Color::YELLOW)    
+    @feedbackMessage = ""
+
+    TexPlay.set_options :caching => false
+  end
+
+  def toggle_lines
+    $draw_segments = !$draw_segments  
+  end
+
+  def needs_cursor?   
+    true
+  end 
+
   def update
-    $space.step(1.0 / 40.0)
     super
+    @info_area.text = info
+
+    $space.step(@dt)
+  end
+
+  def info
+    "#{@feedbackMessage}"
+  end
+
+  def draw
+    super
+    @info_area.draw
+
   end
 end

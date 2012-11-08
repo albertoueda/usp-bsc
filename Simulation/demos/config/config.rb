@@ -1,13 +1,28 @@
 require 'chipmunk'
+require 'gosu'
 
 module ObjectConfig
+
+  Ball = {
+    :x => 0,
+    :y => 0,
+    :zorder => 1,
+    :radius => 25.0/2.0,
+    :mass => 1,
+    :moment_inertia => 0.0001,
+    :collision_type => :ball,
+    :elasticity => 0.1,
+    :friction => 1.0,
+    :image_name => "cannonball2.png"      
+  }  
 
   Rocket = {
     :x => 70,
     :y => 300,
     :mass => 10000,
     :moment_inertia => 10,
-    :radius => 10
+    :radius => 10,
+    :image_name => "rocket.png"
   }
 
   LunarRocket = {
@@ -19,7 +34,8 @@ module ObjectConfig
     :vectors => [vec2(-20,-40), vec2(-20,40), vec2(20,40), vec2(20,-40)],
     :collision_type => :rocket,
     :elasticity => 0.0,
-    :friction => 0.4
+    :friction => 0.4,
+    :image_name => "spaceship.png"
   }
 
   Rock = {
@@ -31,7 +47,8 @@ module ObjectConfig
     :moment_inertia => CP.moment_for_circle(100, 0, 10, CP::Vec2::ZERO),
     :collision_type => :rock,
     :elasticity => 0.8,
-    :friction => 0.4
+    :friction => 0.4,
+    :image_name => "cannonball2.png"
   }
 
   Stone = {
@@ -39,11 +56,12 @@ module ObjectConfig
     :y => 0,
     :mass => 100,
     :zorder => 10,
-    :moment_inertia => CP.moment_for_box(1000, 25, 25),
+    :moment_inertia => CP.moment_for_box(100, 25, 25),
     :vectors => [vec2(-12.5,-12.5), vec2(-12.5,12.5), vec2(12.5,12.5), vec2(12.5,-12.5)],
     :collision_type => :stone,
     :elasticity => 0.0,
-    :friction => 0.4
+    :friction => 0.7,
+    :image_name => "stone.png"
   }
 
   WoodStone = {
@@ -55,7 +73,8 @@ module ObjectConfig
     :vectors => [vec2(-12.5,-12.5), vec2(-12.5,12.5), vec2(12.5,12.5), vec2(12.5,-12.5)],
     :collision_type => :stone,
     :elasticity => 0.3,
-    :friction => 0.4
+    :friction => 0.4,
+    :image_name => "woodstone.png"
   }
 
   Gem = {
@@ -68,7 +87,9 @@ module ObjectConfig
     :collision_type => :gem,
     :elasticity => 0.3,
     :friction => 0.4,
-    :rotational_velocity => 20.0
+    :rotational_velocity => 40.0,
+    :shape_color => Gosu::Color::RED,
+    :image_name => "gem.png"
   }
 
   GemBall = {
@@ -79,8 +100,10 @@ module ObjectConfig
     :zorder => 10,
     :moment_inertia => CP.moment_for_circle(100, 0.0, 25, CP::Vec2::ZERO),
     :collision_type => :gem,
-    :elasticity => 0.3,
+    :elasticity => 0.6,
     :friction => 0.4,
+    :shape_color => Gosu::Color::RED,
+    :image_name => "gem-ball.png"
     # :rotational_velocity => 10.0
   }
 end

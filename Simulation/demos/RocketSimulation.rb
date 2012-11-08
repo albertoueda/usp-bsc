@@ -7,7 +7,11 @@ require_relative 'lib/physics'
 class Rocket < PhysicObject
 
   def setup
+    super
+    default_input = self.input
     self.input = {:holding_right => :accelerate_to_moon, :holding_left => :accelerate_to_earth}
+    self.input.merge! default_input
+
     @earth_acceleration = 0
     @moon_acceleration = 0
 
@@ -38,7 +42,8 @@ class Rocket < PhysicObject
     Aceleração Terra: #{(@earth_acceleration * 100).round / 100.0}
     Aceleração Lua: #{(@moon_acceleration * 100).round / 100.0}
     Posição: #{position}
-    Aceleração Resultante: #{acceleration}"
+    Aceleração Resultante: #{acceleration}
+    [D] : Show lines"
     # Velocidade: #{velocity}
   end
 
@@ -49,8 +54,12 @@ end
 
 class RocketSimulation < PhysicWindow
   def setup
-    self.caption = "Rocket Simulation by Alberto & Issao"
+    super
+    self.caption = "Physics Simulation #3 - Rocket Simulation"
+
+    default_input = self.input
     self.input = {esc: :exit}
+    self.input.merge! default_input
 
     @rocket = Rocket.create(ObjectConfig::Rocket)
 

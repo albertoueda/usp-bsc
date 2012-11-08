@@ -1,16 +1,13 @@
 #!/bin/env ruby
 # encoding: utf-8
 
-require 'rubygems'
-require 'chingu'
-require 'gosu'
-require 'chipmunk'
+require_relative 'config/config'
+require_relative 'lib/physics'
 
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
 MAX_ANGLE = 100.0
 MIN_ANGLE = 5.0
-SUBSTEPS = 6
 
 class Numeric
   def radians_to_vec2
@@ -26,12 +23,10 @@ module ZOrder
   Background, Ball, Foreground, UI = *0..3
 end
 
-class Ball
-  attr_reader :shape, :img, :initial_velocity
+class Ball < PhysicObject
+  attr_reader :initial_velocity
   
-  def initialize(window, shape)    
-    @img = Gosu::Image["cannonball2.png"]
-    @shape = shape
+  def setup    
     reset_position
   end
 
@@ -58,17 +53,12 @@ class Ball
       @waiting_success = false
       return true
     end
-
     return false
   end
 
-  def draw      
-    @img.draw(@shape.body.p.x - img.width / 2.0, @shape.body.p.y - img.height / 2.0, ZOrder::Ball)
-  end
 end
 
-class GameWindow < Chingu::Window
-  attr_reader :draw_segments
+class GameWindow < PhysicWindow
 
   def initialize
     super(SCREEN_WIDTH, SCREEN_HEIGHT, false, 16)
@@ -80,16 +70,15 @@ class GameWindow < Chingu::Window
     @font = Gosu::Font.new(self, Gosu::default_font_name, 20)
 
     @score = 0    
-    @wind_force = 0
     @segment_shapes = []
     segment_points = []
-    @draw_segments = false
     @simulation_speed = 0
     @total = 0
       
-    @space = CP::Space.new
-    @space.damping = 1.0
-    @space.gravity = CP::Vec2.new(0.0, 10.0)
+    $space.damping = 1.0
+    $space.gravity = CP::Vec2.new(0.0, 10.0)
+    @substeps = 3
+    @initial_dt = 1.0 / 60.0
 
     segment_points << CP::Vec2.new(100.0, 275.0)
     segment_points << CP::Vec2.new(310.0, 455.0)
@@ -110,23 +99,19 @@ class GameWindow < Chingu::Window
       segmentShape.e = 0.1
       segmentShape.u = 0.5
       @segment_shapes << segmentShape
-      @space.add_shape(segmentShape)      
+      $space.add_shape(segmentShape)      
     end
 
-    body2 = CP::Body.new(1.0, 0.0001)
-    shape2 = CP::Shape::Circle.new(body2, 25/2, CP::Vec2.new(0.0, 0.0))
-    shape2.collision_type = :ball    
-    shape2.e = 0.1
-    shape2.u = 1.0 # Não surtiu efeito
-    @space.add_shape(shape2)
-    @space.add_body(body2)
-    @ball = Ball.new(self, shape2)
-     
+    @ball = Ball.create(ObjectConfig::Ball)
+
   end
 
   def update
-   SUBSTEPS.times do
-      @dt = 1.0/60.0 + @simulation_speed
+    @dt = @initial_dt + @simulation_speed
+
+    @substeps.times do
+      super
+
       @ball.shape.body.reset_forces      
       
       if @ball.validate_position
@@ -153,25 +138,22 @@ class GameWindow < Chingu::Window
          @ball.reset_position
       end
 
-      if button_down? Gosu::KbD
-        @draw_segments = true
-      end
-
-      @space.step(@dt)
     end    
   end
 
   def draw
-    @background_image.draw(0, 0, ZOrder::Background)
-    @foreground_image.draw(0, 0, ZOrder::Foreground)
-    @ball.draw
+    super
 
-    if @draw_segments 
+    if $draw_segments 
       @segment_shapes.each { |segment| 
         vectorA = segment.a
         vectorB = segment.b
-        $window.draw_line(vectorA.x, vectorA.y, Gosu::Color::BLACK, vectorB.x, vectorB.y, Gosu::Color::BLACK)
+        $window.draw_line(vectorA.x, vectorA.y, Gosu::Color::BLUE, vectorB.x, vectorB.y, Gosu::Color::BLUE)
       } 
+    else 
+      @foreground_image.draw(0, 0, ZOrder::Foreground)
+      @background_image.draw(0, 0, ZOrder::Background)
+      @ball.draw
     end 
 
     @font.draw("Success: #{@score}/#{@total}", 10, 10, ZOrder::UI, 1.0, 1.0, 0xffffff00)
@@ -179,17 +161,9 @@ class GameWindow < Chingu::Window
     @font.draw("Initial Vy: #{@ball.initial_velocity.y.to_s}", 10, 50, ZOrder::UI, 1.0, 1.0, 0xffffff00)
     @font.draw("#{@feedbackMessage}", 10, 70, ZOrder::UI, 1.0, 1.0, 0xffffff00)    
     @font.draw("Speed of Simulation: #{'%.2f' % (@simulation_speed + 1)}", 500, 10, ZOrder::UI, 1.0, 1.0, 0xffffff00)    
+    # @font.draw("dt: #{@dt}", 500, 30, ZOrder::UI, 1.0, 1.0, 0xffffff00)    
   end
 
-  def button_down(id)
-    if id == Gosu::KbEscape then
-      close
-    end
-  end
-
-  def needs_cursor?   
-    true
-  end 
 end
 
 window = GameWindow.new

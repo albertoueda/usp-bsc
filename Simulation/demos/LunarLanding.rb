@@ -9,27 +9,28 @@ class LunarRocket < PhysicObject
   
   def setup
     super
-    self.input = {:holding_right => :move_right, :holding_left => :move_left, 
-      :holding_up => :move_up, :holding_down => :move_down}
+    default_input = self.input 
+    self.input = { holding_right: :move_right, holding_left: :move_left, 
+      holding_up: :move_up, holding_down: :move_down }
+    self.input.merge! default_input
 
-    @image = Gosu::Image["spaceship.png"]
     @engaged = true
   end
  
   def move_right
-    apply_impulse(50, 0.0)
+    apply_impulse(100, 0.0)
   end
   
   def move_left
-    apply_impulse(-50, 0.0)
+    apply_impulse(-100, 0.0)
   end  
   
   def move_up
-    apply_impulse(0.0, -50.0)
+    apply_impulse(0.0, -100.0)
   end
 
   def move_down
-    apply_impulse(0.0, 50.0)
+    apply_impulse(0.0, 100.0)
   end
 
   def restart
@@ -38,23 +39,26 @@ class LunarRocket < PhysicObject
     @body.a = 0 
     @body.w = 0 
     @engaged = true
-
-    # TODO melhor fazer algo como
-    # $space.remove_body(@rocket.body)
-    # @rocket = LunarRocket.create(ObjectConfig::LunarRocket)   
   end
 end
 
 class Demo3Window < PhysicWindow
 
   def setup
-    self.caption = "TCC Demo 3 - Rocket Landing"
-    self.input = {esc: :exit, space: :restart, d: :toggle_lines}
+    super
+    self.caption = "Physics Simulation #3 - Rocket Landing"
+    
+    default_input = self.input 
+    self.input = { space: :restart }
+    self.input.merge! default_input
 
     @background_image = Gosu::Image["fundo-demo-tcc-3.png"]
     @fire_sound= Gosu::Sample["explosion.wav"]
     @point_sound= Gosu::Sample["Beep.wav"]
+
     @info_area = Chingu::Text.create("", :x => 300, :color => Gosu::Color::BLUE)    
+    @substeps = 6
+    @dt = 1/60.0
 
     $space.damping = 1.0    
     $space.gravity = CP::Vec2.new(0.0, 5.0)
@@ -62,10 +66,10 @@ class Demo3Window < PhysicWindow
     @rocket = LunarRocket.create(ObjectConfig::LunarRocket)
 
     @segment_shapes= []
-    @draw_segments = false
+    $draw_segments = false
 
-    soil_segments = [[vec2(0, 600), vec2(340, 600)],
-                     [vec2(375, 600), vec2(375, 570)],
+    soil_segments = [[vec2(1, 599), vec2(375, 599)],
+                     [vec2(375, 599), vec2(375, 570)],
                      [vec2(375, 570), vec2(800, 570)]] 
 
     soil_segments.each do |limit|
@@ -77,8 +81,8 @@ class Demo3Window < PhysicWindow
       segment.add_to_space($space)
     end
 
-    screen_limits = [[vec2(0, -1000), vec2(0, 600)], 
-                     [vec2(800, 570), vec2(800, -1000)]] 
+    screen_limits = [[vec2(1, -1000), vec2(1, 599)], 
+                     [vec2(799, 570), vec2(799, -1000)]] 
 
     screen_limits.each do |limit|
       segment = CP::Shape.factory(CP::StaticBody.new, {:vectors => limit, :thickness => 1})
@@ -94,8 +98,7 @@ class Demo3Window < PhysicWindow
         @fire_sound.play        
         @rocket.engaged = false
         @feedbackMessage = "Exploded."
-      else #if (@rocket.velocity.x.abs < 0.0001 and @rocket.velocity.y.abs < 0.0001 )
-        # @point_sound.play
+      else 
         @feedbackMessage = "Success! - Press the [Spacebar] to restart."
       end
     end  
@@ -112,36 +115,36 @@ class Demo3Window < PhysicWindow
     "INFO
      Position (x, y): #{@rocket.position}
      Speed (x, y):   #{@rocket.body.v}
-     #{@feedbackMessage}"
+     #{@feedbackMessage}
+     [D] : Show lines"
   end
 
   def update
-    super
-    @info_area.text = info
-    @feedbackMessage = ""  
+    @substeps.times do 
+      super
+      @info_area.text = info
 
-    if (@rocket.engaged)
-      @feedbackMessage = "Engaged."
-    else
-      restart
+      if (@rocket.engaged)
+        @feedbackMessage = "Engaged."
+      else
+        restart
+      end
     end
   end
 
   def draw
     super
-    @background_image.draw(0, 0, 0)
 
-      if @draw_segments 
-        @segment_shapes.each { |segment| 
-          vectorA = segment.a
-          vectorB = segment.b
-          $window.draw_line(vectorA.x, vectorA.y, Gosu::Color::BLUE, vectorB.x, vectorB.y, Gosu::Color::BLUE)
-        } 
-      end     
-  end
+    if $draw_segments 
+      @segment_shapes.each { |segment| 
+        vectorA = segment.a
+        vectorB = segment.b
+        $window.draw_line(vectorA.x, vectorA.y, Gosu::Color::BLUE, vectorB.x, vectorB.y, Gosu::Color::BLUE)
+      }
+    else 
+      @background_image.draw(0, 0, 0)
+    end
 
-  def toggle_lines
-    @draw_segments = !@draw_segments  
   end
 
   def restart
