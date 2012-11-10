@@ -1,0 +1,47 @@
+This is BibTeX, Version 0.99c (TeX Live 2009/Debian)
+The top-level auxiliary file: presentation.aux
+The style file: amsalpha.bst
+Database file #1: bibliografia.bib
+Warning--missing pages in Dias
+You've used 1 entry,
+            2624 wiz_defined-function locations,
+            563 strings with 4562 characters,
+and the built_in function-call counts, 304 in all, are:
+= -- 22
+> -- 8
+< -- 1
++ -- 2
+- -- 2
+* -- 23
+:= -- 55
+add.period$ -- 1
+call.type$ -- 1
+change.case$ -- 5
+chr.to.int$ -- 1
+cite$ -- 2
+duplicate$ -- 15
+empty$ -- 24
+format.name$ -- 3
+if$ -- 54
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 2
+newline$ -- 13
+num.names$ -- 3
+pop$ -- 6
+preamble$ -- 1
+purify$ -- 6
+quote$ -- 0
+skip$ -- 12
+stack$ -- 0
+substring$ -- 7
+swap$ -- 2
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 8
+warning$ -- 1
+while$ -- 2
+width$ -- 2
+write$ -- 18
+(There was 1 warning)

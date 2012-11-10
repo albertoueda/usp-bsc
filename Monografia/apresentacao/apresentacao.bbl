@@ -1,0 +1,15 @@
+\providecommand{\bysame}{\leavevmode\hbox to3em{\hrulefill}\thinspace}
+\providecommand{\MR}{\relax\ifhmode\unskip\space\fi MR }
+% \MRhref is called by the amsart/book/proc definition of \MR.
+\providecommand{\MRhref}[2]{%
+  \href{http://www.ams.org/mathscinet-getitem?mr=#1}{#2}
+}
+\providecommand{\href}[2]{#2}
+\begin{thebibliography}{RAD09}
+
+\bibitem[RAD09]{Dias}
+Roberto Hirata~Jr. Rodrigo A.~Dias, \emph{Middle-r - a user level middleware
+  for statistical computing}, VII Workshop on Grid Computing and Applications -
+  Recife, Pernambuco - Brazil (2009).
+
+\end{thebibliography}
