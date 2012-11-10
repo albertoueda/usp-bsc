@@ -2,7 +2,7 @@
 # encoding: utf-8
 
 require_relative 'config/config'
-require_relative 'lib/physics'
+require_relative '../lib/physics'
 
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600

@@ -201,9 +201,9 @@ class PhysicWindow < Chingu::Window
     self.caption = "TCC Demos - Alberto e Issao"
     self.input = { esc: :exit, d: :toggle_lines }
 
-    @dt = 1.0 / 60.0
-    @substeps = 6
-    @info_area = Chingu::Text.create("", :x => 300, :color => Gosu::Color::YELLOW)    
+    @dt = 1.0 / 40.0
+    @substeps = 1
+    @info_area = Chingu::Text.create("", :x => 300, :y => 10, :color => Gosu::Color::YELLOW)    
     @feedbackMessage = ""
 
     TexPlay.set_options :caching => false

@@ -10,5 +10,5 @@ STDERR.sync = true
 my_path = File.expand_path(File.dirname(__FILE__))
 require_all Dir.glob(my_path + "/bin/**/*.rb") 
 
-Simulation.new.show
+ARGV[0] ? Simulation.new.show : ScenarioCreator.new.show 
 

@@ -2,7 +2,7 @@
 # encoding: utf-8
 
 require_relative 'config/config'
-require_relative 'lib/physics'
+require_relative '../lib/physics'
 
 class LunarRocket < PhysicObject
   attr_accessor :engaged
@@ -56,9 +56,9 @@ class Demo3Window < PhysicWindow
     @fire_sound= Gosu::Sample["explosion.wav"]
     @point_sound= Gosu::Sample["Beep.wav"]
 
-    @info_area = Chingu::Text.create("", :x => 300, :color => Gosu::Color::BLUE)    
-    @substeps = 6
-    @dt = 1/60.0
+    @info_area = Chingu::Text.create("", :x => 300, :color => Gosu::Color::RED)    
+    # @substeps = 6
+    @dt = 1/40.0
 
     $space.damping = 1.0    
     $space.gravity = CP::Vec2.new(0.0, 5.0)

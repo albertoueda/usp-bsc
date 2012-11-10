@@ -2,7 +2,7 @@
 # encoding: utf-8
 
 require_relative 'config/config'
-require_relative 'lib/physics'
+require_relative '../lib/physics'
 
 class Rock < PhysicObject
 
