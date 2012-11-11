@@ -4,7 +4,16 @@
 require_relative 'config/config_gerado'
 require_relative '../lib/physics'
 
-class Rock < PhysicObject
+class Circle < PhysicObject
+end
+
+class Triangle < PhysicObject
+end
+
+class Rectangle < PhysicObject
+end
+
+class Segment < PhysicObject
 end
 
 class TesteWindow < PhysicWindow
@@ -17,8 +26,9 @@ class TesteWindow < PhysicWindow
     $space.gravity = CP::Vec2.new(0.0, 5.0)
 
     @background_image = Gosu::Image["Space2.png"]
-    @rock = Rock.create(TestObjectConfig::Rock)
     @static_shapes = []
+
+    create_objects
 
     screen_points = [vec2(2, 2), vec2(2, 598), 
                      vec2(798, 598), vec2(798, 2)] 
@@ -34,6 +44,21 @@ class TesteWindow < PhysicWindow
       segment.add_to_space($space)
     end
 
+  end
+
+  def create_objects 
+    TestObjectConfig::Circles.each do |circle|
+      Circle.create(circle)
+    end
+    TestObjectConfig::Triangles.each do |triangle|
+      Triangle.create(triangle)
+    end
+    TestObjectConfig::Rectangles.each do |rectangle|
+      Rectangle.create(rectangle)
+    end
+    TestObjectConfig::Segments.each do |segment|
+      Segment.create(segment)
+    end
   end
 
   def info
