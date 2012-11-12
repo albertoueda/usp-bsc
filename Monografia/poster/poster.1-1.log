@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.10.29)  12 NOV 2012 03:07
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.10.29)  12 NOV 2012 02:48
 entering extended mode
  file:line:error style messages enabled.
  %&-line parsing enabled.
@@ -417,60 +417,44 @@ Overfull \hbox (6.89339pt too wide) in paragraph at lines 73--73
  [] 
  []
 
-<esqueleto.png, id=6, 805.0075pt x 632.3625pt>
-File: esqueleto.png Graphic file (type png)
-<use esqueleto.png> <comImagem.png, id=7, 805.0075pt x 632.3625pt>
-File: comImagem.png Graphic file (type png)
-<use comImagem.png> <lunarLandingE.png, id=8, 805.0075pt x 632.3625pt>
-File: lunarLandingE.png Graphic file (type png)
-<use lunarLandingE.png> <lunarLanding.png, id=9, 805.0075pt x 632.3625pt>
-File: lunarLanding.png Graphic file (type png)
-<use lunarLanding.png> <valleyE.png, id=10, 805.0075pt x 632.3625pt>
-File: valleyE.png Graphic file (type png)
-<use valleyE.png> <valley.png, id=11, 805.0075pt x 632.3625pt>
-File: valley.png Graphic file (type png)
-<use valley.png>
-Overfull \hbox (41.7948pt too wide) in paragraph at lines 74--94
-    $[]$
- []
 
+./poster.tex:74: LaTeX Error: There's no line here to end.
 
-Overfull \hbox (41.7948pt too wide) in paragraph at lines 74--94
-    $[]$
- []
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.74   \\[1ex]
+              
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
 
+)
+Runaway argument?
+{\begin {figure} \begin {center} \includegraphics [scale=]{esqueleto.\ETC.
+! File ended while scanning use of \begin.
+<inserted text> 
+                \par 
+<*> poster
+          
+I suspect you have forgotten a `}', causing me
+to read past where you wanted me to stop.
+I'll try to recover; but if the error is serious,
+you'd better type `E' or `X' now and fix your file.
 
-Overfull \hbox (41.7948pt too wide) in paragraph at lines 74--94
-    $[]$
- []
+! Emergency stop.
+<*> poster
+          
+*** (job aborted, no legal \end found)
 
-[1
-
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./sp.png> <./aabb.png (PNG
- copy)> <./sh.png> <./SAT.jpg> <./esqueleto.png> <./comImagem.png> <./lunarLand
-ingE.png> <./lunarLanding.png> <./valleyE.png> <./valley.png>] (./poster.aux)
-
-LaTeX Font Warning: Size substitutions with differences
-(Font)              up to 1.6pt have occurred.
-
-
-LaTeX Font Warning: Some font shapes were not available, defaults substituted.
-
- ) 
+ 
 Here is how much of TeX's memory you used:
- 3529 strings out of 495041
- 47891 string characters out of 1181896
- 123432 words of memory out of 3000000
- 6631 multiletter control sequences out of 15000+50000
+ 3493 strings out of 495041
+ 47327 string characters out of 1181896
+ 108432 words of memory out of 3000000
+ 6604 multiletter control sequences out of 15000+50000
  55852 words of font info for 57 fonts, out of 3000000 for 9000
  30 hyphenation exceptions out of 8191
  30i,7n,24p,330b,666s stack positions out of 5000i,500n,10000p,200000b,50000s
-{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}</usr/share/texmf-texlive/font
-s/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/l
-mss17.pfb></usr/share/texmf/fonts/type1/public/lm/lmssbx10.pfb>
-Output written on poster.pdf (1 page, 1954650 bytes).
-PDF statistics:
- 38 PDF objects out of 1000 (max. 8388607)
- 0 named destinations out of 1000 (max. 500000)
- 51 words of extra memory for PDF output out of 10000 (max. 10000000)
-
+!  ==> Fatal error occurred, no output PDF file produced!

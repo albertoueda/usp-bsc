@@ -62,7 +62,7 @@ class GameWindow < PhysicWindow
 
   def initialize
     super(SCREEN_WIDTH, SCREEN_HEIGHT, false, 16)
-    self.caption = "TCC Demo 5 - Alberto e Issao"
+    self.caption = "Physics Simulation #5 - Valley ball"
 
     @background_image = Gosu::Image["fundo-demo-5.png"]
     @foreground_image = Gosu::Image["fundo-demo-5-frente.png"]

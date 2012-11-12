@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.10.29)  11 NOV 2012 12:01
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.10.29)  12 NOV 2012 03:07
 entering extended mode
  file:line:error style messages enabled.
  %&-line parsing enabled.
@@ -277,26 +277,26 @@ LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 38.
 )
-Package color Info: Redefining color mainCol on input line 20.
-Package color Info: Redefining color BoxCol on input line 21.
-Package color Info: Redefining color TextCol on input line 22.
-Package color Info: Redefining color SectionCol on input line 23.
+Package color Info: Redefining color mainCol on input line 17.
+Package color Info: Redefining color BoxCol on input line 18.
+Package color Info: Redefining color TextCol on input line 19.
+Package color Info: Redefining color SectionCol on input line 20.
 (./poster.aux)
 \openout1 = `poster.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Try loading font information for OT1+lmss on input line 26.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Try loading font information for OT1+lmss on input line 23.
 
 (/usr/share/texmf/tex/latex/lm/ot1lmss.fd
 File: ot1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -318,69 +318,69 @@ File: ot1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
 (/usr/share/texmf-texlive/tex/latex/ucs/ucsencs.def
 File: ucsencs.def 2003/11/29 Fixes to fontencodings LGR, T3
 )
-LaTeX Font Info:    Try loading font information for OT1+lmr on input line 28.
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 25.
 (/usr/share/texmf/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 28.
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 25.
 (/usr/share/texmf/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 28.
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 25.
 
 (/usr/share/texmf/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMX+lmex on input line 28.
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 25.
 
 (/usr/share/texmf/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <24.88> on input line 28.
+(Font)              <24.88> on input line 25.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <20.74> on input line 28.
+(Font)              <20.74> on input line 25.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <14.4> on input line 28.
-LaTeX Font Info:    Try loading font information for U+msa on input line 28.
+(Font)              <14.4> on input line 25.
+LaTeX Font Info:    Try loading font information for U+msa on input line 25.
 (/usr/share/texmf-texlive/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 28.
+LaTeX Font Info:    Try loading font information for U+msb on input line 25.
 (/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 ) (/usr/share/texmf-texlive/tex/latex/ucs/data/uni-0.def
 File: uni-0.def 2004/10/17 UCS: Unicode data U+0000..U+00FF
 )
-Overfull \hbox (352.71146pt too wide) in paragraph at lines 28--29
+Overfull \hbox (10.39853pt too wide) in paragraph at lines 25--26
 []$[]$  $[]$$[]$
  []
 
-LaTeX Font Info:    Try loading font information for OMS+lmss on input line 38.
+LaTeX Font Info:    Try loading font information for OMS+lmss on input line 35.
 
-LaTeX Font Info:    No file OMSlmss.fd. on input line 38.
+LaTeX Font Info:    No file OMSlmss.fd. on input line 35.
 
 LaTeX Font Warning: Font shape `OMS/lmss/m/n' undefined
 (Font)              using `OMS/cmsy/m/n' instead
-(Font)              for symbol `textbullet' on input line 38.
+(Font)              for symbol `textbullet' on input line 35.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <50> not available
-(Font)              size <51.6> substituted on input line 38.
+(Font)              size <51.6> substituted on input line 35.
 
 
 LaTeX Font Warning: Font shape `OMS/lmss/m/n' in size <50> not available
-(Font)              size <51.6> substituted on input line 39.
+(Font)              size <51.6> substituted on input line 36.
 
-LaTeX Font Info:    Calculating math sizes for size <50> on input line 44.
+LaTeX Font Info:    Calculating math sizes for size <50> on input line 41.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <50> on input line 44.
+(Font)              <50> on input line 41.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <34.99985> on input line 44.
+(Font)              <34.99985> on input line 41.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <25> on input line 44.
+(Font)              <25> on input line 41.
 
-Overfull \hbox (6.89339pt too wide) in paragraph at lines 44--44
+Overfull \hbox (6.89339pt too wide) in paragraph at lines 41--41
  [] 
  []
 
@@ -393,34 +393,62 @@ File: sh.png Graphic file (type png)
 <use sh.png> <SAT.jpg, id=5, 552.0625pt x 301.125pt>
 File: SAT.jpg Graphic file (type jpg)
 <use SAT.jpg>
-Overfull \hbox (52.2435pt too wide) in paragraph at lines 45--75
+Overfull \hbox (52.2435pt too wide) in paragraph at lines 42--72
      $[]$
  []
 
 
-Overfull \hbox (52.2435pt too wide) in paragraph at lines 45--75
+Overfull \hbox (52.2435pt too wide) in paragraph at lines 42--72
      $[]$
  []
 
 
-Overfull \hbox (52.2435pt too wide) in paragraph at lines 45--75
+Overfull \hbox (52.2435pt too wide) in paragraph at lines 42--72
      $[]$
  []
 
 
-Underfull \hbox (badness 8189) in paragraph at lines 45--75
+Underfull \hbox (badness 8189) in paragraph at lines 42--72
 \OT1/lmss/m/n/50 de-se-nhar uma li-nha que se-pare s1 e s2. 
  []
 
 
-Overfull \hbox (6.89339pt too wide) in paragraph at lines 76--76
+Overfull \hbox (6.89339pt too wide) in paragraph at lines 73--73
  [] 
+ []
+
+<esqueleto.png, id=6, 805.0075pt x 632.3625pt>
+File: esqueleto.png Graphic file (type png)
+<use esqueleto.png> <comImagem.png, id=7, 805.0075pt x 632.3625pt>
+File: comImagem.png Graphic file (type png)
+<use comImagem.png> <lunarLandingE.png, id=8, 805.0075pt x 632.3625pt>
+File: lunarLandingE.png Graphic file (type png)
+<use lunarLandingE.png> <lunarLanding.png, id=9, 805.0075pt x 632.3625pt>
+File: lunarLanding.png Graphic file (type png)
+<use lunarLanding.png> <valleyE.png, id=10, 805.0075pt x 632.3625pt>
+File: valleyE.png Graphic file (type png)
+<use valleyE.png> <valley.png, id=11, 805.0075pt x 632.3625pt>
+File: valley.png Graphic file (type png)
+<use valley.png>
+Overfull \hbox (41.7948pt too wide) in paragraph at lines 74--94
+    $[]$
+ []
+
+
+Overfull \hbox (41.7948pt too wide) in paragraph at lines 74--94
+    $[]$
+ []
+
+
+Overfull \hbox (41.7948pt too wide) in paragraph at lines 74--94
+    $[]$
  []
 
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./sp.png> <./aabb.png (PNG
- copy)> <./sh.png> <./SAT.jpg>] (./poster.aux)
+ copy)> <./sh.png> <./SAT.jpg> <./esqueleto.png> <./comImagem.png> <./lunarLand
+ingE.png> <./lunarLanding.png> <./valleyE.png> <./valley.png>] (./poster.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.6pt have occurred.
@@ -430,19 +458,19 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 3499 strings out of 495041
- 47377 string characters out of 1181896
- 118418 words of memory out of 3000000
- 6607 multiletter control sequences out of 15000+50000
+ 3529 strings out of 495041
+ 47891 string characters out of 1181896
+ 123432 words of memory out of 3000000
+ 6631 multiletter control sequences out of 15000+50000
  55852 words of font info for 57 fonts, out of 3000000 for 9000
  30 hyphenation exceptions out of 8191
- 30i,7n,24p,330b,896s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 30i,7n,24p,330b,666s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}</usr/share/texmf-texlive/font
 s/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/l
 mss17.pfb></usr/share/texmf/fonts/type1/public/lm/lmssbx10.pfb>
-Output written on poster.pdf (1 page, 104968 bytes).
+Output written on poster.pdf (1 page, 1954650 bytes).
 PDF statistics:
- 26 PDF objects out of 1000 (max. 8388607)
+ 38 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 51 words of extra memory for PDF output out of 10000 (max. 10000000)
 

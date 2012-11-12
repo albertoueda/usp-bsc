@@ -40,3 +40,21 @@ poster.pdf poster._graphics: $$(call graphics-target,sh.png)
 -include SAT.jpg.gpi.d
 poster.d: $$(call graphics-source,SAT.jpg)
 poster.pdf poster._graphics: $$(call graphics-target,SAT.jpg)
+-include esqueleto.png.gpi.d
+poster.d: $$(call graphics-source,esqueleto.png)
+poster.pdf poster._graphics: $$(call graphics-target,esqueleto.png)
+-include comImagem.png.gpi.d
+poster.d: $$(call graphics-source,comImagem.png)
+poster.pdf poster._graphics: $$(call graphics-target,comImagem.png)
+-include lunarLandingE.png.gpi.d
+poster.d: $$(call graphics-source,lunarLandingE.png)
+poster.pdf poster._graphics: $$(call graphics-target,lunarLandingE.png)
+-include lunarLanding.png.gpi.d
+poster.d: $$(call graphics-source,lunarLanding.png)
+poster.pdf poster._graphics: $$(call graphics-target,lunarLanding.png)
+-include valleyE.png.gpi.d
+poster.d: $$(call graphics-source,valleyE.png)
+poster.pdf poster._graphics: $$(call graphics-target,valleyE.png)
+-include valley.png.gpi.d
+poster.d: $$(call graphics-source,valley.png)
+poster.pdf poster._graphics: $$(call graphics-target,valley.png)
