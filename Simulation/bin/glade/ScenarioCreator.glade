@@ -96,6 +96,7 @@ Selecione as formas que deseja inserir e seus parâmetros físicos.</property>
                           <object class="GtkExpander" id="expander1">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
+                            <property name="expanded">True</property>
                             <property name="use_markup">True</property>
                             <child>
                               <object class="GtkVBox" id="vbox7">
@@ -169,14 +170,14 @@ Selecione as formas que deseja inserir e seus parâmetros físicos.</property>
                                     </child>
                                     <child>
                                       <object class="GtkScrolledWindow" id="scrolledwindow2">
-                                        <property name="width_request">670</property>
-                                        <property name="height_request">400</property>
                                         <property name="visible">True</property>
                                         <property name="can_focus">True</property>
                                         <property name="hscrollbar_policy">automatic</property>
                                         <property name="vscrollbar_policy">automatic</property>
                                         <child>
                                           <object class="GtkViewport" id="viewport2">
+                                            <property name="width_request">670</property>
+                                            <property name="height_request">400</property>
                                             <property name="visible">True</property>
                                             <property name="can_focus">False</property>
                                             <child>
@@ -1406,6 +1407,7 @@ Selecione as formas que deseja inserir e seus parâmetros físicos.</property>
                           <object class="GtkExpander" id="expander2">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
+                            <property name="expanded">True</property>
                             <child>
                               <object class="GtkVBox" id="vbox4">
                                 <property name="visible">True</property>
@@ -1478,14 +1480,14 @@ Selecione as formas que deseja inserir e seus parâmetros físicos.</property>
                                     </child>
                                     <child>
                                       <object class="GtkScrolledWindow" id="scrolledwindow3">
-                                        <property name="width_request">670</property>
-                                        <property name="height_request">400</property>
                                         <property name="visible">True</property>
                                         <property name="can_focus">True</property>
                                         <property name="hscrollbar_policy">automatic</property>
                                         <property name="vscrollbar_policy">automatic</property>
                                         <child>
                                           <object class="GtkViewport" id="viewport3">
+                                            <property name="width_request">670</property>
+                                            <property name="height_request">400</property>
                                             <property name="visible">True</property>
                                             <property name="can_focus">False</property>
                                             <child>
@@ -2028,6 +2030,7 @@ Selecione as formas que deseja inserir e seus parâmetros físicos.</property>
                           <object class="GtkExpander" id="expander3">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
+                            <property name="expanded">True</property>
                             <child>
                               <object class="GtkVBox" id="vbox5">
                                 <property name="visible">True</property>
@@ -2100,14 +2103,14 @@ Selecione as formas que deseja inserir e seus parâmetros físicos.</property>
                                     </child>
                                     <child>
                                       <object class="GtkScrolledWindow" id="scrolledwindow4">
-                                        <property name="width_request">670</property>
-                                        <property name="height_request">400</property>
                                         <property name="visible">True</property>
                                         <property name="can_focus">True</property>
                                         <property name="hscrollbar_policy">automatic</property>
                                         <property name="vscrollbar_policy">automatic</property>
                                         <child>
                                           <object class="GtkViewport" id="viewport4">
+                                            <property name="width_request">670</property>
+                                            <property name="height_request">400</property>
                                             <property name="visible">True</property>
                                             <property name="can_focus">False</property>
                                             <child>
@@ -2842,10 +2845,12 @@ Selecione as formas que deseja inserir e seus parâmetros físicos.</property>
                           <object class="GtkExpander" id="expander4">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
+                            <property name="expanded">True</property>
                             <child>
                               <object class="GtkVBox" id="vbox6">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
+                                <property name="spacing">10</property>
                                 <child>
                                   <object class="GtkHBox" id="hbox27">
                                     <property name="visible">True</property>
@@ -2913,14 +2918,14 @@ Selecione as formas que deseja inserir e seus parâmetros físicos.</property>
                                     </child>
                                     <child>
                                       <object class="GtkScrolledWindow" id="scrolledwindow5">
-                                        <property name="width_request">670</property>
-                                        <property name="height_request">240</property>
                                         <property name="visible">True</property>
                                         <property name="can_focus">True</property>
                                         <property name="hscrollbar_policy">automatic</property>
                                         <property name="vscrollbar_policy">automatic</property>
                                         <child>
                                           <object class="GtkViewport" id="viewport5">
+                                            <property name="width_request">670</property>
+                                            <property name="height_request">240</property>
                                             <property name="visible">True</property>
                                             <property name="can_focus">False</property>
                                             <child>
@@ -3485,6 +3490,7 @@ Selecione as formas que deseja inserir e seus parâmetros físicos.</property>
                                         <property name="vscrollbar_policy">automatic</property>
                                         <child>
                                           <object class="GtkViewport" id="viewport6">
+                                            <property name="height_request">150</property>
                                             <property name="visible">True</property>
                                             <property name="can_focus">False</property>
                                             <child>
@@ -3753,7 +3759,7 @@ Selecione as formas que deseja inserir e seus parâmetros físicos.</property>
                 </child>
               </object>
               <packing>
-                <property name="expand">False</property>
+                <property name="expand">True</property>
                 <property name="fill">True</property>
                 <property name="padding">10</property>
                 <property name="position">2</property>

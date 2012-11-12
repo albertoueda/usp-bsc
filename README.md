@@ -31,20 +31,26 @@ localizado em na pasta Simulation
 4. Tarefas
 ----------
 
-1. Tutorial básico de criação de simulação.
-2. Implementar algoritmos para "passos de tempo" para explicar a
-   diferença entre elas
-3. Implementar um algoritmo diferente usado para detectar colisões
-4. Demo de um ep integrado com o programa.
-5. Montar um ambiente fácil de demonstração para o professor usar nas
-   aulas
-6. Criar aulas 'embutidas' no programa.
+O que já foi feito:
 
-5. Para discutir
+1. Ambientes de demonstração com cenários focando em difernetes conceitos físicos
+2. Montar um ambiente fácil de demonstração para o professor usar nas
+   aulas, para criação de cenários físicos
+
+O que falta fazer (Monografia):
+1. Tutorial básico de criação de simulação
+2. Escrever sobre as simulações pré-compiladas
+3. Colocar referências das imagens utilizadas ao longo do trabalho  
+
+Tarefas Extras:
+1. Extra Criar aulas 'embutidas' no programa.
+2. Implementar um algoritmo diferente usado para detectar colisões
+
+6. Para discutir
 ----------------
 
 1. Chipmunk C++
-	* Muitas referências na net estão em C++, além de ter bem mais métodos que o wrapper. Vale a pena mexer tbm no código em C++ se precisarmos? Devemos dar instruções na mono para modificações do código nativo?  
+	* Muitas referências na net estão em C++, além de ter bem mais métodos que o wrapper. Vale a pena mexer tbm no código em C++ se precisarmos? Devemos dar instruções na monografia para modificações do código nativo?  
 2. Aulas embutidas
 
 
