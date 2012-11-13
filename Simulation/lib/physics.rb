@@ -99,7 +99,6 @@ module Chingu
         @body.p = vec2(options[:x], options[:y])
         @body.add_to_space($space)
 
-        # TODO Verificar, mudei para @body ao invés de body, faz mais sentido
         @shape = CP::Shape.factory(@body, options)
         @shape.body.a = options[:angle] || 0
         @shape.body.w = options[:rotational_velocity] || 0

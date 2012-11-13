@@ -1,3 +1,5 @@
+require 'chipmunk'
+require 'gosu'
 
 class ScenarioCreator
 	include GladeGUI
@@ -9,142 +11,108 @@ class ScenarioCreator
 	end	
 
 	def demobutton__clicked(*argv)
-	@mass = @builder['mass'].text.to_i
-	@radius = @builder['radius'].text.to_i
+		# Space
+		@gravity_x = @builder['gravity_x'].text.to_i 
+		@gravity_y = @builder['gravity_y'].text.to_i 
+		@damping = @builder['damping'].text.to_i 
+		@limited_space = value @builder['limited_space']
+		@object_gravity = value @builder['object_gravity']
 
-	file_content = 
-	"module TestObjectConfig
+		# Circles
+		@circle_qtde = @builder['circle_qtde'].text.to_i
+		@circle_x = Array.new(@circle_qtde)
+		@circle_y = Array.new(@circle_qtde)
+		@circle_radius = Array.new(@circle_qtde)
+		@circle_fixed = Array.new(@circle_qtde)
+		@circle_m = Array.new(@circle_qtde)
+		@circle_moment = Array.new(@circle_qtde)
+		@circle_e = Array.new(@circle_qtde)
+		@circle_u = Array.new(@circle_qtde)
+		@circle_image = Array.new(@circle_qtde)
+		@circle_zorder = Array.new(@circle_qtde)
+		@circle_id = Array.new(@circle_qtde)
 
-	  Circles = [ 
-	  	Rock = {
-			:mass => #{@mass},
-		    :radius => #{@radius},
-		    :factor_x => #{@radius / 10.0},
-		    :factor_y => #{@radius / 10.0},
-		    :x => 400,
-		    :y => 300,
-		    :zorder => 1,
-		    :moment_inertia => 0.0001,
-		    :collision_type => :ball,
-		    :elasticity => 0.9,
-		    :friction => 0.3,
-		    :image_name => 'cannonball2.png'
-		},
-		Rock2 = {
-			:mass => #{@mass},
-		    :radius => #{@radius},
-		    :factor_x => #{@radius / 10.0},
-		    :factor_y => #{@radius / 10.0},
-		    :x => 100,
-		    :y => 300,
-		    :zorder => 1,
-		    :moment_inertia => 0.0001,
-		    :collision_type => :ball,
-		    :elasticity => 0.9,
-		    :friction => 0.3,
-		    :image_name => 'cannonball2.png'
-		}
-	  ]
+		for i in 0..@circle_qtde.to_i-1
+			@circle_radius[i] = @builder['circle_radius_' + i.to_s].text.to_i  
+			@circle_x[i] = @builder['circle_x_' + i.to_s].text.to_i  
+			@circle_y[i] = @builder['circle_y_' + i.to_s].text.to_i  
+			@circle_m[i] = @builder['circle_m_' + i.to_s].text.to_i  
+			@circle_e[i] = @builder['circle_e_' + i.to_s].text.to_i   
+			@circle_u[i] = @builder['circle_u_' + i.to_s].text.to_i  
+			@circle_moment[i] = @builder['circle_moment_' + i.to_s].text.to_i  
+			@circle_fixed[i] = value @builder['circle_fixed_' + i.to_s]  
+			@circle_id[i] = @builder['circle_id_' + i.to_s].text.empty? ? ":undefined#{i}" : ":" + @builder['circle_id_' + i.to_s].text 
+			@circle_zorder[i] = 20
+			# @circle_image[i] = @builder['circle_image_' + i.to_s].text  
+		end
 
-	  Triangles = [ 
-	  	T = {
-			:mass => #{@mass},
-		    :radius => #{@radius},
-		    :factor_x => #{@radius / 10.0},
-		    :factor_y => #{@radius / 10.0},
-		    :x => 500,
-		    :y => 300,
-		    :zorder => 1,
-		    :moment_inertia => 0.0001,
-		    :collision_type => :ball,
-		    :elasticity => 0.9,
-		    :friction => 0.3,
-		    :image_name => 'cannonball2.png'
-		},
-		T2 = {
-			:mass => #{@mass},
-		    :radius => #{@radius},
-		    :factor_x => #{@radius / 10.0},
-		    :factor_y => #{@radius / 10.0},
-		    :x => 500,
-		    :y => 300,
-		    :zorder => 1,
-		    :moment_inertia => 0.0001,
-		    :collision_type => :ball,
-		    :elasticity => 0.9,
-		    :friction => 0.3,
-		    :image_name => 'cannonball2.png'
-		}
-      ]
 
-	  Rectangles = [ 
-	  	R = {
-			:mass => #{@mass},
-		    :radius => #{@radius},
-		    :factor_x => #{@radius / 10.0},
-		    :factor_y => #{@radius / 10.0},
-		    :x => 400,
-		    :y => 500,
-		    :zorder => 1,
-		    :moment_inertia => 0.0001,
-		    :collision_type => :ball,
-		    :elasticity => 0.9,
-		    :friction => 0.3,
-		    :image_name => 'cannonball2.png'
-		},
-		R2 = {
-			:mass => #{@mass},
-		    :radius => #{@radius},
-		    :factor_x => #{@radius / 10.0},
-		    :factor_y => #{@radius / 10.0},
-		    :x => 100,
-		    :y => 500,
-		    :zorder => 1,
-		    :moment_inertia => 0.0001,
-		    :collision_type => :ball,
-		    :elasticity => 0.9,
-		    :friction => 0.3,
-		    :image_name => 'cannonball2.png'
-		}
-	  ]
-	  
-	  Segments = [ 
-	  	S = {
-			:mass => #{@mass},
-		    :radius => #{@radius},
-		    :factor_x => #{@radius / 10.0},
-		    :factor_y => #{@radius / 10.0},
-		    :x => 400,
-		    :y => 600,
-		    :zorder => 1,
-		    :moment_inertia => 0.0001,
-		    :collision_type => :ball,
-		    :elasticity => 0.9,
-		    :friction => 0.3,
-		    :image_name => 'cannonball2.png'
-		},
-		S2 = {
-			:mass => #{@mass},
-		    :radius => #{@radius},
-		    :factor_x => #{@radius / 10.0},
-		    :factor_y => #{@radius / 10.0},
-		    :x => 100,
-		    :y => 600,
-		    :zorder => 1,
-		    :moment_inertia => 0.0001,
-		    :collision_type => :ball,
-		    :elasticity => 0.9,
-		    :friction => 0.3,
-		    :image_name => 'cannonball2.png'
-		}
-	  ]
-	end"
+		file_content = "
+		require 'chipmunk'
+		require 'gosu'
+		
+		module TestObjectConfig
 
-	File.open('testes/config/config_gerado.rb', 'w') do |file|  
-	  file.puts file_content
+		  class Space
+	  		attr_accessor :gravity, :damping, :limited_space, :object_gravity
+
+	  		def initialize
+			  	@gravity = vec2(#{@gravity_x}, #{@gravity_y})
+			  	@damping = #{@damping}
+			  	@limited_space = #{@limited_space}
+			  	@object_gravity = #{@object_gravity}
+			end
+		  end
+
+		  Circles = [" +
+		  	config_circles + 	
+		  "]
+
+		  Triangles = [ 
+	      ]
+
+		  Rectangles = [ 
+		  ]
+
+		  Segments = [ 
+		  ]
+		end"
+
+		File.open('testes/config/config_gerado.rb', 'w') do |file|  
+		  file.puts file_content
+		end
+
+		system('ruby', "./testes/Test.rb")
+
 	end
 
-	system('ruby', "./testes/Test.rb")
+	def value(checkbutton) 
+		checkbutton.state.name.end_with?("ACTIVE")
+	end
 
+	def config_circles
+		circles = ""
+		
+		for i in 0..@circle_qtde-1 
+			circles += "{
+				:mass => #{@circle_m[i]},
+			    :radius => #{@circle_radius[i]},
+			    :factor_x => #{@circle_radius[i] / 10.0},
+			    :factor_y => #{@circle_radius[i] / 10.0},
+			    :x => #{@circle_x[i]},
+			    :y => #{@circle_y[i]},
+			    :moment_inertia => #{@circle_moment[i]},
+			    :collision_type => #{@circle_id[i]},
+			    :elasticity => #{@circle_e[i]},
+			    :friction => #{@circle_u[i]},
+			    :zorder => #{@circle_zorder[i]},
+				:circle_fixed => #{@circle_fixed[i]}
+			}"
+			    # :image_name => #{@circle_image[i]},
+
+			circles += ", " if i != @circle_qtde-1
+		end
+
+		circles
 	end
 end

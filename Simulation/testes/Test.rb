@@ -22,26 +22,31 @@ class TesteWindow < PhysicWindow
     super
     self.caption = "Physics Simulation - Teste"
 
-    $space.damping = 0.9    
-    $space.gravity = CP::Vec2.new(0.0, 5.0)
 
     @background_image = Gosu::Image["Space2.png"]
     @static_shapes = []
+    @substeps = 2
 
     create_objects
 
     screen_points = [vec2(2, 2), vec2(2, 598), 
                      vec2(798, 598), vec2(798, 2)] 
 
-    for i in 0..screen_points.size-1
-      segment = CP::Shape.factory(CP::StaticBody.new, 
-        {:vectors => [screen_points[i], screen_points[(i+1)%screen_points.size]],
-        :thickness => 1})
-      segment.collision_type = :screen
-      segment.e = 0.9
-      segment.u = 0.5
-      @static_shapes << segment
-      segment.add_to_space($space)
+    @space_simulation = TestObjectConfig::Space.new
+    $space.damping = @space_simulation.damping    
+    $space.gravity = @space_simulation.gravity
+
+    if (@space_simulation.limited_space)                 
+      for i in 0..screen_points.size-1
+        segment = CP::Shape.factory(CP::StaticBody.new, 
+          {:vectors => [screen_points[i], screen_points[(i+1)%screen_points.size]],
+          :thickness => 1})
+        segment.collision_type = :screen
+        segment.e = 0.9
+        segment.u = 0.5
+        @static_shapes << segment
+        segment.add_to_space($space)
+      end
     end
 
   end
