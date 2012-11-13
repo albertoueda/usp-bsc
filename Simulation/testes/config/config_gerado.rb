@@ -16,31 +16,19 @@
 		  end
 
 		  Circles = [{
-				:mass => 40,
-			    :radius => 30,
-			    :factor_x => 3.0,
-			    :factor_y => 3.0,
-			    :x => 30,
-			    :y => 30,
-			    :moment_inertia => 0,
-			    :collision_type => :undefined0,
-			    :elasticity => 0,
-			    :friction => 0,
-			    :zorder => 20,
-				:circle_fixed => true
-			}, {
 				:mass => 20,
-			    :radius => 30,
-			    :factor_x => 3.0,
-			    :factor_y => 3.0,
-			    :x => 0,
-			    :y => 0,
+			    :radius => 10,
+			    :factor_x => 1.0,
+			    :factor_y => 1.0,
+			    :x => 100,
+			    :y => 100,
 			    :moment_inertia => 0,
-			    :collision_type => :undefined1,
 			    :elasticity => 0,
 			    :friction => 0,
-			    :zorder => 20,
+			    :zorder => 100,
+			    :collision_type => :undefined0,
 				:circle_fixed => true
+			    :image_name => cannonball2.png,
 			}]
 
 		  Triangles = [ 

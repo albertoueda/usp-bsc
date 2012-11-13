@@ -12,7 +12,7 @@ require 'texplay'
 $space = CP::Space.new
 
 # Define se devem ser exibidas as linhas de contorno dos corpos
-$draw_segments = false
+$draw_segments = true
 
 # Adição de método para faciliar a criação de Shapes do chipmunk.
 #
@@ -88,7 +88,7 @@ module Chingu
         self.color =  options[:color] || Gosu::Color::WHITE
         self.alpha =  options[:alpha]  if options[:alpha]
         self.mode =   options[:mode] || :default
-        self.zorder = options[:zorder] || 100        
+        self.zorder = options[:zorder] || 100
         self.rotation_center = options[:rotation_center] || :center_center
 
         self.factor = options[:factor] || options[:scale] || $window.factor || 1.0
@@ -201,7 +201,7 @@ class PhysicWindow < Chingu::Window
     self.input = { esc: :exit, d: :toggle_lines }
 
     @dt = 1.0 / 40.0
-    @substeps = 1
+    @substeps = 6
     @info_area = Chingu::Text.create("", :x => 300, :y => 10, :color => Gosu::Color::YELLOW)    
     @feedbackMessage = ""
 

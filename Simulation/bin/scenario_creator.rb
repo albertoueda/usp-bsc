@@ -42,11 +42,13 @@ class ScenarioCreator
 			@circle_moment[i] = @builder['circle_moment_' + i.to_s].text.to_i  
 			@circle_fixed[i] = value @builder['circle_fixed_' + i.to_s]  
 			@circle_id[i] = @builder['circle_id_' + i.to_s].text.empty? ? ":undefined#{i}" : ":" + @builder['circle_id_' + i.to_s].text 
-			@circle_zorder[i] = 20
+			@circle_zorder[i] = 100
+			@circle_image[i] = "'cannonball2.png'"  
 			# @circle_image[i] = @builder['circle_image_' + i.to_s].text  
 		end
 
 
+		# File
 		file_content = "
 		require 'chipmunk'
 		require 'gosu'
@@ -102,13 +104,13 @@ class ScenarioCreator
 			    :x => #{@circle_x[i]},
 			    :y => #{@circle_y[i]},
 			    :moment_inertia => #{@circle_moment[i]},
-			    :collision_type => #{@circle_id[i]},
 			    :elasticity => #{@circle_e[i]},
 			    :friction => #{@circle_u[i]},
 			    :zorder => #{@circle_zorder[i]},
+			    :collision_type => #{@circle_id[i]},
 				:circle_fixed => #{@circle_fixed[i]}
+			    :image_name => #{@circle_image[i]},
 			}"
-			    # :image_name => #{@circle_image[i]},
 
 			circles += ", " if i != @circle_qtde-1
 		end

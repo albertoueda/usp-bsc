@@ -31,7 +31,7 @@ class Ball < PhysicObject
   end
 
   def reset_position
-    @initial_velocity = CP::Vec2.new(0.0, 20 + rand(85))
+    @initial_velocity = CP::Vec2.new(0.0, 50 + rand(80))
     @shape.body.v = @initial_velocity
     @shape.body.p = CP::Vec2.new(140, 100)
     @waiting_success = true
@@ -67,17 +67,17 @@ class GameWindow < PhysicWindow
     @background_image = Gosu::Image["fundo-demo-5.png"]
     @foreground_image = Gosu::Image["fundo-demo-5-frente.png"]
     @point_sound= Gosu::Sample["Beep.wav"]
-    @font = Gosu::Font.new(self, Gosu::default_font_name, 20)
+    @info_area = Chingu::Text.create("", :x => 300, :y => 10, :color => Gosu::Color::RED)    
 
     @score = 0    
     @segment_shapes = []
     segment_points = []
-    @simulation_speed = 0
+    @simulation_speed = 0.08
     @total = 0
       
     $space.damping = 1.0
-    $space.gravity = CP::Vec2.new(0.0, 10.0)
-    @substeps = 3
+    $space.gravity = CP::Vec2.new(0.0, 15.0)
+    @substeps = 1
     @initial_dt = 1.0 / 60.0
 
     segment_points << CP::Vec2.new(100.0, 275.0)
@@ -96,14 +96,24 @@ class GameWindow < PhysicWindow
 
       segmentBody = CP::StaticBody.new()
       segmentShape = CP::Shape::Segment.new(segmentBody, segment_points[i], segment_points[i+1], 0.1)
-      segmentShape.e = 0.1
-      segmentShape.u = 0.5
+      segmentShape.e = 0.0
+      segmentShape.u = 0.8
       @segment_shapes << segmentShape
       $space.add_shape(segmentShape)      
     end
 
     @ball = Ball.create(ObjectConfig::Ball)
+  end
 
+  def info
+    "INFO
+    Success: #{@score}/#{@total}
+    Speed (x, y): (#{'%.3f' % @ball.shape.body.v.x}, #{'%.3f' % @ball.shape.body.v.y})
+    Initial Vy: #{@ball.initial_velocity.y.to_s}
+    Speed of Simulation: #{'%.2f' % (@simulation_speed * 100 + 1)}
+    Space] : Restart
+    [D] : Show lines
+    #{@feedbackMessage}"
   end
 
   def update
@@ -128,10 +138,10 @@ class GameWindow < PhysicWindow
       end
 
       if button_down? Gosu::KbUp
-        @simulation_speed += 0.0001 if @simulation_speed < 0.2
+        @simulation_speed += 0.01 if @simulation_speed < 0.1
       end
       if button_down? Gosu::KbDown
-        @simulation_speed -= 0.0001 if @simulation_speed > -0.015
+        @simulation_speed -= 0.01 if @simulation_speed > 0.0
       end
       
       if button_down? Gosu::KbSpace
@@ -156,12 +166,6 @@ class GameWindow < PhysicWindow
       @ball.draw
     end 
 
-    @font.draw("Success: #{@score}/#{@total}", 10, 10, ZOrder::UI, 1.0, 1.0, 0xffffff00)
-    @font.draw("Speed (x, y): (#{'%.3f' % @ball.shape.body.v.x}, #{'%.3f' % @ball.shape.body.v.y})", 10, 30, ZOrder::UI, 1.0, 1.0, 0xffffff00)
-    @font.draw("Initial Vy: #{@ball.initial_velocity.y.to_s}", 10, 50, ZOrder::UI, 1.0, 1.0, 0xffffff00)
-    @font.draw("#{@feedbackMessage}", 10, 70, ZOrder::UI, 1.0, 1.0, 0xffffff00)    
-    @font.draw("Speed of Simulation: #{'%.2f' % (@simulation_speed + 1)}", 500, 10, ZOrder::UI, 1.0, 1.0, 0xffffff00)    
-    # @font.draw("dt: #{@dt}", 500, 30, ZOrder::UI, 1.0, 1.0, 0xffffff00)    
   end
 
 end

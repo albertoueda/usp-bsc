@@ -8,11 +8,11 @@ module ObjectConfig
     :y => 0,
     :zorder => 1,
     :radius => 25.0/2.0,
-    :mass => 1,
-    :moment_inertia => 0.0001,
+    :mass => 100,
+    :moment_inertia => 5000,
     :collision_type => :ball,
-    :elasticity => 0.1,
-    :friction => 1.0,
+    :elasticity => 0.0,
+    :friction => 0.8,
     :image_name => "cannonball2.png"      
   }  
 

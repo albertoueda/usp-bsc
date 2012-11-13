@@ -22,7 +22,6 @@ class TesteWindow < PhysicWindow
     super
     self.caption = "Physics Simulation - Teste"
 
-
     @background_image = Gosu::Image["Space2.png"]
     @static_shapes = []
     @substeps = 2
@@ -36,7 +35,7 @@ class TesteWindow < PhysicWindow
     $space.damping = @space_simulation.damping    
     $space.gravity = @space_simulation.gravity
 
-    if (@space_simulation.limited_space)                 
+    if (@space_simulation.limited_space)
       for i in 0..screen_points.size-1
         segment = CP::Shape.factory(CP::StaticBody.new, 
           {:vectors => [screen_points[i], screen_points[(i+1)%screen_points.size]],
@@ -89,7 +88,7 @@ class TesteWindow < PhysicWindow
         $window.draw_line(vectorA.x, vectorA.y, Gosu::Color::BLUE, vectorB.x, vectorB.y, Gosu::Color::BLUE)
       } 
     else
-      @background_image.draw(0, 0, 0)
+      # @background_image.draw(0, 0, 0)
     end     
   end
 end
