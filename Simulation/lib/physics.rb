@@ -97,6 +97,7 @@ module Chingu
 
         @body = CP::Body.new(options[:mass], options[:moment_inertia])
         @body.p = vec2(options[:x], options[:y])
+        @body.v = options[:v] if options[:v]  
         @body.add_to_space($space)
 
         @shape = CP::Shape.factory(@body, options)

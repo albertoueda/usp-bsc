@@ -57,7 +57,7 @@ class Demo3Window < PhysicWindow
     @point_sound= Gosu::Sample["Beep.wav"]
 
     @info_area = Chingu::Text.create("", :x => 300, :color => Gosu::Color::RED)    
-    # @substeps = 6
+    @substeps = 1
     @dt = 1/40.0
 
     $space.damping = 1.0    
@@ -66,7 +66,6 @@ class Demo3Window < PhysicWindow
     @rocket = LunarRocket.create(ObjectConfig::LunarRocket)
 
     @segment_shapes= []
-    $draw_segments = false
 
     soil_segments = [[vec2(1, 599), vec2(375, 599)],
                      [vec2(375, 599), vec2(375, 570)],

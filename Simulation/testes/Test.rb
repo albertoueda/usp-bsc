@@ -88,7 +88,7 @@ class TesteWindow < PhysicWindow
         $window.draw_line(vectorA.x, vectorA.y, Gosu::Color::BLUE, vectorB.x, vectorB.y, Gosu::Color::BLUE)
       } 
     else
-      # @background_image.draw(0, 0, 0)
+      @background_image.draw(0, 0, 0)
     end     
   end
 end
