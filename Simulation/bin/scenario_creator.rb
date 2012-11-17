@@ -10,6 +10,52 @@ class ScenarioCreator
 		show_window
 	end	
 
+	def update_circle_objects(spinbutton)
+		update_objects(spinbutton, 'circle')
+	end
+
+	def update_triangle_objects(spinbutton)
+		update_objects(spinbutton, 'triangle')
+	end
+
+	def update_rectangle_objects(spinbutton)
+		update_objects(spinbutton, 'rectangle')
+	end
+
+	def update_segment_objects(spinbutton)
+		update_objects(spinbutton, 'segment')
+	end
+
+	def update_objects(spinbutton, object)
+		num_objects = spinbutton.value_as_int
+ 		num_objects == 0 ? @builder[object + 's_hbox'].hide : @builder[object + 's_hbox'].show 
+		
+		for i in 0..2
+			if i < num_objects
+				@builder[object + '_table_' + i.to_s].show 
+				@builder[object + '_table_sep_' + i.to_s].show
+			else
+				@builder[object + '_table_' + i.to_s].hide
+				@builder[object + '_table_sep_' + i.to_s].hide
+			end
+		end
+
+	end
+
+	def hide_hbox
+		num_circles = @builder['circles_qtde'].value_as_int 
+		@builder['circles_hbox'].hide if num_circles == 0
+
+		num_triangle = @builder['triangles_qtde'].value_as_int 
+		@builder['triangles_hbox'].hide if num_triangle == 0
+
+		num_rectangles = @builder['rectangles_qtde'].value_as_int 
+		@builder['rectangles_hbox'].hide if num_rectangles == 0
+
+		num_segments = @builder['segments_qtde'].value_as_int 
+		@builder['segments_hbox'].hide if num_segments == 0
+	end
+
 	def demobutton__clicked(*argv)
 		read_space_data
 		read_circles_data
