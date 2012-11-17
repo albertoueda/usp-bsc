@@ -15,29 +15,23 @@
 			end
 		  end
 
-		  Circles = [{
-				:mass => 30.0,
-			    :radius => 30,
-			    :factor_x => 3.0,
-			    :factor_y => 3.0,
-			    :x => 100,
-			    :y => 100,
-			    :v => vec2(0.0, 0.0),
-			    :moment_inertia => 100,
-			    :elasticity => 0.9,
+		  Circles = []
+
+		  Rectangles = []
+
+		  Triangles = []
+
+		  Segments = [{
+			    :mass => CP::INFINITY,
+			    :moment_inertia => CP::INFINITY,
+			    :x => 300,
+			    :y => 300,
+			    :angle => 0.0,
+			    :vectors => [vec2(0, 0), vec2(500, 500)],
+			    :elasticity => 0.0,
 			    :friction => 0.0,
 			    :zorder => 100,
 			    :collision_type => :undefined0,
-			    :image_name => 'cannonball2.png',
-				:circle_fixed => true
+				:segment_fixed => true
 			}]
-
-		  Triangles = [ 
-	      ]
-
-		  Rectangles = [ 
-		  ]
-
-		  Segments = [ 
-		  ]
 		end

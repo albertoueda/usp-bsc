@@ -148,14 +148,15 @@ module Chingu
             @circle_image.draw(position.x - radius, position.y - radius, 0)
 
           when CP::Shape::Segment, CP::Shape::Poly
-            for i in 0..@vectors.size-1 
-              vectorA = @vectors[i] + @body.p
+            for i in 0..@vectors.size 
+              vectorA = @vectors[i % @vectors.size] + @body.p
               vectorB = @vectors[(i+1) % @vectors.size] + @body.p
               $window.draw_line(vectorA.x, vectorA.y, @shape_color, vectorB.x, vectorB.y, @shape_color)
+              # p "#{i}: desenhei  #{vectorA.x},#{vectorA.y} -- #{vectorB.x},#{vectorB.y}"
             end
           end
 
-        else
+        else # TODO como angle funciona (ao inves de body.a)
             # TODO melhorar remoção de shapes e diminuir os if's
           @image.draw_rot(position.x, position.y, @zorder, angle, @center_x, @center_y, 
             @factor_x, @factor_y, @color, @mode) if @image && @visible && @body && @shape 
@@ -203,7 +204,7 @@ class PhysicWindow < Chingu::Window
 
     @dt = 1.0 / 40.0
     @substeps = 6
-    @info_area = Chingu::Text.create("", :x => 300, :y => 10, :color => Gosu::Color::YELLOW)    
+    @info_area = Chingu::Text.create("", :x => 300, :y => 30, :color => Gosu::Color::YELLOW)    
     @feedbackMessage = ""
 
     TexPlay.set_options :caching => false

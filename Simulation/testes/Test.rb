@@ -28,8 +28,8 @@ class TesteWindow < PhysicWindow
 
     create_objects
 
-    screen_points = [vec2(2, 2), vec2(2, 598), 
-                     vec2(798, 598), vec2(798, 2)] 
+    screen_points = [vec2(20, 20), vec2(20, 580), 
+                     vec2(780, 580), vec2(780, 20)] 
 
     @space_simulation = TestObjectConfig::Space.new
     $space.damping = @space_simulation.damping    
@@ -88,7 +88,7 @@ class TesteWindow < PhysicWindow
         $window.draw_line(vectorA.x, vectorA.y, Gosu::Color::BLUE, vectorB.x, vectorB.y, Gosu::Color::BLUE)
       } 
     else
-      @background_image.draw(0, 0, 0)
+      # @background_image.draw(0, 0, 0)
     end     
   end
 end
