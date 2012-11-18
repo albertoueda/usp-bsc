@@ -24,6 +24,7 @@ class TesteWindow < PhysicWindow
 
     @background_image = Gosu::Image["Space2.png"]
     @static_shapes = []
+    @dt = 1.0 / 30.0
     @substeps = 2
 
     create_objects

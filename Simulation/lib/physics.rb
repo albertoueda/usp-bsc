@@ -95,14 +95,19 @@ module Chingu
         self.factor_x = options[:factor_x].to_f if options[:factor_x]
         self.factor_y = options[:factor_y].to_f if options[:factor_y]
 
-        @body = CP::Body.new(options[:mass], options[:moment_inertia])
+        if options[:static]
+          @body = CP::StaticBody.new
+        else
+          @body = CP::Body.new(options[:mass], options[:moment_inertia])
+          @body.v = options[:v] if options[:v]  
+          @body.w = options[:rotational_velocity] || 0
+          @body.add_to_space($space)
+        end
+
         @body.p = vec2(options[:x], options[:y])
-        @body.v = options[:v] if options[:v]  
-        @body.add_to_space($space)
+        @body.a = options[:angle] || 0
 
         @shape = CP::Shape.factory(@body, options)
-        @shape.body.a = options[:angle] || 0
-        @shape.body.w = options[:rotational_velocity] || 0
         @shape.collision_type = options[:collision_type] if options[:collision_type]        
         @shape.e = options[:elasticity] if options[:elasticity]        
         @shape.u = options[:friction] if options[:friction]        
@@ -134,13 +139,13 @@ module Chingu
 
       def draw
         if $draw_segments
+          shape_color = @shape_color # TODO
 
           case @shape
           when CP::Shape::Circle
             radius = @shape.radius.floor
 
             # Texplay painting
-            shape_color = @shape_color # TODO
             @circle_image.paint {
                 circle radius, radius, radius, :color => shape_color
             }
@@ -151,8 +156,7 @@ module Chingu
             for i in 0..@vectors.size 
               vectorA = @vectors[i % @vectors.size] + @body.p
               vectorB = @vectors[(i+1) % @vectors.size] + @body.p
-              $window.draw_line(vectorA.x, vectorA.y, @shape_color, vectorB.x, vectorB.y, @shape_color)
-              # p "#{i}: desenhei  #{vectorA.x},#{vectorA.y} -- #{vectorB.x},#{vectorB.y}"
+              $window.draw_line(vectorA.x, vectorA.y, shape_color, vectorB.x, vectorB.y, shape_color)
             end
           end
 

@@ -29,7 +29,7 @@
                 :zorder => 100,
                 :collision_type => :undefined0,
                 :image_name => 'cannonball2.png',
-                :circle_fixed => true
+                :static => true
             }, {
                 :mass => 30.0,
                 :radius => 30,
@@ -44,7 +44,7 @@
                 :zorder => 100,
                 :collision_type => :undefined1,
                 :image_name => 'cannonball2.png',
-                :circle_fixed => true
+                :static => false
             }]
 
           Rectangles = [{
@@ -63,7 +63,7 @@
                 :zorder => 100,
                 :collision_type => :undefined0,
                 :image_name => 'catapult.png',
-                :rec_fixed => true
+                :static => true
             }, {
                 :mass => 30.0,
                 :x => 300,
@@ -80,7 +80,7 @@
                 :zorder => 100,
                 :collision_type => :undefined1,
                 :image_name => 'catapult.png',
-                :rec_fixed => true
+                :static => false
             }]
 
           Triangles = [{
@@ -95,45 +95,43 @@
                 :zorder => 100,
                 :collision_type => :undefined0,
                 :image_name => 'catapult.png',
-                :triangle_fixed => true
+                :static => true
             }, {
                 :mass => 4000.0,
                 :x => 500,
                 :y => 300,
                 :v => vec2(0.0, 0.0),
-                :vectors => [vec2(-50, -50), vec2(0, 100), vec2(50, -50)],
+                :vectors => [vec2(-50, 50), vec2(50, 50), vec2(0, -100)],
                 :moment_inertia => 400000,
                 :elasticity => 0.0,
                 :friction => 0.0,
                 :zorder => 100,
                 :collision_type => :undefined1,
                 :image_name => 'catapult.png',
-                :triangle_fixed => true
+                :static => false
             }]
 
           Segments = [{
-                :mass => CP::INFINITY,
-                :moment_inertia => CP::INFINITY,
-                :x => 140,
+                :x => 200,
                 :y => 200,
+                :thickness => 1,
                 :angle => 0.0,
-                :vectors => [vec2(0, 0), vec2(100, 10)],
+                :vectors => [vec2(-50, -10), vec2(50, 10)],
                 :elasticity => 0.0,
                 :friction => 0.0,
                 :zorder => 100,
                 :collision_type => :undefined0,
-                :segment_fixed => true
+                :static => true
             }, {
-                :mass => CP::INFINITY,
-                :moment_inertia => CP::INFINITY,
-                :x => 400,
-                :y => 300,
-                :angle => 20.0,
-                :vectors => [vec2(40, -100), vec2(30, -100)],
+                :x => 300,
+                :y => 400,
+                :thickness => 1,
+                :angle => 0.0,
+                :vectors => [vec2(-40, -70), vec2(100, 70)],
                 :elasticity => 0.0,
                 :friction => 0.0,
                 :zorder => 100,
                 :collision_type => :undefined1,
-                :segment_fixed => true
+                :static => true
             }]
         end

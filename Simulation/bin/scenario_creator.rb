@@ -10,60 +10,20 @@ class ScenarioCreator
 		show_window
 	end	
 
-	def update_circle_objects(spinbutton)
-		update_objects(spinbutton, 'circle')
-	end
+	def demobutton__clicked(*argv)
+		@selected_config_file = @builder['input_file_button'].filename
 
-	def update_triangle_objects(spinbutton)
-		update_objects(spinbutton, 'triangle')
-	end
-
-	def update_rectangle_objects(spinbutton)
-		update_objects(spinbutton, 'rectangle')
-	end
-
-	def update_segment_objects(spinbutton)
-		update_objects(spinbutton, 'segment')
-	end
-
-	def update_objects(spinbutton, object)
-		num_objects = spinbutton.value_as_int
- 		num_objects == 0 ? @builder[object + 's_hbox'].hide : @builder[object + 's_hbox'].show 
-		
-		for i in 0..2
-			if i < num_objects
-				@builder[object + '_table_' + i.to_s].show 
-				@builder[object + '_table_sep_' + i.to_s].show
-			else
-				@builder[object + '_table_' + i.to_s].hide
-				@builder[object + '_table_sep_' + i.to_s].hide
-			end
+		if (@selected_config_file)
+			use_config_file
+		else
+			read_space_data
+			read_circles_data
+			read_rectangles_data
+			read_triangles_data
+			read_segments_data
+			generate_config_file
 		end
 
-	end
-
-	def hide_hbox
-		num_circles = @builder['circles_qtde'].value_as_int 
-		@builder['circles_hbox'].hide if num_circles == 0
-
-		num_triangle = @builder['triangles_qtde'].value_as_int 
-		@builder['triangles_hbox'].hide if num_triangle == 0
-
-		num_rectangles = @builder['rectangles_qtde'].value_as_int 
-		@builder['rectangles_hbox'].hide if num_rectangles == 0
-
-		num_segments = @builder['segments_qtde'].value_as_int 
-		@builder['segments_hbox'].hide if num_segments == 0
-	end
-
-	def demobutton__clicked(*argv)
-		read_space_data
-		read_circles_data
-		read_rectangles_data
-		read_triangles_data
-		read_segments_data
-
-		generate_config_file
 		run_simulation
 	end
 
@@ -71,7 +31,7 @@ class ScenarioCreator
 
 		@gravity_x = @builder['gravity_x'].text.to_i 
 		@gravity_y = @builder['gravity_y'].text.to_i 
-		@damping = @builder['damping'].text.to_i 
+		@damping = @builder['damping'].text.to_f
 		@limited_space = value @builder['limited_space']
 		@object_gravity = value @builder['object_gravity']
 	end
@@ -256,6 +216,14 @@ class ScenarioCreator
 		end	
 	end
 
+	def use_config_file
+		system('cp', @selected_config_file, "testes/config/config_gerado.rb")
+
+		# File.open('testes/config/config_gerado.rb', 'w') do |file|  
+		#   file.puts file_content
+		# end
+	end
+
 	def run_simulation
 		system('ruby', "./testes/Test.rb")
 	end
@@ -283,7 +251,7 @@ class ScenarioCreator
 			    :zorder => #{@circle_zorder[i]},
 			    :collision_type => #{@circle_id[i]},
 			    :image_name => #{@circle_image[i]},
-				:circle_fixed => #{@circle_fixed[i]}
+				:static => #{@circle_fixed[i]}
 			}"
 
 			circles += ", " if i != @num_circles-1
@@ -314,7 +282,7 @@ class ScenarioCreator
 			    :zorder => #{@rec_zorder[i]},
 			    :collision_type => #{@rec_id[i]},
 			    :image_name => #{@rec_image[i]},
-				:rec_fixed => #{@rec_fixed[i]}
+				:static => #{@rec_fixed[i]}
 			}"
 
 			rectangles += ", " if i != @num_rectangles-1
@@ -339,7 +307,7 @@ class ScenarioCreator
 			    :zorder => #{@triangle_zorder[i]},
 			    :collision_type => #{@triangle_id[i]},
 			    :image_name => #{@triangle_image[i]},
-				:triangle_fixed => #{@triangle_fixed[i]}
+				:static => #{@triangle_fixed[i]}
 			}"
 
 			triangles += ", " if i != @num_triangles-1
@@ -354,17 +322,16 @@ class ScenarioCreator
 		
 		for i in 0..@num_segments-1   # TODO Infinity
 			segments += "{
-			    :mass => CP::INFINITY,
-			    :moment_inertia => CP::INFINITY,
 			    :x => #{@segment_x[i]},
 			    :y => #{@segment_y[i]},
+			    :thickness => 1,
 			    :angle => #{@segment_angle[i]},
 			    :vectors => [vec2(#{@segment_a[i]}), vec2(#{@segment_b[i]})],
 			    :elasticity => #{@segment_e[i]},
 			    :friction => #{@segment_u[i]},
 			    :zorder => #{@segment_zorder[i]},
 			    :collision_type => #{@segment_id[i]},
-				:segment_fixed => true
+				:static => true
 			}"
 			    # :image_name => #{@segment_image[i]},
 
@@ -373,5 +340,54 @@ class ScenarioCreator
 		end
 
 		segments
+	end
+
+
+	##### Component Handlers #####
+
+	def update_circle_objects(spinbutton)
+		update_objects(spinbutton, 'circle')
+	end
+
+	def update_triangle_objects(spinbutton)
+		update_objects(spinbutton, 'triangle')
+	end
+
+	def update_rectangle_objects(spinbutton)
+		update_objects(spinbutton, 'rectangle')
+	end
+
+	def update_segment_objects(spinbutton)
+		update_objects(spinbutton, 'segment')
+	end
+
+	def update_objects(spinbutton, object)
+		num_objects = spinbutton.value_as_int
+ 		num_objects == 0 ? @builder[object + 's_hbox'].hide : @builder[object + 's_hbox'].show 
+		
+		for i in 0..2
+			if i < num_objects
+				@builder[object + '_table_' + i.to_s].show 
+				@builder[object + '_table_sep_' + i.to_s].show
+			else
+				@builder[object + '_table_' + i.to_s].hide
+				@builder[object + '_table_sep_' + i.to_s].hide
+			end
+		end
+
+	end
+
+	def hide_hbox
+		num_circles = @builder['circles_qtde'].value_as_int 
+		@builder['circles_hbox'].hide if num_circles == 0
+
+		num_triangle = @builder['triangles_qtde'].value_as_int 
+		@builder['triangles_hbox'].hide if num_triangle == 0
+
+		num_rectangles = @builder['rectangles_qtde'].value_as_int 
+		@builder['rectangles_hbox'].hide if num_rectangles == 0
+
+		num_segments = @builder['segments_qtde'].value_as_int 
+		@builder['segments_hbox'].hide if num_segments == 0
 	end
 end
