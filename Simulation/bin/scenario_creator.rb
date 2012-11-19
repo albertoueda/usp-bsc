@@ -28,7 +28,6 @@ class ScenarioCreator
 	end
 
 	def read_space_data
-
 		@gravity_x = @builder['gravity_x'].text.to_i 
 		@gravity_y = @builder['gravity_y'].text.to_i 
 		@damping = @builder['damping'].text.to_f
@@ -37,7 +36,6 @@ class ScenarioCreator
 	end
 
 	def read_circles_data
-
 		@num_circles = @builder['circles_qtde'].text.to_i
 		@circle_x = Array.new(@num_circles)
 		@circle_y = Array.new(@num_circles)
@@ -66,13 +64,11 @@ class ScenarioCreator
 			@circle_fixed[i] = value @builder['circle_fixed_' + i.to_s]  
 			@circle_id[i] = @builder['circle_id_' + i.to_s].text.empty? ? ":undefined#{i}" : ":" + @builder['circle_id_' + i.to_s].text 
 			@circle_zorder[i] = 100
-			@circle_image[i] = "'cannonball2.png'"  
-			# @circle_image[i] = @builder['circle_image_' + i.to_s].text  
+			@circle_image[i] = @builder['circle_image_' + i.to_s].filename || "cannonball2.png" 
 		end
 	end
 
 	def read_rectangles_data
-
 		@num_rectangles = @builder['rectangles_qtde'].text.to_i
 		@rec_x = Array.new(@num_rectangles)
 		@rec_y = Array.new(@num_rectangles)
@@ -104,13 +100,12 @@ class ScenarioCreator
 			@rec_moment[i] = @builder['rec_moment_' + i.to_s].text.to_i  
 			@rec_fixed[i] = value @builder['rec_fixed_' + i.to_s]  
 			@rec_id[i] = @builder['rec_id_' + i.to_s].text.empty? ? ":undefined#{i}" : ":" + @builder['rec_id_' + i.to_s].text 
-			@rec_image[i] = "'catapult.png'"
+			@rec_image[i] = @builder['rec_image_' + i.to_s].filename || "'catapult.png'" 
 			@rec_zorder[i] = 100
 		end
 	end
 
 	def read_triangles_data
-
 		@num_triangles = @builder['triangles_qtde'].text.to_i
 		@triangle_x = Array.new(@num_triangles)
 		@triangle_y = Array.new(@num_triangles)
@@ -133,9 +128,22 @@ class ScenarioCreator
 			@triangle_y[i] = @builder['triangle_y_' + i.to_s].text.to_i  
 			@triangle_vx[i] = @builder['triangle_vx_' + i.to_s].text.to_f 
 			@triangle_vy[i] = @builder['triangle_vy_' + i.to_s].text.to_f  
-			@triangle_a[i] = @builder['triangle_ax_' + i.to_s].text + ", " + @builder['triangle_ay_' + i.to_s].text  
-			@triangle_b[i] = @builder['triangle_bx_' + i.to_s].text + ", " + @builder['triangle_by_' + i.to_s].text    
-			@triangle_c[i] = @builder['triangle_cx_' + i.to_s].text + ", " + @builder['triangle_cy_' + i.to_s].text    
+
+			x_points = []
+			x_points << @builder['triangle_ax_' + i.to_s].text.to_i
+			x_points << @builder['triangle_bx_' + i.to_s].text.to_i
+			x_points << @builder['triangle_cx_' + i.to_s].text.to_i
+			center x_points
+
+			y_points = []
+			y_points << @builder['triangle_ay_' + i.to_s].text.to_i
+			y_points << @builder['triangle_by_' + i.to_s].text.to_i
+			y_points << @builder['triangle_cy_' + i.to_s].text.to_i
+			center y_points
+
+			@triangle_a[i] = x_points[0].to_s + ", " + y_points[0].to_s  
+			@triangle_b[i] = x_points[1].to_s + ", " + y_points[1].to_s  
+			@triangle_c[i] = x_points[2].to_s + ", " + y_points[2].to_s  
 			@triangle_m[i] = @builder['triangle_m_' + i.to_s].text.to_f  
 			@triangle_e[i] = @builder['triangle_e_' + i.to_s].text.to_f   
 			@triangle_u[i] = @builder['triangle_u_' + i.to_s].text.to_f  
@@ -148,7 +156,6 @@ class ScenarioCreator
 	end
 
 	def read_segments_data
-
 		@num_segments = @builder['segments_qtde'].text.to_i
 		@segment_x = Array.new(@num_segments)
 		@segment_y = Array.new(@num_segments)
@@ -170,13 +177,12 @@ class ScenarioCreator
 			@segment_e[i] = @builder['segment_e_' + i.to_s].text.to_f   
 			@segment_u[i] = @builder['segment_u_' + i.to_s].text.to_f  
 			@segment_id[i] = @builder['segment_id_' + i.to_s].text.empty? ? ":undefined#{i}" : ":" + @builder['segment_id_' + i.to_s].text 
-			# @segment_image[i] = @builder['segment_image_' + i.to_s].text  
+			@segment_image[i] = "'catapult.png'"
 			@segment_zorder[i] = 100
 		end
 	end
 
 	def generate_config_file
-
 		file_content = "
 		require 'chipmunk'
 		require 'gosu'
@@ -218,10 +224,6 @@ class ScenarioCreator
 
 	def use_config_file
 		system('cp', @selected_config_file, "testes/config/config_gerado.rb")
-
-		# File.open('testes/config/config_gerado.rb', 'w') do |file|  
-		#   file.puts file_content
-		# end
 	end
 
 	def run_simulation
@@ -250,7 +252,7 @@ class ScenarioCreator
 			    :friction => #{@circle_u[i]},
 			    :zorder => #{@circle_zorder[i]},
 			    :collision_type => #{@circle_id[i]},
-			    :image_name => #{@circle_image[i]},
+			    :image_name => '#{@circle_image[i]}',
 				:static => #{@circle_fixed[i]}
 			}"
 
@@ -331,6 +333,7 @@ class ScenarioCreator
 			    :friction => #{@segment_u[i]},
 			    :zorder => #{@segment_zorder[i]},
 			    :collision_type => #{@segment_id[i]},
+			    :image_name => #{@segment_image[i]},
 				:static => true
 			}"
 			    # :image_name => #{@segment_image[i]},
@@ -342,6 +345,10 @@ class ScenarioCreator
 		segments
 	end
 
+	def center(points)
+		center = points.max - (points.max - points.min) / 2
+		points.collect! {|point| point - center}
+	end
 
 	##### Component Handlers #####
 

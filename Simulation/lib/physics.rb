@@ -14,6 +14,8 @@ $space = CP::Space.new
 # Define se devem ser exibidas as linhas de contorno dos corpos
 $draw_segments = true
 
+$all_objects = []
+
 # Adição de método para faciliar a criação de Shapes do chipmunk.
 #
 # @author rafaelim, albertoueda
@@ -119,6 +121,7 @@ module Chingu
 
         @image = Gosu::Image[options[:image_name]] if options[:image_name] 
         @shape_color = options[:shape_color] ? options[:shape_color] : CP::Shape::Color[@shape.class] 
+        $all_objects << self
 
         super(options)
       end
@@ -201,16 +204,17 @@ class PhysicObject < Chingu::BasicGameObject
 end
 
 class PhysicWindow < Chingu::Window
+
   def setup
-    # super
+    # TODO super
     self.caption = "TCC Demos - Alberto e Issao"
     self.input = { esc: :exit, d: :toggle_lines }
 
     @dt = 1.0 / 40.0
     @substeps = 6
+
     @info_area = Chingu::Text.create("", :x => 300, :y => 30, :color => Gosu::Color::YELLOW)    
     @feedbackMessage = ""
-
     TexPlay.set_options :caching => false
   end
 
@@ -225,7 +229,6 @@ class PhysicWindow < Chingu::Window
   def update
     super
     @info_area.text = info
-
     $space.step(@dt)
   end
 
@@ -236,6 +239,5 @@ class PhysicWindow < Chingu::Window
   def draw
     super
     @info_area.draw
-
   end
 end

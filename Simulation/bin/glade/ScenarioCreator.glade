@@ -235,7 +235,6 @@ Selecione as formas que deseja inserir e seus parâmetros físicos.</property>
                                                         <property name="relief">none</property>
                                                         <property name="use_stock">True</property>
                                                         <property name="image_position">right</property>
-                                                        <property name="active">True</property>
                                                         <property name="draw_indicator">True</property>
                                                       </object>
                                                       <packing>
@@ -732,7 +731,6 @@ Selecione as formas que deseja inserir e seus parâmetros físicos.</property>
                                                         <property name="relief">none</property>
                                                         <property name="use_stock">True</property>
                                                         <property name="image_position">right</property>
-                                                        <property name="active">True</property>
                                                         <property name="draw_indicator">True</property>
                                                       </object>
                                                       <packing>
@@ -1229,7 +1227,6 @@ Selecione as formas que deseja inserir e seus parâmetros físicos.</property>
                                                         <property name="relief">none</property>
                                                         <property name="use_stock">True</property>
                                                         <property name="image_position">right</property>
-                                                        <property name="active">True</property>
                                                         <property name="draw_indicator">True</property>
                                                       </object>
                                                       <packing>
@@ -1908,7 +1905,6 @@ Selecione as formas que deseja inserir e seus parâmetros físicos.</property>
                                                         <property name="relief">none</property>
                                                         <property name="use_stock">True</property>
                                                         <property name="image_position">right</property>
-                                                        <property name="active">True</property>
                                                         <property name="draw_indicator">True</property>
                                                       </object>
                                                       <packing>
@@ -2475,7 +2471,6 @@ Selecione as formas que deseja inserir e seus parâmetros físicos.</property>
                                                         <property name="relief">none</property>
                                                         <property name="use_stock">True</property>
                                                         <property name="image_position">right</property>
-                                                        <property name="active">True</property>
                                                         <property name="draw_indicator">True</property>
                                                       </object>
                                                       <packing>
@@ -3042,7 +3037,6 @@ Selecione as formas que deseja inserir e seus parâmetros físicos.</property>
                                                         <property name="relief">none</property>
                                                         <property name="use_stock">True</property>
                                                         <property name="image_position">right</property>
-                                                        <property name="active">True</property>
                                                         <property name="draw_indicator">True</property>
                                                       </object>
                                                       <packing>
@@ -3791,7 +3785,6 @@ Selecione as formas que deseja inserir e seus parâmetros físicos.</property>
                                                         <property name="relief">none</property>
                                                         <property name="use_stock">True</property>
                                                         <property name="image_position">right</property>
-                                                        <property name="active">True</property>
                                                         <property name="draw_indicator">True</property>
                                                       </object>
                                                       <packing>
@@ -4559,7 +4552,6 @@ Selecione as formas que deseja inserir e seus parâmetros físicos.</property>
                                                         <property name="relief">none</property>
                                                         <property name="use_stock">True</property>
                                                         <property name="image_position">right</property>
-                                                        <property name="active">True</property>
                                                         <property name="draw_indicator">True</property>
                                                       </object>
                                                       <packing>
@@ -5327,7 +5319,6 @@ Selecione as formas que deseja inserir e seus parâmetros físicos.</property>
                                                         <property name="relief">none</property>
                                                         <property name="use_stock">True</property>
                                                         <property name="image_position">right</property>
-                                                        <property name="active">True</property>
                                                         <property name="draw_indicator">True</property>
                                                       </object>
                                                       <packing>

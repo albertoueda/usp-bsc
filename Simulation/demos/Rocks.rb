@@ -21,7 +21,7 @@ class Rock < PhysicObject
     # Verificar física!
     # distance = Math::Sqrt((x-center_x)**2 + (y-center_y)**2)
     k = 40
-    apply_impulse(k/2.0*(center_x-x)*(x-center_x).abs, k/2.0*(center_y-y)*(y-center_y).abs)
+    apply_impulse(k/2.0*(center_x-x)*(center_x-x).abs, k/2.0*(center_y-y)*(center_y-y).abs)
   end
 
 end

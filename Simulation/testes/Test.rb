@@ -24,7 +24,7 @@ class TesteWindow < PhysicWindow
 
     @background_image = Gosu::Image["Space2.png"]
     @static_shapes = []
-    @dt = 1.0 / 30.0
+    @dt = 1.0 / 40.0
     @substeps = 2
 
     create_objects
@@ -48,7 +48,6 @@ class TesteWindow < PhysicWindow
         segment.add_to_space($space)
       end
     end
-
   end
 
   def create_objects 
@@ -67,7 +66,11 @@ class TesteWindow < PhysicWindow
   end
 
   def info
-    "INFO
+     "INFO
+     Total Círculos:      #{'%02d' % TestObjectConfig::Circles.size}
+     Total Triângulos:   #{'%02d' % TestObjectConfig::Triangles.size}
+     Total Retângulos:  #{'%02d' % TestObjectConfig::Rectangles.size}
+     Total Segmentos:  #{'%02d' % TestObjectConfig::Segments.size}
      #{@feedbackMessage}"
   end
 
@@ -76,6 +79,40 @@ class TesteWindow < PhysicWindow
       super
       @feedbackMessage = ""
     end
+
+    if (@space_simulation.object_gravity)
+      $all_objects.each do |object1|
+        $all_objects.each do |object2|
+
+          # TODO static check
+          if (object1 == object2 || object1.body.mass == CP::INFINITY || object2.body.mass == CP::INFINITY)
+            next
+          end
+
+          impulse =  1 * object1.body.m * object2.body.m / object1.body.p.distsq(object2.body.p)
+          
+          # TODO sin / cos
+          x1 = object1.body.p.x
+          x2 = object2.body.p.x
+          y1 = object1.body.p.y
+          y2 = object2.body.p.y
+
+          if x1 > x2
+            if y1 > y2
+              object1.body.apply_impulse(vec2(-impulse, -impulse), vec2(0, 0))
+            else
+              object1.body.apply_impulse(vec2(-impulse, impulse), vec2(0, 0))
+            end
+          elsif y1 > y2   
+              object1.body.apply_impulse(vec2(impulse, -impulse), vec2(0, 0))
+          else  
+              object1.body.apply_impulse(vec2(impulse, impulse), vec2(0, 0))
+          end
+
+        end
+      end
+    end
+
   end
 
   def draw
