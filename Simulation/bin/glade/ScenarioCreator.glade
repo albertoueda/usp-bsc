@@ -48,6 +48,7 @@
     <property name="resizable">False</property>
     <property name="modal">True</property>
     <property name="window_position">center-on-parent</property>
+    <property name="icon">burst.png</property>
     <signal name="destroy" handler="destroy_window" swapped="no"/>
     <child>
       <object class="GtkHBox" id="hbox1">

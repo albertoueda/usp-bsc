@@ -227,7 +227,7 @@ class ScenarioCreator
 	end
 
 	def run_simulation
-		system('ruby', "./testes/Test.rb")
+		system('ruby', '-W0', "./testes/Test.rb")
 	end
 
 	def value(checkbutton) 
