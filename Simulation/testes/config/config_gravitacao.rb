@@ -10,19 +10,19 @@
 	  		def initialize
 			  	@gravity = vec2(0, 0)
 			  	@damping = 1.0
-			  	@limited_space = true
+			  	@limited_space = false
 			  	@object_gravity = true
 			end
 		  end
 
 		  Circles = [{
-				:mass => 50000.0,
+				:mass => 2500000.0,
 			    :radius => 50,
 			    :factor_x => 5.0, 
 			    :factor_y => 5.0,
-			    :x => 150,
-			    :y => 150,
-			    :v => vec2(0.0, 30.0),
+			    :x => 350,
+			    :y => 250,
+			    :v => vec2(0.0, 0.0),
 			    :moment_inertia => 1000000,
 			    :elasticity => 1,
 			    :friction => 0.0,
@@ -31,13 +31,13 @@
 			    :image_name => 'cannonball2.png',
 				:static => false
 			}, {
-				:mass => 20000.0,
+				:mass => 400000.0,
 			    :radius => 20,
 			    :factor_x => 2.0, 
 			    :factor_y => 2.0,
-			    :x => 500,
-			    :y => 500,
-			    :v => vec2(0.0, -100.0),
+			    :x => 400,
+			    :y => 100,
+			    :v => vec2(-80.0, 0.0),
 			    :moment_inertia => 100000,
 			    :elasticity => 1,
 			    :friction => 0.0,
@@ -46,13 +46,13 @@
 			    :image_name => 'cannonball2.png',
 				:static => false
 			}, {
-				:mass => 30000.0,
-			    :radius => 30,
-			    :factor_x => 3.0, 
-			    :factor_y => 3.0,
+				:mass => 100000.0,
+			    :radius => 10,
+			    :factor_x => 1.0, 
+			    :factor_y => 1.0,
 			    :x => 300,
-			    :y => 500,
-			    :v => vec2(30.0, 0.0),
+			    :y => 400,
+			    :v => vec2(200.0, 0.0),
 			    :moment_inertia => 100000,
 			    :elasticity => 1,
 			    :friction => 0.0,

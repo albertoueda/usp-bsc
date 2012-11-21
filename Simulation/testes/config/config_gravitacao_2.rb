@@ -31,13 +31,13 @@
 			    :image_name => 'cannonball2.png',
 				:static => false
 			}, {
-				:mass => 10.0,
+				:mass => 1000.0,
 			    :radius => 10,
 			    :factor_x => 1.0, 
 			    :factor_y => 1.0,
 			    :x => 200,
 			    :y => 300,
-			    :v => vec2(0.0, 40.0),
+			    :v => vec2(0.0, 100.0),
 			    :moment_inertia => 10000,
 			    :elasticity => 0.1,
 			    :friction => 0.0,
@@ -46,13 +46,13 @@
 			    :image_name => 'cannonball2.png',
 				:static => false
 			}, {
-				:mass => 100.0,
+				:mass => 800.0,
 			    :radius => 10,
 			    :factor_x => 1.0, 
 			    :factor_y => 1.0,
 			    :x => 600,
 			    :y => 300,
-			    :v => vec2(0.0, -40.0),
+			    :v => vec2(0.0, -100.0),
 			    :moment_inertia => 100000000,
 			    :elasticity => 0.0,
 			    :friction => 0.0,

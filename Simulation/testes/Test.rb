@@ -89,25 +89,17 @@ class TesteWindow < PhysicWindow
             next
           end
 
-          impulse =  1 * object1.body.m * object2.body.m / object1.body.p.distsq(object2.body.p)
-          
-          # TODO sin / cos
-          x1 = object1.body.p.x
-          x2 = object2.body.p.x
-          y1 = object1.body.p.y
-          y2 = object2.body.p.y
+          distsq = object1.body.p.distsq(object2.body.p)
+          dist = object1.body.p.dist(object2.body.p)
+          dist_y = object2.body.p.y - object1.body.p.y
+          dist_x = object2.body.p.x - object1.body.p.x
 
-          if x1 > x2
-            if y1 > y2
-              object1.body.apply_impulse(vec2(-impulse, -impulse), vec2(0, 0))
-            else
-              object1.body.apply_impulse(vec2(-impulse, impulse), vec2(0, 0))
-            end
-          elsif y1 > y2   
-              object1.body.apply_impulse(vec2(impulse, -impulse), vec2(0, 0))
-          else  
-              object1.body.apply_impulse(vec2(impulse, impulse), vec2(0, 0))
-          end
+          # G constant
+          impulse =  10000 * object2.body.m / distsq
+          impulse_y = dist_y/dist * impulse
+          impulse_x = dist_x/dist * impulse
+
+          object1.body.apply_impulse(vec2(impulse_x, impulse_y), vec2(0, 0))
 
         end
       end
