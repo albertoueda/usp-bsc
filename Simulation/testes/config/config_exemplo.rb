@@ -11,7 +11,7 @@
                 @gravity = vec2(0, 10)
                 @damping = 1
                 @limited_space = true
-                @object_gravity = true
+                @object_gravity = false
             end
           end
 

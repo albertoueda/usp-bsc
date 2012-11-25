@@ -1,0 +1,45 @@
+Nesta seção descreveremos a relação entre nosso projeto e a experiência adquirida no BCC.
+
+(TODO pensei em fazer separado mas agora que escrevi tenho impressão que não vai mudar muita coisa)
+
+\section{Alberto Ueda}
+Entregar este projeto como trabalho de formatura e disponibilizar seu código para os alunos do BCC foram duas das experiências mais gratificantes que já tive. Isto pois acredito que tal conteúdo poderá ser utilizado pelas próximas turmas do BCC como incentivo ao aprendizado da matéria de física. Além disso, tanto alunos do próprio Instituto de Física quanto da Engenharia Politécnica também poderão se interessar pelo conteúdo: o primeiro grupo (FIS) pela animação de fenônemos físicos estudados e o segundo (Poli) tanto pela animação quanto pela simulação de tais fenônemos.
+
+Mas, ao mesmo tempo, por ser um trabalho que levou meses, certas dificuldades foram encontradas pelo caminho. Tivemos que tomar decisões às vezes frustrantes, porém necessárias.
+
+\subsection{Desafios e frustrações encontrados}
+Inicialmente, nossa motivação era entregar um sistema que utilize recursos do Wii Remote (TODO ref TODO link da caneta) e que o professor pudesse utilizá-lo em sala de aula para realizar suas simulações e animações. Porém, chegamos a conclusão que esta tecnologia aumentaria consideravelmente o nível de complexidade de nosso trabalho e não tínhamos garantia de que utilizá-la acrescentaria da mesma forma ao resultado final. Assim descartamos esta possibilidade.
+
+Como utilizamos algumas bibliotecas de terceiros em nosso projeto, tivemos que entender obrigatoriamente como eram feitas as principais chamadas de métodos destas bibliotecas, principalmente o Chipmunk e o Gosu. Um detalhe interessante que ocorreu no segundo mês de trabalho foi a necessidade de mudar o código da biblioteca (TOOD citar) e recompilá-la para que uma função simples de mensagem para o usuário funcionasse (TODO conferir método). Uma semana depois, utilizando uma versão mais nova da biblioteca, descobrimos que nossa alteração não era mais necessária, pois já havia sido feita pelos próprios programadores na mudança de versão.
+
+Além disso, utilizamos um bind (TODO envoltório?) da versão original do Chipmunk. Isto trazia duas dificuldades para nós: 1) o código original (em C++) sempre estava com uma versão mais recente e provia (TODO conferir) mais métodos; e 2) nem sempre o que víamos na documentação oficial possuia correspondente em nosso bind. 
+ 
+Por último, um desafio que tivemos foi encontrar um professor de física disponível para nos auxiliar na elaboração do protótipo do sistema. Ficamos muito felizes quando após algumas semanas o bacharel em física e aluno do BCC João Kerr veio a uma de nossas reuniões, a convite do professor Coelho.
+
+\subsection{Disciplinas mais relevantes}
+
+(TODO comentar)
+\begin{itemize}
+\item MAC0110 	Introdução à Computação 
+\item FAP0126 	Física I 
+\item MAC0122 	Princípios de Desenvolvimento de Algoritmos 
+\item MAC0211 	Laboratório de Programação I 
+\item MAC0323 	Estruturas de Dados 
+\item MAC0420 	Introdução a Computação Gráfica 
+\item MAT0211 	Cálculo Diferencial e Integral III 
+\item MAC0242 	Laboratório de Programação II 
+\item MAC0316 	Conceitos Fundamentais de Linguagens de Programação 	
+\item MAC0332 	Engenharia de Software 
+\item MAC0338 	Análise de Algoritmos
+\item MAC0446 	Princípios de Interação Homem-computador 
+\item FAP0137 	Física II 
+\end{itemize}
+\subsection{Estudos futuros} 
+Sem dúvida os tópicos de estudo mais importantes para a continuação deste trabalho são as disciplinas de Física I e II para o BCC. Quanto maior o conhecimento das leis e forças físicas presentes no mundo real, melhor serão as simulações e consequentemente as animações geradas.
+
+Em segundo lugar, seria interessante uma análise de qual das alternativas a seguir tem uma melhor relação custo-benefício, visando a atualização do projeto com a versão mais nova do Chipmunk: A) migrar nosso projeto de Ruby para C++ e usar diretamente a versão original do Chipunk, sem binds; ou B) atualizar o bind em Ruby adicionando os métodos e funcionalidades da versão mais recente em C++.
+
+Por último, mas não menos importante, um estudo de paradigmas que proporcionem mais usabilidade ao usuário, substituindo o preenchimento obrigatório de formulários para criação de objetos físicos. Ex: drag-and-drop do mouse para "arrastar" as formas geométricas, fornecendo os valores de massa, coeficientes de elasticidade e atrito a posteriori (após o objeto já estar na tela).
+
+
+\section{Rafael Miyagawa}
