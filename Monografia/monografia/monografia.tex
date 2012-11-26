@@ -5,13 +5,21 @@
 \usepackage{graphicx}
 \usepackage{times}
 \usepackage{ucs}
-\usepackage{url}
 \usepackage{float}    
 \usepackage{fancyvrb}
 \usepackage{listings}
+\usepackage{hyperref}
 
-%\hyphenation {pro-gra-ma pro-gra-mas com-pu-ta-cio-nais e-exem-plo pro-ble-mas
-%i-deia} 
+\hyphenation {pro-gra-ma pro-gra-mas com-pu-ta-cio-nais e-exem-plo pro-ble-mas
+i-deia} 
+
+\hypersetup{
+    colorlinks=true,       % false: boxed links; true: colored links
+    linkcolor=black,          % color of internal links (change box color with linkbordercolor)
+    citecolor=black,        % color of links to bibliography
+    filecolor=black,      % color of file links
+    urlcolor=blue           % color of external links
+}
 
 \title{Trabalho de conclusão de curso \\
 Animação de Fenômenos Físicos}
@@ -66,9 +74,8 @@ Animação de Fenômenos Físicos}
 \input{instalacao.tex}
 \newpage
 
-
 \section{Apêndice}
-\input{texto-apoio-bcc.tex}
+\input{apendice.tex}
 \newpage
 
 \part{Parte subjetiva}
