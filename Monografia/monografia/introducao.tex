@@ -2,27 +2,32 @@
 O foco deste projeto é atrair a atenção dos alunos do IME em relação às disciplinas de física ministradas no curso de bacharelado em Ciência da Computação.
 
 \subsection{Física no BCC}
-Embora seja comum encontrar alunos da computação que tenham interesse em tópicos relacionados a física clássica e moderna - Leis de Newton, Leis de Kepler, Teoria da Relatividade de Einstein, entre outros - há considerável resistência do corpo discente em relação a grade curricular do BCC incluir as disciplinas de física. (TODO citar questionário BCC, confirmar) Isto não se aplica apenas às disciplinas de física, mas também a álgebra, cálculo, probabilidade e estatística (TODO referência).
+Embora seja comum encontrar alunos da computação que tenham interesse em tópicos relacionados a física clássica e moderna - Leis de Newton, Leis de Kepler, Teoria da Relatividade de Einstein, entre outros - há considerável resistência do corpo discente em relação a grade curricular do BCC incluir as disciplinas de física. (TODO citar questionário BCC) Isto não se aplica apenas às disciplinas de física, mas também a álgebra, cálculo, probabilidade e estatística (TODO referência). \\
 
-Visando compreender melhor a situação e apresentar uma proposta de reformulação da grade ou das disciplinas, foi criado o Grupo de Apoio ao BCC (TODO nomes), uma iniciativa da Comissão de Coordenação do BCC (CoC). Após a aplicação de questionários e conversas nos Encontros BCC (TODO citar), um dos consensos de ambas as partes - professores e alunos - foi o de que seria interessante uma maior contextualização destas disciplinas para os alunos em termos de computação. No apêndice da seção \ref{apendice} há uma cópia de um textos produzidos pelo CoC, com referências para o documento original. 
+Visando compreender melhor a situação e apresentar uma proposta de reformulação da grade ou das disciplinas, foi criado o Grupo de Apoio ao BCC (TODO nomes), uma iniciativa da Comissão de Coordenação do BCC (CoC). Após a aplicação de questionários e conversas nos Encontros BCC (TODO citar), um dos consensos de ambas as partes - professores e alunos - foi o de que seria interessante uma maior contextualização destas disciplinas para os alunos em termos de computação. No apêndice da seção \ref{apendice} há uma cópia de um textos produzidos pelo CoC, com referências para o documento original. \\
 
-(TODO falar de como a fisica pode ficar mais interessante e nossa ideia)
-Nesse sentido... 
+Tal contextualização pode ser feita de várias formas: por parte dos professores das disciplinas - mostrando aplicações dos tópicos estudadas para computação, trazendo professores ou especialistas em sala de aula que possam transmitir experiências relacionadas ao conteúdo aprendido - ou por parte dos próprios alunos - reunindo-se para palestras extra-classe, desenvolvendo bibliotecas que motivem os demais alunos a utilizar, pesquisar e até mesmo programar baseando-se nos conceitos adquiridos. \\
 
-Com o simulador podemos integrar melhor os alunos aos assuntos abordados na física com demonstrações de ambientes físicos, 
-integrando exercícios programas (EP) e também para ser utilizado em sala de aula.
+Nesse sentido, o Physimulation é uma ferramenta para simulação e animação de fenômenos físicos e tem como um dos principais objetivos integrar o conhecimento adquirido em FAP-126 (Física I) com um ambiente de programação (TODO programa?). \\
 
-\subsection{Problemas ao simular interações físicas}
+Com este trabalho visamos contextualizar os assuntos abordados na disciplina com demonstrações de ambientes físicos, integrações com exercícios-programas (EP's) e a apresentação de desafios atuais de simulação no campo da física. 
 
+\subsection{Problemas ao simular interações físicas} % Issao
 Existem muitos problemas ao tentar simular um ambiente físico com a computação. Temos o problema do tempo de simulação, 
-que é o tempo que damos para os objetos físicos se interagirem e tomar o rumo necessário para refletir a realidade.
+que é o tempo que damos para os objetos físicos se interagirem e tomar o rumo necessário para refletir a realidade. \\
 
 Existem alguns conceitos como \textit{broad phase}, que é a fase em que os objetos são filtrados para realizarmos depois a \textit{narrow phase} que é onde verificamos se aconteceu alguma colisão entre os objetos.
 
 \subsection{Simulador}
+Com o Physimulation, o aluno da disciplina de física poderá simular comportamentos físicos estudados em sala de aula, por meio de criação de cenários e objetos com diferentes propriedades configuráveis. Exemplos de propriedades são: massa, tamanho, posição, velocidade inicial, coeficiente de atrito e de elasticidade. \\
 
-A idéia do simulador é... 
+Desde rampas, pequenas esferas e plataformas fixas a planetas orbitando em torno de um objeto de grande massa, tanto os alunos quanto o professor poderão utilizar o simulador para combinar tais objetos e observar resultados calculados em exercícios. Além disso, estes cenários podem ser salvos no sistema e carregados posteriormente para nova observação.
 
 \subsection{Estrutura da Monografia}
+Esta monografia está estrutura da seguinte forma: Na seção \ref{plataforma} descrevemos os conceitos e tecnologias estudadas para a realização do trabalho. São apresentadas as bibliotecas utilizadas, o papel de cada uma em nosso projeto e como elas interagem entre si. Nas seções \ref{discretizacao} e \ref{colisoes} explicamos dois tópicos comuns e importantes ao realizar simulações físicas: são eles, respectivamente, a discretização da simulação - definição de tempo de simulação, problema do tamanho do passo, granularidade - e o tratamento de colisões - algoritmos para filtragem de elementos, detecção de colisões e quais algoritmos são utilizados no Physimulation.  \\
 
-Na seção 1.2, apresentamos...
+Já na seção \ref{atividades} mostramos como foi o passo-a-passo de nosso trabalho, a metodologia utilizada e algumas dificuldades encontradas no caminho. A seguir, na seção \ref{animacoes}, apresentamos um dos resultados obtidos: os ambientes físicos de demonstração e as razões por ter começado o trabalho por eles. Logo depois, na seção \ref{physimulation} descrevemos o Physimulation e as etapas para a criação de cenários físicos. Como aplicação do projeto, apresentamos duas integrações com exercícios-programas de disciplinas de introdução a computação na seção \ref{ep}. \\
+
+Concluímos o trabalho na seção \ref{comentarios}, além de citar possíveis trabalhos futuros e mostrar desafios atuais da computação em simulações físicas que ainda necessitam de estudo e aprimoramento. Ao final, há um roteiro para instalação do ambiente necessário para executar o Physimulation, na seção \ref{instalacao}. 
+
+

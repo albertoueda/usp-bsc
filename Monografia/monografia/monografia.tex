@@ -2,11 +2,13 @@
 \usepackage[T1]{fontenc}
 \usepackage[portuguese]{babel}
 \usepackage[utf8x]{inputenc}
+\usepackage{indentfirst}
 \usepackage{graphicx}
 \usepackage{times}
 \usepackage{ucs}
 \usepackage{float}    
-\usepackage{fancyvrb}
+\usepackage{fancyvrb}   
+\usepackage{verbatim}
 \usepackage{listings}
 \usepackage{hyperref}
 
@@ -38,31 +40,39 @@ Animação de Fenômenos Físicos}
 
 \part{Parte objetiva}
 
-\section{Introdução}
+\section{Introdução} \label{introducao}
 \input{introducao.tex}
 \newpage
 
-\section{Plataforma computacional}
+\section{Plataforma computacional} \label{plataforma}
 \input{plataforma.tex}
 \newpage
 
-\section{Discretização da simulação}
+\section{Discretização da simulação} \label{discretizacao}
 \input{discretizacao.tex}
 \newpage
 
-\section{Colisões}
+\section{Colisões} \label{colisoes}
 \input{colisoes.tex}
 \newpage
 
-\section{Animações produzidas}
+\section{Atividades realizadas} \label{atividades}
+\input{atividades.tex}
+\newpage
+
+\section{Animações produzidas} \label{animacoes}
 \input{animacoes.tex}
 \newpage
 
-\section{Introdução à computação com animações}
+\section{Physimulation} \label{physimulation}
+\input{physimulation.tex}
+\newpage
+
+\section{Introdução à computação com animações} \label{ep}
 \input{ep.tex}
 \newpage
 
-\section{Comentários Finais}
+\section{Comentários finais} \label{comentarios}
 \input{comentarios.tex}
 \newpage
 
@@ -70,7 +80,7 @@ Animação de Fenômenos Físicos}
 %\bibliography{bibliografia}
 \newpage
 
-\section{Roteiro de instalação da plataforma}
+\section{Roteiro de instalação da plataforma} \label{instalacao}
 \input{instalacao.tex}
 \newpage
 
