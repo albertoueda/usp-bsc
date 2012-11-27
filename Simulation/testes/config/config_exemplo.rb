@@ -8,7 +8,7 @@
             attr_accessor :gravity, :damping, :limited_space, :object_gravity
 
             def initialize
-                @gravity = vec2(0, 10)
+                @gravity = vec2(0, 100)
                 @damping = 1
                 @limited_space = true
                 @object_gravity = false
@@ -39,7 +39,7 @@
                 :y => 100,
                 :v => vec2(0.0, 0.0),
                 :moment_inertia => 30,
-                :elasticity => 1.0,
+                :elasticity => 0.5,
                 :friction => 0.0,
                 :zorder => 100,
                 :collision_type => :undefined1,

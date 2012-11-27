@@ -171,8 +171,19 @@ class ScenarioCreator
 		for i in 0..@num_segments.to_i-1
 			@segment_x[i] = @builder['segment_x_' + i.to_s].text.to_i  
 			@segment_y[i] = @builder['segment_y_' + i.to_s].text.to_i  
-			@segment_a[i] = @builder['segment_ax_' + i.to_s].text + ", " + @builder['segment_ay_' + i.to_s].text  
-			@segment_b[i] = @builder['segment_bx_' + i.to_s].text + ", " + @builder['segment_by_' + i.to_s].text    
+
+			x_points = []
+			x_points << @builder['segment_ax_' + i.to_s].text.to_i
+			x_points << @builder['segment_bx_' + i.to_s].text.to_i
+			center x_points
+
+			y_points = []
+			y_points << @builder['segment_ay_' + i.to_s].text.to_i
+			y_points << @builder['segment_by_' + i.to_s].text.to_i
+			center y_points
+
+			@segment_a[i] = x_points[0].to_s + ", " + y_points[0].to_s  
+			@segment_b[i] = x_points[1].to_s + ", " + y_points[1].to_s  
 			@segment_angle[i] = @builder['segment_angle_' + i.to_s].text.to_f  
 			@segment_e[i] = @builder['segment_e_' + i.to_s].text.to_f   
 			@segment_u[i] = @builder['segment_u_' + i.to_s].text.to_f  

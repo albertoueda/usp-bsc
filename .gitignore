@@ -12,6 +12,15 @@ test/tmp
 test/version_tmp
 tmp
 
+# LaTeX files
+*.aux
+*.make
+*.d
+*.fls
+*.log
+*.out
+*.toc
+
 # YARD artifacts
 .yardoc
 _yardoc
