@@ -5,8 +5,8 @@ class ScenarioCreator
 	include GladeGUI
 
 	def show
-		load_glade(__FILE__)  #loads file, glade/MyClass.glade into @builder
-		set_glade_all #populates glade controls with insance variables (i.e. Myclass.label1) 
+		load_glade(__FILE__) 
+		set_glade_all 
 		show_window
 	end	
 
@@ -150,7 +150,7 @@ class ScenarioCreator
 			@triangle_moment[i] = @builder['triangle_moment_' + i.to_s].text.to_i  
 			@triangle_fixed[i] = value @builder['triangle_fixed_' + i.to_s]  
 			@triangle_id[i] = @builder['triangle_id_' + i.to_s].text.empty? ? ":undefined#{i}" : ":" + @builder['triangle_id_' + i.to_s].text 
-			@triangle_image[i] = "'catapult.png'"
+			@triangle_image[i] = "'catapult-b.png'"
 			@triangle_zorder[i] = 100
 		end
 	end
@@ -188,7 +188,7 @@ class ScenarioCreator
 			@segment_e[i] = @builder['segment_e_' + i.to_s].text.to_f   
 			@segment_u[i] = @builder['segment_u_' + i.to_s].text.to_f  
 			@segment_id[i] = @builder['segment_id_' + i.to_s].text.empty? ? ":undefined#{i}" : ":" + @builder['segment_id_' + i.to_s].text 
-			@segment_image[i] = "'catapult.png'"
+			@segment_image[i] = "'catapult-b.png'"
 			@segment_zorder[i] = 100
 		end
 	end
@@ -347,7 +347,6 @@ class ScenarioCreator
 			    :image_name => #{@segment_image[i]},
 				:static => true
 			}"
-			    # :image_name => #{@segment_image[i]},
 
 			segments += ", " if i != @num_segments-1
 

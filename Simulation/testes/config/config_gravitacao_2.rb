@@ -47,9 +47,10 @@
 				:static => false
 			}, {
 				:mass => 800.0,
-			    :radius => 10,
-			    :factor_x => 1.0, 
-			    :factor_y => 1.0,
+				# TODO conferir se o maior tem que ser o + rapido
+			    :radius => 8,
+			    :factor_x => 0.8, 
+			    :factor_y => 0.8,
 			    :x => 600,
 			    :y => 300,
 			    :v => vec2(0.0, -100.0),

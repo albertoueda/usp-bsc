@@ -61,7 +61,7 @@
 			    :friction => 0.0,
 			    :zorder => 100,
 			    :collision_type => :undefined0,
-			    :image_name => 'catapult.png',
+			    :image_name => 'catapult-b.png',
 				:static => true
 			}, {
 			    :x => 400,
@@ -73,7 +73,7 @@
 			    :friction => 1.0,
 			    :zorder => 100,
 			    :collision_type => :undefined1,
-			    :image_name => 'catapult.png',
+			    :image_name => 'catapult-b.png',
 				:static => true
 			}]
 		end

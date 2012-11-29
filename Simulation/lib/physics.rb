@@ -16,6 +16,13 @@ $draw_segments = true
 
 $all_objects = []
 
+
+class Numeric
+  def radians_to_degrees
+    self * 180 / Math::PI
+  end
+end
+
 # Adição de método para faciliar a criação de Shapes do chipmunk.
 #
 # @author rafaelim, albertoueda
@@ -156,17 +163,58 @@ module Chingu
             @circle_image.draw(position.x - radius, position.y - radius, 0)
 
           when CP::Shape::Segment, CP::Shape::Poly
+
             for i in 0..@vectors.size 
               vectorA = @vectors[i % @vectors.size] + @body.p
               vectorB = @vectors[(i+1) % @vectors.size] + @body.p
+              
+              # TODO desenhar a linha levando em conta o angulo (ex: matriz de rotação)
               $window.draw_line(vectorA.x, vectorA.y, shape_color, vectorB.x, vectorB.y, shape_color)
             end
           end
 
         else # TODO como angle funciona (ao inves de body.a)
             # TODO melhorar remoção de shapes e diminuir os if's
-          @image.draw_rot(position.x, position.y, @zorder, angle, @center_x, @center_y, 
+            # TODO refatorar center_x, center_y
+
+          case @shape
+          when CP::Shape::Circle
+
+          @image.draw_rot(position.x, position.y, @zorder, @body.a.radians_to_degrees, 0.5, 0.5, 
             @factor_x, @factor_y, @color, @mode) if @image && @visible && @body && @shape 
+
+          when CP::Shape::Segment, CP::Shape::Poly
+
+            if (@vectors.size == 4)
+              @image.draw_rot(position.x, position.y, @zorder,  @body.a.radians_to_degrees, 0.5, 0.5, 
+                @factor_x, @factor_y, @color, @mode) if @image && @visible && @body && @shape
+            else 
+              for i in 0..@vectors.size-1
+                vectorA = @vectors[i] + @body.p
+                vectorB = @vectors[(i+1) % @vectors.size] + @body.p
+
+                distance = vectorA.dist(vectorB)
+                vectors = [vectorA, vectorB]
+                higher_vector = vectors.max_by { |x| x.y }
+                lower_vector = vectors.min_by { |x| x.y }
+
+                height = higher_vector.y - lower_vector.y                 
+                angle = Math.asin(height / distance).radians_to_degrees
+
+                if (higher_vector.x < lower_vector.x)
+                  angle = -angle
+                end
+
+                center_x = (vectorA.x + vectorB.x) / 2
+                center_y = (vectorA.y + vectorB.y) / 2
+
+                # +  @body.a.radians_to_degrees
+                @image.draw_rot(center_x, center_y, @zorder, angle + @body.a.radians_to_degrees, 0.5, 0.5, 
+                  distance/100, @factor_y, @color, @mode) if @image && @visible && @body && @shape 
+              end
+            end
+          end
+
         end
       end
 
