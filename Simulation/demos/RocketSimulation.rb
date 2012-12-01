@@ -17,9 +17,12 @@ class Rocket < PhysicObject
 
     self.body.velocity_func { |body, gravity, damping, dt|
       # G é considerado 1 e o vetor é sempre paralelo ao eixo x 
+
+      # Leva em conta a forca gravitacional da terra e da lua
       @earth_acceleration = -5.973 * 10**5 / self.position.distsq(vec2(0, self.position.y))
       @moon_acceleration =  7.349 * 10**4 / self.position.distsq(vec2(1024, self.position.y))
 
+      # Atualiza a velocidade com a aceleração resultante
       self.body.update_velocity(vec2(@earth_acceleration + @moon_acceleration, 0), damping, dt)
     }
 

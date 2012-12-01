@@ -16,7 +16,7 @@ $draw_segments = true
 
 $all_objects = []
 
-
+# Adição de método para todos os números
 class Numeric
   def radians_to_degrees
     self * 180 / Math::PI

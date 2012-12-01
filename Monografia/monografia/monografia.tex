@@ -10,29 +10,38 @@
 \usepackage{fancyvrb}   
 \usepackage{verbatim}
 \usepackage{listings}
-\usepackage{hyperref}
-\usepackage{epigraph}
-\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{caption}
+\DeclareCaptionFont{white}{\color{white}}
+\DeclareCaptionFormat{listing}{%
+  \parbox{\textwidth}{\colorbox{gray}{\parbox{\textwidth}{#1#2#3}}\vskip-4pt}}
+\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
+\lstset{frame=lrb,xleftmargin=\fboxsep,xrightmargin=-\fboxsep,language=[LaTeX]{TeX},columns=flexible}
+\renewcommand{\lstlistingname}{Código}
+\lstloadlanguages{Ruby}
+\lstset{%
+  basicstyle=\ttfamily\color{black},
+  commentstyle = \ttfamily\color{red},
+  keywordstyle=\ttfamily\color{blue},
+  stringstyle=\color{orange}}
 
 \hyphenation {pro-gra-ma pro-gra-mas com-pu-ta-cio-nais e-exem-plo pro-ble-mas
 i-deia} 
 
 \hypersetup{
-    colorlinks=true,       
-    linkcolor=black,          
-    citecolor=black,   
-    filecolor=black,  
-    urlcolor=blue  
+    colorlinks=true,       % false: boxed links; true: colored links
+    linkcolor=black,          % color of internal links (change box color with linkbordercolor)
+    citecolor=black,        % color of links to bibliography
+    filecolor=black,      % color of file links
+    urlcolor=blue           % color of external links
 }
-
-\lstset{columns=fullflexible,basicstyle=\ttfamily}
 
 \title{Trabalho de Conclusão de Curso \\
 Physimulation - Animação de Fenômenos Físicos}
 
-\author{Rafael Issao Miyagawa \and Alberto Hideki Ueda \\ \ \and  
-	Orientadores: \and
-	José Coelho de Pina Junior \and  João Pedro Kerr Catunda }
+\author{Rafael Issao Miyagawa \and Alberto Hideki Ueda \and 
+		João Pedro Kerr Catunda \\ \ \and
+        Orientador: José Coelho de Pina Junior }
 \date{Novembro de 2012}
 
 \begin{document}
@@ -87,7 +96,7 @@ Physimulation - Animação de Fenômenos Físicos}
 %\bibliography{bibliografia}
 \newpage
 
-\section{Instruções de instalação da plataforma} \label{instalacao}
+\section{Roteiro de instalação da plataforma} \label{instalacao}
 \input{instalacao.tex}
 \newpage
 
