@@ -1,16 +1,101 @@
-Descrição da interface de criação de cenários e alguns exemplos do que pode ser criado com ele.
+Em uma das reuniões com nossos orientadores, percebemos que com poucas primitivas - objetos simples como círculos, triângulos e retângulos - e com algumas propriedades físicas configuráveis poderíamos gerar uma grande quantidade de cenários diferentes entre si. Tais propriedades, como massa, gravidade, coeficiente de atrito e de elasticidade, já eram do nosso domínio de conhecimento pois as utilizamos ao implementar os cenários de demonstração. \\
+
+O Physimulation é o resultado dessa ideia e é o principal produto do nosso trabalho.
 
 \subsection{A ferramenta}
+Com o Physimulation o usuário pode criar quatro tipos de objetos: círculos, triângulos, retângulos e segmentos, em qualquer posição da tela. Cada tipo de objeto possui algumas propriedades específicas à sua forma. Por exemplo, o círculo é a única das primitivas que possui o atributo ''raio''. Porém, a grande maioria dos parâmetros são comuns a todas as formas:
 
-\subsection{Criando um cenário básico}
+\begin{itemize}
+	\item Posição;
+	\item Massa;
+	\item Momento de Inércia;
+	\item Coeficiente de Atrito;
+	\item Coeficiente de Elasticidade;
+	\item entre outros.
+\end{itemize} 
+
+Ao posicionar o \textit{mouse} nos campos editáveis são exibidas ao usuário as descrições de cada propriedade. Além disso, para cada atributo há um valor pré-definido por padrão, caso o aluno ou professor não esteja interessado em determinar seu valor.\\
+
+Além de determinar as propriedades de cada objeto, há a possibilidade do usuário configurar paramêtros do próprio ambiente de simulação. Tais propriedades são:
+
+\begin{itemize}
+	\item Gravidade: um vetor na forma (x, y) representando a gravidade do espaço;
+	\item Coeficiente de Amortecimento: Porcentagem que representa a velocidade final de um objeto em relação a velocidade inicial, em um passo da simulação. Por exemplo: com um amortecimento de valor 0.9, todos os objetos perderão 10\% de suas velocidades a cada passo da simulação;
+	\item Gravitação Pontual: se for selecionada, o simulador irá considerar a atração gravitacional entre os objetos da tela. Útil para criar cenários com movimentos orbitais;
+	\item Espaço Limitado: se for selecionada, o simulador irá construir quatro segmentos que limitarão o espaço da simulação para o espaço visível da tela.
+\end{itemize} 
+
+Para cada tipo de objeto há um campo ''quantidade'', que informa ao simulador o número de objetos do tipo escolhido. Este campo deve ser preenchido antes da criação dos objetos físicos e pode ser alterado posteriormente.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.4]{images/physimulation-2.png}
+	\caption{Tela inicial do Physimulation}
+\end{figure}
+
+\subsection{Criando um cenário}
+Para mostrar um caso de uso do simulador, vamos utilizar a figura abaixo como referência para criar um cenário físico.
 
 \begin{figure}[H]
   \centering
   \includegraphics[scale=0.6]{images/bricks.jpg}
-  \caption{Objetos fixos}
+  \caption{Objetos estáticos}
 \end{figure}
 
-\subsection{Exemplos}
+Nesta imagem, há quatro blocos suspensos no ar e uma montanha verde com o formato parecido com um triângulo, além do personagem principal que está em cima de um dos blocos. Para esta simulação, faremos a seguinte correlação (TODO ?): os blocos suspensos serão retângulos do Physimulation, a montanha verde um triângulo e o personagem de pé uma pequena bola. \\
+
+Para executar o physimulation, o usuário deve executar no terminal:
+
+\begin{Verbatim}[fontsize=\footnotesize]
+	$ cd <<DIR_PHYSIMULATION>>/Simulation
+	$ ruby main.rb
+\end{Verbatim}
+
+onde {\tt\footnotesize DIR\_PHYSIMULATION} é o diretório em que o Physimulation foi instalado. Novamente, caso haja algum problema ao executar qualquer um dos comandos, deve-se verificar o conteúdo da seção \ref{instalacao}, ''\nameref{instalacao}''. \\
+
+\newpage
+A seguir descrevemos os passos para criar este cenário:
+
+\begin{enumerate}
+	\item Expandir a aba ''Círculos'' e aumentar a quantidade para 1.
+	\item Determinar a posição do círculo = (350, 100), massa = 30, raio = 30. \newline 
+		  Nota: a origem das coordenadas no Physimulation é o canto superior esquerdo, com coordenadas positivas aquelas abaixo e à direita da origem.
+	\item Expandir a aba ''Retângulos'' e aumentar a quantidade para 4.
+	\item Preencher os atributos dos retângulos com os seguintes valores:
+		\subitem 1º: posição = ( 80, 200), altura =  60, largura = 120 
+		\subitem 2º: posição = (350, 200), altura =  60, largura = 160
+		\subitem 3º: posição = (400, 400), altura =  60, largura =  60
+		\subitem 4º: posição = (720, 400), altura = 120, largura =  60
+
+	\item Em todos os retângulos anteriores, habilitar a opção ''Fixo no espaço?''. \newline 
+		  Nota: ao habilitar esta opção, utilizaremos \textit{static shapes} ao invés de \textit{shapes} habituais. Na prática, estamos informando ao simulador que estes objetos não devem sofrer forças do ambiente físico (\textit{space}), como a gravidade. Para mais detalhes, ver a seção \ref{plataforma}. 
+
+	\item Por último, criar um triângulo com os seguintes atributos: posição = (600, 520), ponto A = (100, 0), ponto B = (0, 100), ponto C = (200, 100). \newline 
+
+\end{enumerate}
+
+Ao iniciar a simulação, temos este cenário:
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.2]{images/cenario-monografia.png}
+	\includegraphics[scale=0.2]{images/cenario-monografiaE.png}
+	\caption{Cenário criado com o Phisimulation}
+\end{figure}
+
+Podemos fazer uma pequena modificação a este cenário e acrescentar uma velocidade horizontal positiva à bola, o que a fará despencar do bloco superior. 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.2]{images/cenario-mono-2.png}
+	\includegraphics[scale=0.2]{images/cenario-mono-3.png}
+	\includegraphics[scale=0.2]{images/cenario-mono-4.png}
+	\caption{Mesmo cenário adicionando velocidade à bola}
+\end{figure}
+
+...
+
+\subsection{Outros exemplos}
 
 \begin{figure}[H]
 	\centering

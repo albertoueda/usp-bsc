@@ -24,7 +24,7 @@
 			    :y => 100,
 			    :v => vec2(20.0, 0.0),
 			    :moment_inertia => 3000000,
-			    :elasticity => 0.2,
+			    :elasticity => 0.0,
 			    :friction => 0.0,
 			    :zorder => 100,
 			    :collision_type => :undefined0,
