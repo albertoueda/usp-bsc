@@ -3,7 +3,7 @@ As animações de diferentes tipos de ambientes físicos foram nossos primeiros 
 Além disso, como tínhamos em mente implementar um criador de cenários, a medida que implementávamos estas demonstrações extraíamos todo código relevante para classes auxiliares (TODO nome melhor?) que pudessem ser reutilizadas posteriormente. Atualmente, a classe {\tt physics.rb} contém grande parte deste código extraído. \\
 
 \begin{lstlisting}
-colocar codigo physics.rb
+colocar trecho de codigo physics.rb
 \end{lstlisting}
 
 \subsection{Descrição}
@@ -66,7 +66,7 @@ Tanto neste e em outros cenários há a função ''Raio-X'' (tecla 'd'), que mos
 
 Em \textit{Valleyball}, tentamos ilustrar o Princípio de Conservação da Energia Mecânica e a aplicação da força de atrito. Uma bola é lançada a uma certa altura do chão com velocidade vertical determinada aleatoriamente. Ela então desliza sobre um pequeno vale e dependendo da velocidade inicial ela pode: 1) voltar ao vale e perder velocidade até a situação de repouso; 2) cair em um buraco localizado próximo ao topo de uma montanha; ou 3) prosseguir seu movimento para fora do cenário. O que determina a situação resultante é a velocidade inicial da bola. A tecla de espaço reinicia a simulação com uma nova velocidade para a bola. \\
 
-Nesta demonstração utilizamos pela primeira vez o controle de velocidade da simulação. Dentro de alguns limites, o usuário pode alterar o tamanho do passo da simulação (seção \ref{discretizacao}), tornando a animação mais rápida ou mais lenta. \\
+Nesta demonstração utilizamos pela primeira vez o controle de velocidade da simulação. Dentro de alguns limites, o usuário pode alterar o tamanho do passo da simulação (seção \ref{discretizacao}), tornando a animação mais rápida ou mais lenta. Isso é útil, por exemplo, para acelerar alguma etapa da simulação cujos resultados sejam previsíveis ou pouco interessantes. \\
 
 \begin{figure}[H]
 \centering
@@ -85,20 +85,17 @@ Além de ser o único cenário de demonstração que possui interação com o \t
 \subsection{Visualização das animações}
 Para visualizar as animações descritas nesta seção, o aluno deve executar o seguinte comando:
 
-% [DIRETORIO_PHYSIMULATION]/Simulation]CIFRAO 
-\begin{verbatim}
-ruby main.rb demos
-\end{verbatim}
+\begin{Verbatim}[fontsize=\footnotesize]
+	$ cd <<DIR_PHYSIMULATION>>/Simulation
+	$ ruby main.rb demos
+\end{Verbatim}
 
-onde DIRETORIOPHYSIMULATION é o diretório em que o Physimulation foi instalado.
-
-Em seguida, deve escolher uma das animações listadas no programa e clicar em ''Iniciar''.
+onde {\tt\footnotesize DIR\_PHYSIMULATION} é o diretório em que o Physimulation foi instalado. Em seguida, deve escolher uma das animações listadas no programa e clicar em ''Iniciar''. Caso haja algum problema ao executar qualquer um dos comandos, verificar o conteúdo da seção \ref{instalacao}, "\nameref{instalacao}".
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.4]{images/demos-menu.png}
+	\includegraphics[scale=0.3]{images/demos-menu.png}
 	\caption{Menu de demonstrações}
-	\hspace{0.5cm}
 \end{figure}
 
 
