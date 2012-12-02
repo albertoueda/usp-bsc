@@ -1,7 +1,7 @@
 \subsection{Esquema de dependências}
 O Physimulation depende de três bibliotecas: Chipmunk, Gosu e Glade. O programa começa com a leitura de dados com a interface criada com o Glade. Após a leitura, 
 os dados lidos são convertidos em informações para que o Chipmunk possa processar e devolver o resultado da simulação. Os resultados das simulações são animadas 
-com o Gosu. Toda interação entre as bibliotecas é feito com a linguagem Ruby.
+com o Gosu. Toda interação entre as bibliotecas é feito com a linguagem Ruby. \\
 
 A figura 1 representa um resumo do esquema de dependências entre as bibliotecas e o fluxo da dados da simulação.
 
@@ -19,8 +19,9 @@ número é convertido de radianos para grau:
 
 \begin{lstlisting}[language=Ruby, caption=Conversão de radianos em graus]
   def graus = 3.14.radians_to_degrees
-\end{lstlisting}
+\end{lstlisting} 
 
+\ \\
 Ruby também permite ao programador alterar partes da própria linguagem, tornado-a flexível. Podemos alterar comportamentos de classes ou objetos 
 em tempo de execução. Um exemplo é listado no Código 2, onde adicionamos o método radians\_to\_degrees na classe Numeric: 
 
@@ -30,11 +31,12 @@ class Numeric
     self * 180 / Math::PI
     end
  end
-\end{lstlisting}
+\end{lstlisting} 
 
+\ \\
 Outro recurso interessante utilizado no Physimulation são blocos. Os Blocos podem ser anexados a qualquer método descrevendo como deve ser 
 o comportamento da execução deste método. O Código 3 mostra um exemplo do uso de blocos em Ruby. Neste exemplo, passamos um bloco ao método velocity\_func 
-par atualizar a velocidade do objeto em relação a força gravitacional da lua e da terra: 
+par atualizar a velocidade do objeto em relação a força gravitacional da lua e da terra:
 
 \begin{lstlisting}[language=Ruby, caption=RocketSimulation.rb]
     self.body.velocity_func { 
@@ -70,6 +72,7 @@ massa e momento de inércia pois não é influenciado por nenhuma força física
   @body.a = angulo
 \end{lstlisting} 
 
+\ \\
 Após a definição das propriedades físicas de um objeto, é necessário definir a forma do objeto para o Chipmunk tratar as colisões. No Chipmunk é 
 possível criar três formas primitivas: Segmentos, círculos e polígonos convexos. No Physimulation criamos as formas de acordo com os parâmetros enviados
 pela tela inicial. É necessário passar o corpo associado a forma no momento da criação. O código 5 mostra como são criados as formas no Physimulation:
@@ -92,8 +95,9 @@ pela tela inicial. É necessário passar o corpo associado a forma no momento da
       params[:vectors], 
       Vec2::ZERO)
   end
-\end{lstlisting}
+\end{lstlisting} 
 
+\ \\
 Após a criação do corpo e da forma, é preciso associá-los ao ambiente físico. Um ambiente físico é o espaço onde os objetos criados vão se interagir entre si. É 
 nele também que definimos propriedades como gravidade e amortecimento como mostra o Código 6:
 
@@ -103,6 +107,7 @@ nele também que definimos propriedades como gravidade e amortecimento como most
   $space.gravity = vec2(0.0, 5.0)
 \end{lstlisting}
 
+\ \\
 E finalmente, devemos passar um tempo pré-determinado para o Chipmunk realizar toda simulação de física necessária:
 
 \begin{lstlisting}[language=Ruby, caption=physics.rb]
@@ -129,6 +134,7 @@ class PhysicObject < Chingu::BasicGameObject
 end
 \end{lstlisting}
 
+\ \\
 A segunda classe é a PhysicWindow que é a janela da animação proprieamente dita.
 Os principais métodos são o método update e o draw. O método update chama o Chipmunk para realizar a simulação. Com a simulação finalizada, o método draw
 desenha na tela de animação todos os objetos com as posições atualizadas. 
@@ -144,7 +150,8 @@ class PhysicWindow < Chingu::Window
     @dt = 1.0 / 40.0
     @substeps = 6
 
-    @info_area = Chingu::Text.create("", :x => 300, :y => 30, :color => Gosu::Color::YELLOW)    
+    @info_area = Chingu::Text.create("", :x => 300, 
+	:y => 30, :color => Gosu::Color::YELLOW)    
     @feedbackMessage = ""
     TexPlay.set_options :caching => false
   end

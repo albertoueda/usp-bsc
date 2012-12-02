@@ -1,7 +1,4 @@
-A simulação no Chipmunk ocorre em intervalos de tempo, ou seja, precisamos indicar o tempo que os objetos vão interagir como vimos na seção 2. 
-Esse intervalo que passamos para o Chipmunk é o tempo de simulação. É preciso definir bem esse valor para que a simulação não fique muito rápido 
-ou muito lento. A escolha desse tempo parece trivial mas existem muitas implementações que indicam como definir esse tempo de simulação. Nas 
-próximas seções apresentaremos as implementações para tempo de simulação fixo e variável.
+A simulação no Chipmunk ocorre em intervalos de tempo, ou seja, precisamos indicar o tempo que os objetos vão interagir como vimos na seção 2.  Esse intervalo que passamos para o Chipmunk é o tempo de simulação. É preciso definir bem esse valor para que a simulação não fique muito rápida ou muito lenta. A escolha desse tempo parece trivial mas existem muitas implementações que indicam como definir esse tempo de simulação. Nas  próximas seções apresentaremos as implementações para tempo de simulação fixo e variável.
 
 \subsection{Fixo}
 
@@ -15,11 +12,8 @@ while (running) do
 end
 \end{lstlisting}
 
-Na maioria das simulações o código acima é o ideal. Se sua simulação coincidir com a taxa de atualização da animação (frame rate) 
-e ainda se o método \$space.step(@dt) não demorar mais do que 1/60 de um segundo, então a solução é perfeita. Mas no mundo real não sabemos
-o valor do display refresh rate. Por exemplo, a simulação em uma máquina lenta, não pode atualizar o frame rate em 60fps e tornar o seu 
-quadro de rápido o suficiente para apresentá-lo a 60fps. Nesse caso a simulação ficaria mais lenta. Para evitar estas situações podemos 
-implementar o tempo de simulação variável.
+\ \\
+Na maioria das simulações o código acima é o ideal. Se sua simulação coincidir com a taxa de atualização da animação (\textit{frame rate}) e ainda se o método \$space.step(@dt) não demorar mais do que 1/60 de um segundo, então a solução é perfeita (TODO perfeita é muito forte). Mas no mundo real não sabemos o valor do display \textit{refresh rate}. Por exemplo, a simulação em uma máquina lenta não pode atualizar o \textit{frame rate} em 60fps e tornar o seu quadro rápido o suficiente para apresentá-lo a 60fps. Nesse caso a simulação ficaria mais lenta. Para evitar estas situações podemos implementar o tempo de simulação variável.
 
 \subsection{Variável}
 
