@@ -21,7 +21,7 @@ número é convertido de radianos para grau:
   def graus = 3.14.radians_to_degrees
 \end{lstlisting}
 
-A linguagem também permite ao programador alterar partes da linguagem, tornado-a flexível. Podemos alterar comportamentos de classes ou objetos 
+Ruby também permite ao programador alterar partes da própria linguagem, tornado-a flexível. Podemos alterar comportamentos de classes ou objetos 
 em tempo de execução. Um exemplo é listado no Código 2, onde adicionamos o método radians\_to\_degrees na classe Numeric: 
 
 \begin{lstlisting}[language=Ruby, caption=physics.rb ]
@@ -54,7 +54,7 @@ Chipmunk é uma biblioteca física 2D escrita em C que permite criar objetos con
 objetos para simulação é preciso definir as propriedades físicas e a forma do objeto. Após a criação precisamos adicioná-la à um ambiente físico para podermos 
 iniciar a simulação.
 
-Para criar o objeto é necessário definir o corpo do dele. O corpo do objeto pode ser estático ou não. Um corpo estático é o corpo que não precisa de
+Para criar o objeto é necessário primeiro definir o corpo. O corpo do objeto pode ser estático ou não. Um corpo estático é o corpo que não precisa de
 massa e momento de inércia pois não é influenciado por nenhuma força física, se mantendo fixo no ambiente. Código 4 mostra como criar o corpo de um objeto:
 
 \begin{lstlisting}[language=Ruby, caption=physics.rb]

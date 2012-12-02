@@ -20,6 +20,7 @@ tmp
 *.log
 *.out
 *.toc
+*.orig
 
 # YARD artifacts
 .yardoc

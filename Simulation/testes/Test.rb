@@ -121,6 +121,16 @@ class TesteWindow < PhysicWindow
       @background_image.draw(0, 0, 0)
     end     
   end
+
+  def custom_setup
+    # Implementação opcional 
+  end
 end
 
-TesteWindow.new(800, 600).show
+Dir['ext/*.rb'].each do |source|
+  p eval(File.open(source).read)
+end
+
+window = TesteWindow.new 800, 600
+window.custom_setup
+window.show

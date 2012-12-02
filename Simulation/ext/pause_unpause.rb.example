@@ -1,0 +1,19 @@
+class TesteWindow < PhysicWindow
+  def custom_setup
+
+    default_input = self.input
+    self.input = {p: :pause_start}
+    self.input.merge! default_input
+  end
+
+  def pause_start
+    if @dt != 0
+      @old_dt = @dt
+      @dt = 0
+    else
+      @dt = @old_dt
+    end
+  end
+end
+
+
