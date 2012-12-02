@@ -1,6 +1,26 @@
-\subsection{Tempo de simulação}
+A simulação no Chipmunk ocorre em intervalos de tempo, ou seja, precisamos indicar o tempo que os objetos vão interagir como vimos na seção 2. 
+Esse intervalo que passamos para o Chipmunk é o tempo de simulação. É preciso definir bem esse valor para que a simulação não fique muito rápido 
+ou muito lento. A escolha desse tempo parece trivial mas existem muitas implementações que indicam como definir esse tempo de simulação. Nas 
+próximas seções apresentaremos as implementações para tempo de simulação fixo e variável.
 
-O Tempo de simulação é o tempo que passamos para o Chipmunk realizar a simulação. Esse tempo é de suma importância dependendo da finalidade da simulação, podendo 
-ser fixo ou variável. 
+\subsection{Fixo}
 
-TODO: Será que vale a pena? Pode ser um resumo só pra falar que estudamos
+A maneira simples é fixar o tempo de simulação, como por exemplo 1/60 de um segundo:
+
+\begin{lstlisting}[language=Ruby, caption=Implementação de tempo de simulação fixo]
+def @dt = 1/60
+
+while (running) do
+  $space.step(@dt)
+end
+\end{lstlisting}
+
+Na maioria das simulações o código acima é o ideal. Se sua simulação coincidir com a taxa de atualização da animação (frame rate) 
+e ainda se o método \$space.step(@dt) não demorar mais do que 1/60 de um segundo, então a solução é perfeita. Mas no mundo real não sabemos
+o valor do display refresh rate. Por exemplo, a simulação em uma máquina lenta, não pode atualizar o frame rate em 60fps e tornar o seu 
+quadro de rápido o suficiente para apresentá-lo a 60fps. Nesse caso a simulação ficaria mais lenta. Para evitar estas situações podemos 
+implementar o tempo de simulação variável.
+
+\subsection{Variável}
+
+Escrever
