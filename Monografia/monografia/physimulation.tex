@@ -53,7 +53,6 @@ Para executar o physimulation, o usuário deve executar no terminal:
 
 onde {\tt\footnotesize DIR\_PHYSIMULATION} é o diretório em que o Physimulation foi instalado. Novamente, caso haja algum problema ao executar qualquer um dos comandos, deve-se verificar o conteúdo da seção \ref{instalacao}, ''\nameref{instalacao}''. \\
 
-\newpage
 A seguir descrevemos os passos para criar este cenário:
 
 \begin{enumerate}
@@ -93,45 +92,88 @@ Podemos fazer uma pequena modificação a este cenário e acrescentar uma veloci
 	\caption{Mesmo cenário adicionando velocidade à bola}
 \end{figure}
 
-...
+Há uma outra forma de iniciar uma simulação no Physimulation: utilizando um arquivo de configuração existente, com todas as propriedades dos objetos e do ambiente físico definidas. Para carregar um cenário, é necessário que o usuário use o botão no canto superior direito da interface, como mostrado na figura abaixo. \\
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.4]{images/physimulation-loading.png}
+	\caption{Carregando cenários}
+\end{figure}
+
+Ao final desta seção há mais detalhes sobre o armazenamento e carregamento de cenários físicos.
 
 \subsection{Outros exemplos}
+
+Para o aluno ou professor que deseje aprofundar seus conhecimentos sobre a ferramenta, recomendamos a realização de vários testes com o mesmo cenário gerado, com pequenas alterações de valores entre cada teste. É importante fixar certas propriedades e observar os resultados obtidos, ao invés de modificar muitos atributos de uma só vez. \\
+
+Abaixo há uma lista com alguns cenários criados pelo Physimulation. Todos estão disponíveis no código fonte do projeto. \\
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.3]{images/cenario-two-balls.png}
 	\caption{Cenário 1}
-	\hspace{0.5cm}
 \end{figure}  
 
-  \begin{figure}[H]
-	  \centering
-    \includegraphics[scale=0.4]{images/cenario-todos.png}
-	  \caption{Cenario 2}
-  \end{figure}
+No cenário 1, dois segmentos são utilizados como rampa para duas bolas. Embora pareçam idênticas, a rampa da esquerda tem um coeficiente de elasticidade superior ao da direita, o que faz uma das bolas quicar para outra rampa. Já no cenário 2, abaixo, é possível observar as quatro primitivas do Physimulation, sendo que para cada tipo há um objeto fixo e outro móvel.  
 
-  \begin{figure}[H]
-	  \centering
-    \includegraphics[scale=0.4]{images/cenario-todosE.png}
-	  \caption{Cenario 2 - Raio-X}
-  \end{figure}
-
-  \begin{figure}[H]
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.4]{images/cenario-todos.png}
+\end{figure}
+\begin{figure}[H]
 	\centering
-    \includegraphics[scale=0.4]{images/cenario-gravitacao-2.png}
-    \includegraphics[scale=0.4]{images/cenario-gravitacao.png}
-	\caption{Cenário Gravitacão 1}
-  \end{figure}
+	\includegraphics[scale=0.4]{images/cenario-todosE.png}
+	\caption{Cenário 2}
+\end{figure}
 
-  \begin{figure}[H]
+Os cenários abaixo levam em conta a atração dos corpos gravitacionais entre si e são simulações de movimentos orbitais. Para criar animações deste tipo, nosso orientador João Kerr nos sugeriu posicionar os corpos gravitacionais ao longo de um eixo imaginário; em seguida, adicionar aos corpos uma velocidade perpendicular a este eixo, variando o módulo conforme os resultados observados. Esta dica foi bastante útil para a construções destes cenários.
+
+\begin{figure}[H]
 	\centering
-    \includegraphics[scale=0.4]{images/cenario-gravitacao-4.png}
-    \includegraphics[scale=0.4]{images/cenario-gravitacao-3.png}
-	\caption{Cenário Gravitacão 2}
-  \end{figure}
+	\includegraphics[scale=0.2]{images/cenario-gravitacao-2.png}
+	\includegraphics[scale=0.2]{images/cenario-gravitacao.png}
+	\caption{Cenário com Gravitacão 1}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.2]{images/cenario-gravitacao-4.png}
+	\includegraphics[scale=0.2]{images/cenario-gravitacao-3.png}
+	\caption{Cenário com Gravitacão 2}
+\end{figure}
+
+No cenário a seguir há duas órbitas bem diferenciadas: das duas esferas menores em torno da maior e da esfera de menor tamanho em torno da esfera de tamanho intermediário.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.4]{images/gravitacao-sol-lua.png}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.4]{images/gravitacao-sol-luaE.png}
+	\caption{Cenário com Gravitacão 3}
+\end{figure}
 
 \subsection{Arquivos de configuração}
-As propriedades físicas do cenário e de cada objeto ficam guardadas em arquivos *.config e podem ser modificadas...
+As propriedades físicas do cenário e de cada objeto ficam guardadas em um arquivo {\tt *.rb} que pode ser modificado diretamente, sem o uso do Physimulation. Observar e entender estes arquivos é importante para que o aluno do BCC entenda o funcionamento do programa como um todo. \\
+
+O processo de animação do Physimulation divide-se basicamente em três etapas: 1) O preenchimento das propriedades físicas dos objetos no criador de cenários; 2) A geração do arquivo {\tt config\_gerado.rb}; 3) A leitura deste arquivo pela classe que irá executar de fato a simulação ({\tt Test.rb}). \\
+
+Ao alterar o arquivo de configuração manualmente e carregá-lo pelo Physimulation, o usuário estará partindo diretamente para a terceira etapa do processo, tornando-o mais rápido.
+Nota: Atualmente, esta é a única forma de editar um arquivo de configuração. (TODO precisa?). \\
+
+Para guardar no sistema um arquivo de configuração, basta copiar o arquivo gerado para outro com um nome diferente, para que o arquivo não seja sobrescrito. Por exemplo, para guardar a última configuração utilizada em um arquivo de nome ''meu\_config.rb'', o usuário pode executar o seguinte comando:
+
+\begin{Verbatim}[fontsize=\footnotesize]
+	$ cd <<DIR_PHYSIMULATION>>/Simulation/testes/config
+	$ cp config_gerado.rb meu_config.rb
+\end{Verbatim}
+
+Abaixo um exemplo de arquivo de configuração:
+
+\begin{Verbatim}
+(TODO colocar exemplo de config.rb)
+\end{Verbatim}
 
 \subsection{Pontos de modificação}
 Apesar de utilizar o Chipmunk, o Physimulation possui pontos do código que podem ser modificados de acordo com o comportamento físico que deseja-se obter, o que pode ser interessante para o aluno de computação. \\
