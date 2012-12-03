@@ -5,6 +5,7 @@ require 'scanf'
 
 require_relative '../../lib/physics'
 
+
 class Circle < PhysicObject
 
     def validate_position
@@ -129,20 +130,6 @@ def config_objects
     }] "
 
   objects
-end
-
-def config_segments
-  segments = ""
-  
-  segments += "{
-      :x => 50,
-      :y => #{@yE + 20},
-      :thickness => 1,
-      :vectors => [vec2(-1, 0), vec2(1, 0)],
-      :static => true
-  }"
-
-  segments
 end
 
 def read_file_input
