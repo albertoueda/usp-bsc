@@ -1,9 +1,28 @@
 As animações de diferentes tipos de ambientes físicos foram nossos primeiros resultados obtidos. Após desenhar alguns cenários simples que ilustravam tópicos da disciplina de física, como descrito na seção \ref{atividades}, partimos para implementação. Nosso principal objetivo nesta etapa era compreender melhor o funcionamento do Chipmunk: seus conceitos, seus recursos e suas limitações. \\
 
-Além disso, como tínhamos em mente implementar um criador de cenários, a medida que implementávamos estas demonstrações extraíamos todo código relevante para classes auxiliares (TODO nome melhor?) que pudessem ser reutilizadas posteriormente. Atualmente, a classe {\tt physics.rb} contém grande parte deste código extraído. \\
+Além disso, como tínhamos em mente implementar um criador de cenários, a medida que implementávamos estas demonstrações extraíamos todo código relevante para classes auxiliares que pudessem ser reutilizadas posteriormente. Atualmente, a classe {\tt physics.rb} contém grande parte deste código extraído. \\
 
-\begin{lstlisting}
-colocar trecho de codigo physics.rb
+\begin{lstlisting}[language=Ruby, caption=Trecho de código do physics.rb]
+# @param [Hash] options : mapa com as opcoes de 
+#           configuracao do objeto fisico.
+def setup_trait(options = {})
+  self.color =  options[:color] || Gosu::Color::WHITE
+  self.zorder = options[:zorder] || 100
+  self.factor = options[:factor] || options[:scale] 
+    || $window.factor || 1.0
+  @visible = true   unless options[:visible] == false
+
+  if options[:static]
+    @body = CP::StaticBody.new
+  else
+    @body = CP::Body.new(options[:mass], 
+        options[:moment_inertia])
+    @body.v = options[:v] if options[:v]  
+    @body.w = options[:rotational_velocity] || 0
+    @body.add_to_space($space)
+  end
+  (...)
+end
 \end{lstlisting}
 
 \subsection{Descrição}
@@ -48,7 +67,7 @@ Por motivos de simulação, não reproduzimos os valores reais de massa de ambos
 	\caption{Lunar Landing}
 \end{figure}
 
-Baseado no jogo \textit{Lander} (TODO url na bib), o objetivo é aterrisar um foguete em uma superfície plana com uma velocidade bem pequena. Se o usuário não conseguir diminuir adequadamente a velocidade antes de tocar a superfície, o foguete explode. Em caso de sucesso, ele pousa e uma mensagem de sucesso é exibida. As setas do teclado movimentam o foguete. \\
+Baseado no jogo \textit{Lander}, o objetivo é aterrisar um foguete em uma superfície plana com uma velocidade bem pequena. Se o usuário não conseguir diminuir adequadamente a velocidade antes de tocar a superfície, o foguete explode. Em caso de sucesso, ele pousa e uma mensagem de sucesso é exibida. As setas do teclado movimentam o foguete. \\
 
 Com a implementação desta demonstração utilizamos em conjunto o código de detecção de colisão do \textit{Cannonball} com a manipulação de objetos de \textit{Rocket Simulation}. \\
 

@@ -42,7 +42,7 @@ Para mostrar um caso de uso do simulador, vamos utilizar a figura abaixo como re
   \caption{Objetos estáticos}
 \end{figure}
 
-Nesta imagem, há quatro blocos suspensos no ar e uma montanha verde com o formato parecido com um triângulo, além do personagem principal que está em cima de um dos blocos. Para esta simulação, faremos a seguinte correlação (TODO ?): os blocos suspensos serão retângulos do Physimulation, a montanha verde um triângulo e o personagem de pé uma pequena bola. \\
+Nesta imagem, há quatro blocos suspensos no ar e uma montanha verde com o formato parecido com um triângulo, além do personagem principal que está em cima de um dos blocos. Para esta simulação, faremos a seguinte correlação: os blocos suspensos serão retângulos do Physimulation, a montanha verde um triângulo e o personagem de pé uma pequena bola. \\
 
 Para executar o physimulation, o usuário deve executar no terminal:
 
@@ -170,16 +170,68 @@ Para guardar no sistema um arquivo de configuração, basta copiar o arquivo ger
 
 Abaixo um exemplo de arquivo de configuração:
 
-\begin{Verbatim}
-(TODO colocar exemplo de config.rb)
-\end{Verbatim}
+
+\begin{lstlisting}[language=Ruby, caption=Exemplo de arquivo config.rb]
+module TestObjectConfig
+
+  class Space
+    attr_accessor :gravity, :damping, 
+                       :limited_space, :object_gravity
+
+    def initialize
+      @gravity = vec2(0, 100)
+      @damping = 1.0
+      @limited_space = true
+      @object_gravity = false
+    end
+
+  end
+
+  Circles = [{
+    :mass => 100.0,
+    :radius => 20,
+    :factor_x => 2.0, 
+    :factor_y => 2.0,
+    :x => 200,
+    :y => 100,
+    :v => vec2(0.0, 0.0),
+    :moment_inertia => 100000,
+    :elasticity => 1.0,
+    :friction => 1.0,
+    :zorder => 100,
+    :collision_type => :undefined0,
+    :image_name => 'cannonball2.png',
+    :static => false
+  }]
+
+  Segments = [{
+    :x => 200,
+    :y => 400,
+    :thickness => 1,
+    :angle => 0.0,
+    :vectors => [vec2(-150, -100), 
+                    vec2(150, 100)],
+    :elasticity => 1.0,
+    :friction => 0.0,
+    :zorder => 100,
+    :collision_type => :undefined0,
+    :image_name => 'catapult-b.png',
+    :static => true
+  }]
+
+  Rectangles = []
+
+  Triangles = []
+
+  end
+\end{lstlisting}
 
 \subsection{Pontos de modificação}
+
+(seção em construção)
+
 Apesar de utilizar o Chipmunk, o Physimulation possui pontos do código que podem ser modificados de acordo com o comportamento físico que deseja-se obter, o que pode ser interessante para o aluno de computação. \\
 
-Tais pontos são... \\
-
-Além disso, no próprio Chipmunk há trechos de código que o aluno poderá modificar e observar rapidamente mudanças na simulação. Exemplos: ...
-
+Falar sobre o custom\_setup. \\
 
 
