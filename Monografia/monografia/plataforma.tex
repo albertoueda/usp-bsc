@@ -13,17 +13,18 @@ A figura 1 representa um resumo do esquema de dependências entre as bibliotecas
 Nas seções seguintes mostraremos algumas características das ferramentas utilizadas no Physimulation.
 
 \subsection{Ruby}
-É a linguagem de programação utilizada no Physimulation para integrar todas as bibliotecas.
-Ruby é puramente orientado a objetos, ou seja, tudo é objeto em ruby. O Código 1 apresenta um exemplo de um método dos números, criado no Physimulation, onde o 
+É a linguagem de programação utilizada no Physimulation para integrar todas as bibliotecas.\\
+
+Ruby possui uma sintaxe simples e direta e é puramente orientado a objetos, ou seja, tudo é objeto em ruby (TODO citar Caelum), até mesmo os tipos primitivos. O Código 1 apresenta um exemplo de um método dos números, criado no Physimulation, onde o 
 número é convertido de radianos para grau:
 
 \begin{lstlisting}[language=Ruby, caption=Conversão de radianos em graus]
   def graus = 3.14.radians_to_degrees
 \end{lstlisting} 
 
-\ \\
-Ruby também permite ao programador alterar partes da própria linguagem, tornado-a flexível. Podemos alterar comportamentos de classes ou objetos 
-em tempo de execução. Um exemplo é listado no Código 2, onde adicionamos o método radians\_to\_degrees na classe Numeric: 
+\ \\ 
+\hspace*{14pt} Ruby também permite ao programador alterar partes da própria linguagem, tornado-a muito flexível. Podemos alterar comportamentos de classes ou objetos 
+em tempo de execução. Um exemplo é listado no Código 2, onde adicionamos o método {\tt radians\_to\_degrees} na classe {\tt Numeric}: 
 
 \begin{lstlisting}[language=Ruby, caption=physics.rb ]
 class Numeric
@@ -34,9 +35,8 @@ class Numeric
 \end{lstlisting} 
 
 \ \\
-Outro recurso interessante utilizado no Physimulation são blocos. Os Blocos podem ser anexados a qualquer método descrevendo como deve ser 
-o comportamento da execução deste método. O Código 3 mostra um exemplo do uso de blocos em Ruby. Neste exemplo, passamos um bloco ao método velocity\_func 
-par atualizar a velocidade do objeto em relação a força gravitacional da lua e da terra:
+\hspace*{14pt} Outro recurso interessante utilizado no Physimulation são os blocos de código. Os blocos podem ser anexados a qualquer método descrevendo como deve ser 
+o comportamento da execução deste método. O Código 3 mostra um exemplo do uso de blocos em Ruby. Neste exemplo, passamos um bloco ao método {\tt velocity\_func} para atualizar a velocidade do objeto em relação a força gravitacional da Lua e da Terra:
 
 \begin{lstlisting}[language=Ruby, caption=RocketSimulation.rb]
     self.body.velocity_func { 
@@ -52,12 +52,12 @@ par atualizar a velocidade do objeto em relação a força gravitacional da lua 
 \end{lstlisting}
 
 \subsection{Simulação com Chipmunk}
-Chipmunk é uma biblioteca física 2D escrita em C que permite criar objetos convexos e segmentos que se interagem em um ambiente físico. Para criar os 
-objetos para simulação é preciso definir as propriedades físicas e a forma do objeto. Após a criação precisamos adicioná-la à um ambiente físico para podermos 
-iniciar a simulação.
+Chipmunk é uma biblioteca física 2D escrita em C que permite a criação de objetos convexos e segmentos que interagem entre si em um ambiente físico. Para criar os 
+objetos para simulação é preciso definir as propriedades físicas do corpo ({\tt body}) e a forma do objeto ({\tt shape}) . Após a criação precisamos adicioná-la à um ambiente físico ({\tt space}) para que possamos
+iniciar a simulação.\\
 
 Para criar o objeto é necessário primeiro definir o corpo. O corpo do objeto pode ser estático ou não. Um corpo estático é o corpo que não precisa de
-massa e momento de inércia pois não é influenciado por nenhuma força física, se mantendo fixo no ambiente. Código 4 mostra como criar o corpo de um objeto:
+massa e momento de inércia pois não é influenciado por nenhuma força física, mantendo-se fixo no ambiente. A listagem do Código 4 mostra como criar o corpo de um objeto:
 
 \begin{lstlisting}[language=Ruby, caption=physics.rb]
   if options[:static]
@@ -73,9 +73,11 @@ massa e momento de inércia pois não é influenciado por nenhuma força física
 \end{lstlisting} 
 
 \ \\
-Após a definição das propriedades físicas de um objeto, é necessário definir a forma do objeto para o Chipmunk tratar as colisões. No Chipmunk é 
-possível criar três formas primitivas: Segmentos, círculos e polígonos convexos. No Physimulation criamos as formas de acordo com os parâmetros enviados
-pela tela inicial. É necessário passar o corpo associado a forma no momento da criação. O código 5 mostra como são criados as formas no Physimulation:
+\hspace*{14pt} Após a definição das propriedades físicas de um objeto, é necessário definir a forma do objeto para o Chipmunk tratar as colisões. No Chipmunk é 
+possível criar três formas primitivas: segmentos, círculos e polígonos convexos. No Physimulation criamos as formas de acordo com os parâmetros enviados
+pela tela inicial. É necessário passar o corpo associado a forma no momento da criação. O Código 5 mostra como são criados as formas no Physimulation:
+
+\newpage
 
 \begin{lstlisting}[language=Ruby, caption=physics.rb]
   def self.factory(body, params = {})
@@ -98,8 +100,8 @@ pela tela inicial. É necessário passar o corpo associado a forma no momento da
 \end{lstlisting} 
 
 \ \\
-Após a criação do corpo e da forma, é preciso associá-los ao ambiente físico. Um ambiente físico é o espaço onde os objetos criados vão se interagir. É 
-nele também que definimos propriedades como gravidade e amortecimento como mostra o Código 6:
+\hspace*{14pt} Após a criação do corpo e da forma, é preciso associá-los ao ambiente físico. Um ambiente físico é o espaço onde os objetos criados vão se interagir. É 
+nele também que definimos propriedades como gravidade e amortecimento, como mostra o Código 6:
 
 \begin{lstlisting}[language=Ruby, caption=physics.rb]
   @shape.add_to_space($space)
@@ -108,37 +110,37 @@ nele também que definimos propriedades como gravidade e amortecimento como most
 \end{lstlisting}
 
 \ \\
-E finalmente, devemos passar um tempo pré-determinado para o Chipmunk realizar toda simulação de física necessária:
+\hspace*{14pt} E finalmente, devemos passar um intervalo de tempo pré-determinado para o Chipmunk realizar toda simulação de física necessária:
 
 \begin{lstlisting}[language=Ruby, caption=physics.rb]
   $space.step(@dt)
 \end{lstlisting}
 
+\newpage
 \subsection{Animação com Gosu}
-A animação é feita com o Gosu, uma biblioteca para desenvolvimento de jogos em 2D em Ruby e C++. Fornece somente as seguintes funcionalidades:
+A animação é feita com o Gosu, uma biblioteca para desenvolvimento de jogos em 2D em Ruby e C++. Fornece as seguintes funcionalidades:
 \begin{itemize}
-  \item Criação de uma janela com um laço principal e callbacks
-  \item Criação de textos e imagens 2D
-  \item Som e música em vários formatos
-  \item Tratamento de eventos de entrada de teclado e mouse
+  \item Criação de uma janela com um laço principal e callbacks;
+  \item Criação de textos e imagens 2D;
+  \item Som e música em vários formatos;
+  \item Tratamento de eventos de entrada de teclado e mouse.
 \end{itemize}
 
-No Physimulation existem duas classes principais para a criação de animação. A primeira é a classe PhysicObject que é uma representação de um objeto do
-Chipmunk. Então qualquer objeto em uma animação e que interage fisicamente com outros objetos é uma instância do PhysicObjetc. As propriedades do corpo e da 
-forma do objetos estão nesta classe.
+No Physimulation existem duas classes principais para a criação de animação. A primeira é a classe {\tt PhysicObject} que é uma representação de um objeto do
+Chipmunk. Assim, qualquer objeto em uma animação que irá interagir fisicamente com outros objetos deverá ser uma instância do {\tt PhysicObject}. Tanto as propriedades do corpo quanto da forma dos objetos estão nesta classe.
 
 \begin{lstlisting}[language=Ruby, caption=physics.rb]
 class PhysicObject < Chingu::BasicGameObject
-  # Adiciona informacoess do corpo e da forma.
+  # Adiciona informacoes do corpo e da forma.
   trait :physics
 end
 \end{lstlisting}
 
 \ \\
-A segunda classe é a PhysicWindow que é a janela da animação proprieamente dita.
-Os principais métodos são o método update e o draw. O método update chama o Chipmunk para realizar a simulação. Com a simulação finalizada, o método draw
-desenha na tela de animação todos os objetos com as posições atualizadas. 
+\hspace*{14pt} A segunda classe é a {\tt PhysicWindow}, que é a janela da animação propriamente dita.
+Os principais métodos desta classe são o \textit{update} e o \textit{draw}. O método \textit{update} chama o Chipmunk para realizar a simulação. Com a simulação finalizada, o método \textit{draw} desenha na tela de animação todos os objetos com as posições atualizadas. 
 
+\newpage
 \begin{lstlisting}[language=Ruby, caption=physics.rb]
 class PhysicWindow < Chingu::Window
 
@@ -173,8 +175,9 @@ end
 Glade é uma ferramenta que facilita o desenvolvimento de interfaces baseado no GTK+. Ela é independente de linguagem de programação
 e não produz código para eventos, como um clique de botão, mas sim um arquivo XML. Esse arquivo XML é aproveitado pelo Visual Ruby, uma ferramenta que simplifica 
 o processo de criação de janelas baseadas em GTK+ e é completamente integrado com Glade.
-Para começar a utilizar, basta criar um arquivo .rb que carrega o arquivo xml do Glade:
+Para começar a utilizar, basta criar um arquivo {\tt .rb} que carrega o arquivo XML do Glade:
 
+\newpage
 \begin{lstlisting}[language=Ruby, caption=simulation.rb]
 class Simulation
   include GladeUI
