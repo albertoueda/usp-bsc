@@ -98,7 +98,7 @@ pela tela inicial. É necessário passar o corpo associado a forma no momento da
 \end{lstlisting} 
 
 \ \\
-Após a criação do corpo e da forma, é preciso associá-los ao ambiente físico. Um ambiente físico é o espaço onde os objetos criados vão se interagir entre si. É 
+Após a criação do corpo e da forma, é preciso associá-los ao ambiente físico. Um ambiente físico é o espaço onde os objetos criados vão se interagir. É 
 nele também que definimos propriedades como gravidade e amortecimento como mostra o Código 6:
 
 \begin{lstlisting}[language=Ruby, caption=physics.rb]
@@ -173,8 +173,21 @@ end
 Glade é uma ferramenta que facilita o desenvolvimento de interfaces baseado no GTK+. Ela é independente de linguagem de programação
 e não produz código para eventos, como um clique de botão, mas sim um arquivo XML. Esse arquivo XML é aproveitado pelo Visual Ruby, uma ferramenta que simplifica 
 o processo de criação de janelas baseadas em GTK+ e é completamente integrado com Glade.
+Para começar a utilizar, basta criar um arquivo .rb que carrega o arquivo xml do Glade:
 
-\begin{figure}[!htbp]
-  \includegraphics[scale=0.5]{telaInicial.png}
-  \caption{Tela inicial do Physimulation}
-\end{figure}
+\begin{lstlisting}[language=Ruby, caption=simulation.rb]
+class Simulation
+  include GladeUI
+
+  def show
+    # Carrega o arquivo xml
+    load_glade(__FILE__)
+    # Disponibiliza as propriedades definidas no 
+    # xml em Ruby
+    set_glade_all
+    # Mostra a interface criada
+    show_window
+   end
+end
+\end{lstlisting}
+

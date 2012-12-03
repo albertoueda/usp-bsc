@@ -19,7 +19,7 @@ end
 Na maioria das simulações o código acima é o ideal. Se sua simulação coincidir com a taxa de atualização de quadro (frame rate) 
 e ainda se o método \$space.step(@dt) não demorar mais do que 1/60 de um segundo, então a solução é perfeita. Mas no mundo real não sabemos
 o valor da taxa de atualização do quadro. Por exemplo, a execução de uma simulação em uma máquina lenta que não pode atualizar os quadros em 60 fps 
-pode deixar a simulação mais lenta ou mais rápida. Uma solução para evitar esse problema existe o tempo de simulação variável.
+pode deixar a simulação mais lenta ou mais rápida. Uma solução para evitar esse problema é o tempo de simulação variável.
 
 \subsection{Variável}
 
@@ -42,7 +42,7 @@ A solução parece simples e faz sentido. Em um computador com taxa de atualiza�
 Mas existe um problema com essa abordagem. O problema é que a simulação não garante resultados corretos para todos os valores de tempo de simulação. 
 Dependendo do valor do tempo de simulação e da velocidade dos objetos, podemos observar objetos atravessando paredes ou outros objetos.
 
-\subsection{Conclusão}
+\subsection{Tempo de Simulação no Physimulation}
 
 Muitos estudos mostram que tempo de simulação fixo é indicado para simulações físicas e tempo de simulação variável para jogos, ou seja, se a animação for 
 importante. No Physimulation tanto a simulação quanto a animação são importantes mas o tempo de simulação fixo foi suficiente pois não afetou muito a animação.
