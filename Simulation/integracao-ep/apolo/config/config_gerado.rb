@@ -13,7 +13,7 @@
       :center_y => 1.0,
       :x => 200.0,
       :y => 140.0,
-      :v => vec2(80.0, 25.0),
+      :v => vec2(60.0, 0.0),
       :moment_inertia => 100000,
       :collision_type => :nave,
       :image_name => 'rocket.png',

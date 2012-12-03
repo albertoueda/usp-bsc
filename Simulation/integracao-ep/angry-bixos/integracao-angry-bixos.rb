@@ -31,9 +31,14 @@ class AngryBixosIntegrationWindow < PhysicWindow
 
     @space_simulation = Config::Space.new
     $space.gravity = @space_simulation.gravity
-    $draw_segments = false
 
+    @font = Gosu::Font.new(self, Gosu::default_font_name, 20)
+    @path_points = []
+    @path_limit = 0;
+
+    $draw_segments = false
     @circles = []
+    
     create_objects
 
     $space.add_collision_func(:bixo, :alvo) do |bixo_shape, alvo_shape| 
@@ -59,6 +64,11 @@ class AngryBixosIntegrationWindow < PhysicWindow
     @substeps.times do
       super
     end
+    
+    @path_limit +=1 
+    if (@path_limit % 5 == 0)
+      @path_points << CP::Vec2.new(@circles[0].shape.body.p.x, @circles[0].shape.body.p.y)
+    end
 
     close if $success || ! @circles[0].validate_position
   end
@@ -66,6 +76,10 @@ class AngryBixosIntegrationWindow < PhysicWindow
   def draw
     super
     @background_image.draw(0, 0, 0) if not $draw_segments
+
+    @path_points.each do |path_point| 
+      @font.draw(".", path_point.x, path_point.y, 0, 1.0, 1.0, 0xffffffff)
+    end
   end
 end
 
