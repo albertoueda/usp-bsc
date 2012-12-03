@@ -1,6 +1,62 @@
-Passos para instalação das bibliotecas: ruby, chipmunk, gosu, chingu, etc.
+\subsection{RVM - Ruby Version Manager}
 
-Falar do warning do próprio chipmunk:
-gems/ruby-1.9.3-p286/gems/chipmunk-5.3.4.5/lib/chipmunk.rb:6: Use RbConfig instead of obsolete and deprecated Config
+RVM (Ruby Version Manager) é um gerenciador de versões de Ruby. 
 
-(Talvez seja um apêndice)
+\begin{enumerate}
+\item Baixar e instalar o script do RVM.
+\begin{verbatim}
+$ curl -L https://get.rvm.io | bash -s stable
+\end{verbatim}
+\item Definir variáveis de ambiente.
+\begin{verbatim}
+$ source ~/.rvm/scripts/rvm
+\end{verbatim}
+\item Verificar se o RVM foi instalado corretamente.
+\begin{verbatim}
+$ type rvm | head -n 1
+$ rvm is a function
+\end{verbatim}
+\end{enumerate}
+
+\subsection{Ruby 1.9.3}
+
+A versão 1.9.3 é utilizada pelo Physimulation.
+
+\begin{enumerate}
+\item Instalar o Ruby 1.9.3.
+\begin{verbatim}
+$ rvm install 1.9.3
+\end{verbatim}
+\item Verificar as versões instaladas do Ruby
+\begin{verbatim}
+$ rvm list
+\end{verbatim}
+\item Definir a versão do Ruby
+\begin{verbatim}
+$ rvm use 1.9.3
+\end{verbatim}
+\end{enumerate}
+
+\subsection{Dependências do simulador}
+
+Instalação das dependências do Physimulation.
+
+\begin{enumerate}
+\item Chipmunk
+\begin{verbatim}
+$ gem install chipmunk
+\end{verbatim}
+\item Gosu
+\begin{verbatim}
+$ gem install gosu
+\end{verbatim}
+\item Chingu
+\begin{verbatim}
+$ gem install chingu
+\end{verbatim}
+\item Visual Ruby
+\begin{verbatim}
+$ gem install visualruby
+\end{verbatim}
+\end{enumerate}
+
