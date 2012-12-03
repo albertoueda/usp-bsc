@@ -15,7 +15,7 @@ Nas seções seguintes mostraremos algumas características das ferramentas util
 \subsection{Ruby}
 É a linguagem de programação utilizada no Physimulation para integrar todas as bibliotecas.\\
 
-Ruby possui uma sintaxe simples e direta e é puramente orientado a objetos, ou seja, tudo é objeto em rubym, até mesmo os tipos primitivos. O Código 1 apresenta um exemplo de um método dos números, criado no Physimulation, onde o 
+Ruby possui uma sintaxe simples e direta e é puramente orientado a objetos, ou seja, tudo é objeto em ruby, até mesmo os tipos primitivos. TODO O Código 1 apresenta um exemplo de um método dos números, criado no Physimulation, onde o 
 número é convertido de radianos para grau:
 
 \begin{lstlisting}[language=Ruby, caption=Conversão de radianos em graus]
@@ -53,7 +53,7 @@ o comportamento da execução deste método. O Código 3 mostra um exemplo do us
 
 \subsection{Simulação com Chipmunk}
 Chipmunk é uma biblioteca física 2D escrita em C que permite a criação de objetos convexos e segmentos que interagem entre si em um ambiente físico. Para criar os 
-objetos para simulação é preciso definir as propriedades físicas do corpo ({\tt body}) e a forma do objeto ({\tt shape}) . Após a criação precisamos adicioná-la à um ambiente físico ({\tt space}) para que possamos
+objetos para simulação é preciso definir as propriedades físicas do corpo ({\tt body}) e a forma do objeto ({\tt shape}) . Após a criação do objeto precisamos adicioná-lo a um ambiente físico ({\tt space}) para que possamos
 iniciar a simulação.\\
 
 Para criar o objeto é necessário primeiro definir o corpo. O corpo do objeto pode ser estático ou não. Um corpo estático é o corpo que não precisa de
@@ -75,7 +75,7 @@ massa e momento de inércia pois não é influenciado por nenhuma força física
 \ \\
 \hspace*{14pt} Após a definição das propriedades físicas de um objeto, é necessário definir a forma do objeto para o Chipmunk tratar as colisões. No Chipmunk é 
 possível criar três formas primitivas: segmentos, círculos e polígonos convexos. No Physimulation criamos as formas de acordo com os parâmetros enviados
-pela tela inicial. É necessário passar o corpo associado a forma no momento da criação. O Código 5 mostra como são criados as formas no Physimulation:
+pela tela inicial. É necessário passar o corpo associado à forma no momento da criação. O Código 5 mostra como são criadas as formas no Physimulation:
 
 \newpage
 

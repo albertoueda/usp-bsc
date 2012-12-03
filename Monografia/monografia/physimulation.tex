@@ -20,7 +20,7 @@ Além de determinar as propriedades de cada objeto, há a possibilidade do usuá
 
 \begin{itemize}
 	\item Gravidade: um vetor na forma (x, y) representando a gravidade do espaço;
-	\item Coeficiente de Amortecimento: Porcentagem que representa a velocidade final de um objeto em relação a velocidade inicial, em um passo da simulação. Por exemplo: com um amortecimento de valor 0.9, todos os objetos perderão 10\% de suas velocidades a cada passo da simulação;
+	\item Coeficiente de Amortecimento: porcentagem que representa a velocidade final de um objeto em relação a velocidade inicial, em um passo da simulação. Por exemplo: com um amortecimento de valor 0.9, todos os objetos perderão 10\% de suas velocidades a cada passo da simulação;
 	\item Gravitação Pontual: se for selecionada, o simulador irá considerar a atração gravitacional entre os objetos da tela. Útil para criar cenários com movimentos orbitais;
 	\item Espaço Limitado: se for selecionada, o simulador irá construir quatro segmentos que limitarão o espaço da simulação para o espaço visível da tela.
 \end{itemize} 
@@ -51,7 +51,7 @@ Para executar o physimulation, o usuário deve executar no terminal:
 	$ ruby main.rb
 \end{Verbatim}
 
-onde {\tt\footnotesize DIR\_PHYSIMULATION} é o diretório em que o Physimulation foi instalado. Novamente, caso haja algum problema ao executar qualquer um dos comandos, deve-se verificar o conteúdo da seção \ref{instalacao}, ''\nameref{instalacao}''. \\
+\noindent onde {\tt\footnotesize DIR\_PHYSIMULATION} é o diretório em que o Physimulation foi instalado. Novamente, caso haja algum problema ao executar qualquer um dos comandos, deve-se verificar o conteúdo da seção \ref{instalacao}, ''\nameref{instalacao}''. \\
 
 A seguir descrevemos os passos para criar este cenário:
 
@@ -126,7 +126,7 @@ No cenário 1, dois segmentos são utilizados como rampa para duas bolas. Embora
 	\caption{Cenário 2}
 \end{figure}
 
-Os cenários abaixo levam em conta a atração dos corpos gravitacionais entre si e são simulações de movimentos orbitais. Para criar animações deste tipo, nosso orientador João Kerr nos sugeriu posicionar os corpos gravitacionais ao longo de um eixo imaginário; em seguida, adicionar aos corpos uma velocidade perpendicular a este eixo, variando o módulo conforme os resultados observados. Esta dica foi bastante útil para a construções destes cenários.
+Os cenários abaixo levam em conta a atração dos corpos gravitacionais entre si e são simulações de movimentos orbitais. Para criar animações deste tipo, nosso orientador João Kerr nos sugeriu posicionar os corpos gravitacionais ao longo de um eixo imaginário; em seguida, adicionar aos corpos uma velocidade perpendicular a este eixo, variando o módulo conforme os resultados observados. Esta dica foi bastante útil para a construção destes cenários.
 
 \begin{figure}[H]
 	\centering

@@ -3,13 +3,13 @@ Para detectar colisões de forma eficiente essas plataformas utilizam um process
 
 A finalidade da \textit{broad phase} é evitar a realização de cálculos caros para corpos distantes um dos outros. Para
 gerar os pares de objetos que devem passar pelo algoritmo de detecção de colisão, o Chipmunk suporta as seguintes estruturas de dados:
-árvores AABB, \textit{1D sort and sweep} e o \textit{spatial hashing}. Na versão 5 do Chipmunk a estrutura de dados utilizada é o \textit{spatial hashing} enquanto na versão 6 são as árvores AABB. \\
+árvores AABB e o \textit{spatial hashing}. Na versão 5 do Chipmunk a estrutura de dados utilizada é o \textit{spatial hashing} enquanto na versão 6 são as árvores AABB. \\
 
 \textit{Narrow phase} é a fase onde pares de objetos são verificados cuidadosamente em termos de colisão. O Chipmunk utiliza nesta fase o \textit{Separating Axis Theorem}, que suporta somente polígonos convexos. Devido a esse motivo, não é possível criar objetos côncavos no Chipmunk. \\
 
 Nas próximas seções serão explicadas resumidamente os algoritmos de cada fase.
 
-\subsection{\textit{Broad Phase} - Árvore AABB}
+\subsection{\textit{Broad phase} - Árvore AABB}
 
 Para entender a árvore AABB, é preciso primeiro entender o que é AABB. AABB é um acrônimo para \textit{Axis Aligned Bounding Box}, ou seja, caixas delimitadoras de objetos 
 em formas de retângulo alinhadas com os eixos x e y, como mostra a figura \ref{mariobb}:
@@ -21,7 +21,7 @@ em formas de retângulo alinhadas com os eixos x e y, como mostra a figura \ref{
   \label{mariobb}
 \end{figure}
 
-A árvore AABB é uma árvore binária que faz proveito da AABB para armazenar e consultar objetos no espaço 2D. O nó da árvore pode guardar o próprio objeto 
+A árvore AABB é uma árvore binária que faz proveito da estrutura da AABB para armazenar e consultar objetos no espaço 2D. O nó da árvore pode guardar o próprio objeto 
 ou possuir dois nós filhos. Quando um nó guarda um objeto, a caixa delimitadora deste nó deve conter a caixa delimitadora do objeto. Se o nó possui nós filhos, 
 sua caixa delimitadora deve conter as caixas delimitadoras dos nós filhos. 
 Um ponto importante é que esta estrutura precisa de uma heurística para inserir os nós na árvore. No caso do Chipmunk existe uma heurística baseada na caixa 
@@ -47,7 +47,7 @@ Então o par criado nessa busca é o par \{A, D\}.
   \label{aabbTree}
 \end{figure}
 
-\subsection{\textit{Broad Phase} - 1D \textit{Sweep and Prune}}
+\subsection{\textit{Broad phase} - 1D \textit{sweep and prune}}
 
 A idéia deste algoritmo é varrer as caixas delimitadoras dos objetos criando assim os pares de objetos que deverão ser passados para a fase seguinte. \\
 
@@ -58,14 +58,14 @@ enquanto a lista [B, D] cria o par \{B, D\}. \\
 \begin{figure}[!htbp]
   \centering
   \includegraphics[scale=0.7]{sp.png}
-  \caption{Exemplo de um algoritmo \textit{Sweep and Prune}}
+  \caption{Exemplo de funcionamento do algoritmo \textit{sweep and prune}}
   \label{sweep}
 \end{figure}
 
 Esse algoritmo, de acordo com a documentação do Chipmunk 6, pode ser muito eficiente em jogos voltados para dispositivos móveis se o seu mundo é muito comprido 
 e plano como um jogo de corrida.
 
-\subsection{\textit{Broad Phase} - Spatial Hashing}
+\subsection{\textit{Broad phase} - \textit{Spatial hashing}}
 
 \textit{Spatial hashing} é um processo onde o espaço de duas ou três dimensões é projetado em uma tabela \textit{hash} de uma dimensão. Para isso o Chipmunk divide o espaço em 
 células do mesmo tamanho, onde cada célula é mapeada a uma entrada na tabela \textit{hash}. Um objeto sempre é mapeado nas células que ele está presente. Com esta estrutura 
@@ -77,7 +77,7 @@ O tamanho das células é de suma importância para obter uma boa eficiência. N
 \begin{figure}[!htbp]
   \centering
   \includegraphics[scale=1]{hash_just_right.png}
-  \caption{Cada célula contém poucos objetos. Estado ideal para \textit{Spatial hashing}}
+  \caption{Cada célula contém poucos objetos. Estado ideal para \textit{spatial hashing}}
 \end{figure}
 
 \begin{figure}[!htbp]
