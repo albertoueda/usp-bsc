@@ -21,6 +21,6 @@ class Simulation
 
   def demobutton__clicked(*argv)
     return unless row = @view.selected_rows.first
-    system('ruby', row[:file_name])
+    system('ruby', '-W0', row[:file_name])
   end
 end

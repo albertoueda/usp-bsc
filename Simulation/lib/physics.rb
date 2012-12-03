@@ -169,7 +169,7 @@ module Chingu
               vectorB = @vectors[(i+1) % @vectors.size] + @body.p
               
               # TODO desenhar a linha levando em conta o angulo (ex: matriz de rotação)
-              $window.draw_line(vectorA.x, vectorA.y, shape_color, vectorB.x, vectorB.y, shape_color)
+              $window.draw_line(vectorA.x, vectorA.y, shape_color, vectorB.x, vectorB.y, shape_color) if $window
             end
           end
 
