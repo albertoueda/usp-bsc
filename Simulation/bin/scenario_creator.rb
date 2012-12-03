@@ -245,7 +245,6 @@ class ScenarioCreator
 		checkbutton.state.name.end_with?("ACTIVE")
 	end
 
-	# TODO x-factor
 	def config_circles
 		circles = ""
 		

@@ -47,7 +47,6 @@
 				:static => false
 			}, {
 				:mass => 800.0,
-				# TODO conferir se o maior tem que ser o + rapido
 			    :radius => 8,
 			    :factor_x => 0.8, 
 			    :factor_y => 0.8,

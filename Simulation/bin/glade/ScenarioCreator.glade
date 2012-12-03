@@ -8,7 +8,7 @@
     <property name="page_increment">10</property>
   </object>
   <object class="GtkAdjustment" id="circle_qtde_adj">
-    <property name="upper">10</property>
+    <property name="upper">3</property>
     <property name="step_increment">1</property>
     <property name="page_increment">10</property>
   </object>
@@ -25,17 +25,17 @@
     <property name="page_increment">10</property>
   </object>
   <object class="GtkAdjustment" id="rectangles_qtde_adj">
-    <property name="upper">10</property>
+    <property name="upper">3</property>
     <property name="step_increment">1</property>
     <property name="page_increment">10</property>
   </object>
   <object class="GtkAdjustment" id="segments_qtde_adj">
-    <property name="upper">10</property>
+    <property name="upper">3</property>
     <property name="step_increment">1</property>
     <property name="page_increment">10</property>
   </object>
   <object class="GtkAdjustment" id="triangle_qtde_adj">
-    <property name="upper">10</property>
+    <property name="upper">3</property>
     <property name="step_increment">1</property>
     <property name="page_increment">10</property>
   </object>

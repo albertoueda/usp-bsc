@@ -12,7 +12,7 @@ require 'texplay'
 $space = CP::Space.new
 
 # Define se devem ser exibidas as linhas de contorno dos corpos
-$draw_segments = true
+$draw_segments = false
 
 $all_objects = []
 
@@ -64,7 +64,7 @@ end
 # 	@return [Float] Massa do corpo
 # @!attribute rotational_velocity
 # 	@return [Float] Velocidade rotacional do corpo. É diferente de velocidade angular.
-#                                                   TODO Explicar melhor
+#                                                 
 # @!attribute angle
 # 	@return [Float] Ângulo rotacional do corpo.
 module Chingu
@@ -168,14 +168,11 @@ module Chingu
               vectorA = @vectors[i % @vectors.size] + @body.p
               vectorB = @vectors[(i+1) % @vectors.size] + @body.p
               
-              # TODO desenhar a linha levando em conta o angulo (ex: matriz de rotação)
               $window.draw_line(vectorA.x, vectorA.y, shape_color, vectorB.x, vectorB.y, shape_color) if $window
             end
           end
 
-        else # TODO como angle funciona (ao inves de body.a)
-            # TODO melhorar remoção de shapes e diminuir os if's
-            # TODO refatorar center_x, center_y
+        else 
 
           case @shape
           when CP::Shape::Circle
