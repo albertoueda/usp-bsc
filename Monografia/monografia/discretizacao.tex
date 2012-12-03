@@ -1,20 +1,49 @@
-A simulação no Chipmunk ocorre em intervalos de tempo, ou seja, precisamos indicar o tempo que os objetos vão interagir como vimos na seção 2.  Esse intervalo que passamos para o Chipmunk é o tempo de simulação. É preciso definir bem esse valor para que a simulação não fique muito rápida ou muito lenta. A escolha desse tempo parece trivial mas existem muitas implementações que indicam como definir esse tempo de simulação. Nas  próximas seções apresentaremos as implementações para tempo de simulação fixo e variável.
+A simulação no Chipmunk ocorre em intervalos de tempo, ou seja, precisamos indicar o tempo que os objetos vão interagir como vimos na seção 2. 
+Esse intervalo que passamos para o Chipmunk é o tempo de simulação. É preciso definir bem esse valor para que a simulação não fique muito rápido 
+ou muito lento. A escolha desse tempo parece trivial mas existem muitas implementações que indicam como definir esse tempo de simulação. Nas 
+próximas seções apresentaremos as implementações para tempo de simulação fixo e variável.
 
 \subsection{Fixo}
 
 A maneira simples é fixar o tempo de simulação, como por exemplo 1/60 de um segundo:
 
 \begin{lstlisting}[language=Ruby, caption=Implementação de tempo de simulação fixo]
-def @dt = 1/60
+def dt = 1/60
 
 while (running) do
-  $space.step(@dt)
+  $space.step(dt)
 end
 \end{lstlisting}
 
 \ \\
-Na maioria das simulações o código acima é o ideal. Se sua simulação coincidir com a taxa de atualização da animação (\textit{frame rate}) e ainda se o método \$space.step(@dt) não demorar mais do que 1/60 de um segundo, então a solução é perfeita (TODO perfeita é muito forte). Mas no mundo real não sabemos o valor do display \textit{refresh rate}. Por exemplo, a simulação em uma máquina lenta não pode atualizar o \textit{frame rate} em 60fps e tornar o seu quadro rápido o suficiente para apresentá-lo a 60fps. Nesse caso a simulação ficaria mais lenta. Para evitar estas situações podemos implementar o tempo de simulação variável.
+Na maioria das simulações o código acima é o ideal. Se sua simulação coincidir com a taxa de atualização de quadro (frame rate) 
+e ainda se o método \$space.step(@dt) não demorar mais do que 1/60 de um segundo, então a solução é perfeita. Mas no mundo real não sabemos
+o valor da taxa de atualização do quadro. Por exemplo, a execução de uma simulação em uma máquina lenta que não pode atualizar os quadros em 60 fps 
+pode deixar a simulação mais lenta ou mais rápida. Uma solução para evitar esse problema existe o tempo de simulação variável.
 
 \subsection{Variável}
 
-Escrever
+A idéia do tempo de simulação variável é medir o quanto tempo leva o quadro anterior e, em seguida, alimentar a simulação com esse tempo: 
+
+\begin{lstlisting}[language=Ruby, caption=Implementação de tempo de simulação variável]
+def current_time = Time.now
+
+while (running) do
+  def new_time = Time.now
+  def dt = get_simulation_time(new_time - current_time)
+
+  $space.step(dt)
+end
+
+\end{lstlisting}
+
+\ \\
+A solução parece simples e faz sentido. Em um computador com taxa de atualização de quadro de 30 fps passaria um tempo 1/30 de um segundo para a simulação.
+Mas existe um problema com essa abordagem. O problema é que a simulação não garante resultados corretos para todos os valores de tempo de simulação. 
+Dependendo do valor do tempo de simulação e da velocidade dos objetos, podemos observar objetos atravessando paredes ou outros objetos.
+
+\subsection{Conclusão}
+
+Muitos estudos mostram que tempo de simulação fixo é indicado para simulações físicas e tempo de simulação variável para jogos, ou seja, se a animação for 
+importante. No Physimulation tanto a simulação quanto a animação são importantes mas o tempo de simulação fixo foi suficiente pois não afetou muito a animação.
+Logo, o Physimulation pode ficar mais lento em computadores com menor poder de processamento.
