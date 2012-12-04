@@ -17,7 +17,7 @@ em formas de retângulo alinhadas com os eixos x e y, como mostra a figura \ref{
 \begin{figure}[!htbp]
   \centering
   \includegraphics[scale=0.3]{mario_bb.png} 
-  \caption{O retângulo azul representa uma caixa delimitadora do objeto}
+  \caption{O retângulo azul representa uma caixa delimitadora do objeto.}
   \label{mariobb}
 \end{figure}
 
@@ -58,7 +58,7 @@ enquanto a lista [B, D] cria o par \{B, D\}. \\
 \begin{figure}[!htbp]
   \centering
   \includegraphics[scale=0.7]{sp.png}
-  \caption{Exemplo de funcionamento do algoritmo \textit{sweep and prune}}
+  \caption{Exemplo de funcionamento do algoritmo \textit{sweep and prune} \protect\cite{broad:sweep}}
   \label{sweep}
 \end{figure}
 
@@ -77,19 +77,19 @@ O tamanho das células é de suma importância para obter uma boa eficiência. N
 \begin{figure}[!htbp]
   \centering
   \includegraphics[scale=1]{hash_just_right.png}
-  \caption{Cada célula contém poucos objetos. Estado ideal para \textit{spatial hashing}}
+  \caption{Cada célula contém poucos objetos. Estado ideal para \textit{spatial hashing} \protect\cite{Chipmunk:image1}}
 \end{figure}
 
 \begin{figure}[!htbp]
   \centering
   \includegraphics[scale=1]{hash_too_small.png}
-  \caption{Cada objeto está mapeado em muitas células}
+  \caption{Cada objeto está mapeado em muitas células \protect\cite{Chipmunk:image2}}
 \end{figure}
 
 \begin{figure}[!htbp]
   \centering
   \includegraphics[scale=1]{hash_too_big.png}
-  \caption{Cada célula contém muito objetos}
+\caption{Cada célula contém muito objetos \protect\cite{Chipmunk:image3}}
 \end{figure}
 
 Esta estrutura de dados é a mais indicada quando a simulação possui um conjunto grande de objetos e de mesmo tamanho.
@@ -105,6 +105,6 @@ côncavas isso não é verdade. Devido a essa restrição do algoritmo o Chipmun
 \begin{figure}[!htbp]
   \centering
   \includegraphics[scale=0.5]{SAT.jpg}
-  \caption{Se existe uma linha que separa os polígonos convexos, então eles não estão colidindo.}
+  \caption{Se existe uma linha que separa os polígonos convexos, então eles não estão colidindo \protect\cite{narrow:sat}.}
   \label{narrow}
 \end{figure}
