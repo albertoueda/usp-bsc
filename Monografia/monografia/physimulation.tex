@@ -39,7 +39,7 @@ Para mostrar um caso de uso do simulador, vamos utilizar a figura abaixo como re
 \begin{figure}[H]
   \centering
   \includegraphics[scale=0.6]{images/bricks.jpg}
-  \caption{Objetos estáticos}
+  \caption{Objetos estáticos \protect\cite{mario:physics}}
 \end{figure}
 
 Nesta imagem, há quatro blocos suspensos no ar e uma montanha verde com o formato parecido com um triângulo, além do personagem principal que está em cima de um dos blocos. Para esta simulação, faremos a seguinte correlação: os blocos suspensos serão retângulos do Physimulation, a montanha verde um triângulo e o personagem de pé uma pequena bola. \\
@@ -230,7 +230,7 @@ module TestObjectConfig
 
 O Physimulation possui pontos do código que podem ser modificados de acordo com o comportamento físico desejado, o que pode ser interessante para o aluno de computação. \\
 
-Além de modificar o próprio código do projeto, o aluno pode também aproveitar os recursos da linguagem Ruby e adicionar métodos a classe já existentes. Por exemplo, no diretório {\tt Simulation/ext/} há o arquivo: \\
+Além de modificar o próprio código do projeto, o aluno pode também aproveitar os recursos da linguagem Ruby e adicionar métodos a classes já existentes. Por exemplo, no diretório {\tt Simulation/ext/} há o arquivo: \\
 
   {\tt pause\_unpause.rb.example}. \\
 
@@ -240,7 +240,7 @@ Além de modificar o próprio código do projeto, o aluno pode também aproveita
 
 \noindent , o interpretador irá reconhecer o novo método e ele já poderá ser utilizado na execução das animações. \\
 
-Neste arquvo de exemplo, há uma implementação da função \textit{pause} para simulações, associada a tecla 'P'. Assim, renomeando este arquivo e executando qualquer uma das animações, o usuário poderá utilizar automaticamente a função \textit{pause} simplesmente apertando a tecla 'P'. \\
+Neste arquivo de exemplo, há uma implementação da função \textit{pause} para simulações, associada à tecla 'P'. Assim, renomeando este arquivo e executando qualquer uma das animações, o usuário poderá utilizar automaticamente a função \textit{pause} simplesmente apertando a tecla 'P'. \\
 
 Baseando-se neste exemplo, o aluno de computação pode criar outros pontos de modificação no Physimulation, quando julgar apropriado.
 
