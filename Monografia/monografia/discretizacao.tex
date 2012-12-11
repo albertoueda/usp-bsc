@@ -31,8 +31,8 @@ A idéia do tempo de simulação variável é medir quanto tempo leva o quadro a
 def current_time = Time.now
 
 while (running) do
-  def new_time = Time.now
-  def dt = get_simulation_time(new_time - current_time)
+  new_time = Time.now
+  dt = get_simulation_time(new_time - current_time)
 
   $space.step(dt)
 end
