@@ -10,23 +10,23 @@
 \usepackage{fancyvrb}   
 \usepackage{verbatim}
 \usepackage{listings}
-\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{xcolor}
 \usepackage{caption}
 \usepackage{hyperref}
 \usepackage{epigraph}
-
 \captionsetup[figure]{width=10cm, font=small}
+
 \DeclareCaptionFont{white}{\color{white}}
 \DeclareCaptionFormat{listing}{%
-  \parbox{\textwidth}{\colorbox{gray}{\parbox{0.987\textwidth}{#1#2#3}}\vskip-4pt}}
+  \parbox{\textwidth}{\colorbox{gray}{\parbox{\textwidth}{#1#2#3}}\vskip-4pt}}
 \captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
-\lstset{frame=lrb,xleftmargin=1.15\fboxsep,xrightmargin=\fboxsep,language=[LaTeX]{TeX}}
+\lstset{frame=lrb,xleftmargin=\fboxsep,xrightmargin=-\fboxsep,language=[LaTeX]{TeX},columns=flexible}
 \renewcommand{\lstlistingname}{Código}
 \lstloadlanguages{Ruby}
 \lstset{%
   basicstyle=\ttfamily\color{black},
-  commentstyle = \ttfamily\color{PineGreen},
-  keywordstyle=\ttfamily\color{purple},
+  commentstyle = \ttfamily\color{red},
+  keywordstyle=\ttfamily\color{blue},
   stringstyle=\color{orange}}
 
 \hyphenation {pro-gra-ma pro-gra-mas com-pu-ta-cio-nais e-exem-plo pro-ble-mas

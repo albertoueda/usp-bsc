@@ -1,4 +1,4 @@
-1. Configuração do ambiente de desenvolvimento
+Configuração do ambiente de desenvolvimento
 ==============================================
 
 ### Ruby Version Manager (RVM) ###

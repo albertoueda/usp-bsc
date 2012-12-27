@@ -1,0 +1,183 @@
+%div.row-fluid
+    %div.span2
+        %div.well.well-small{'data-spy' => 'affix'}
+            %ul.nav.nav-list#menu
+                %li
+                    %a{href: '#resumo'}
+                        %i.icon-chevron-right.pull-right
+                        Resumo
+                %li
+                    %a{href: '#objetivo'}
+                        %i.icon-chevron-right.pull-right
+                        Objetivo
+                %li
+                    %a{href: '#cronograma'}
+                        %i.icon-chevron-right.pull-right
+                        Cronograma
+                %li
+                    %a{href: '#atividades'}
+                        %i.icon-chevron-right.pull-right
+                        Atividades Realizadas
+                %li
+                    %a{href: '#monografia'}
+                        %i.icon-chevron-right.pull-right
+                        Estrutura da Monografia
+    %div.span10
+        %div#resumo
+            %div.page-header
+                %h1 Resumo
+            %p A disciplina de Física (FAP-0126), oferecida no curso de BCC, é puramente teórica e não mostra nenhuma relação com a Ciência da Computação. Isso torna a disciplina menos interessante e frequentemente faz os alunos pensarem: "Para que serve esta disciplina?". 
+            %p Para motivar os alunos e ilustrar melhor a relação entre as disciplinas básicas (Física, Estatística, Álgebra e Cálculo) com a Ciência da Computação, pretendemos criar uma biblioteca gráfica de simulação. 
+            %p Esta biblioteca será capaz de realizar uma leitura de dados de uma simulação de um EP e mostrar graficamente o resultado da simulação, por exemplo. Esta biblioteca também proporcionará um ambiente de simulação específico e pronto para ser mostrado em salas de aula.
+        %div#objetivo
+            %div.page-header
+                %h1 Objetivo
+            %p O objetivo macro deste trabalho é auxiliar e incentivar o aluno na aprendizagem de alguns tópicos de disciplinas da grade curricular do BCC, com ênfase em Física. Com isso sempre em mente, temos como principais metas:
+            %ul
+                %li Contextualização dos temas estudados com demonstrações parecidas com a realidade;
+                %li Exposição mais clara de pontos de integração entre as disciplinas;
+                %li Reprodução visual dos cálculos efetuados pelos alunos, assim como seus equívocos;
+                %li Pequeno estudo em tópicos de matemática e estatística que poderiam ser incentivados com a própria computação;
+                %li Apresentação de desafios atuais para a computação. Ex: fenômenos físicos que até hoje são difíceis ou impossíveis de reproduzir programaticamente.
+
+        %div#cronograma
+            %div.page-header
+                %h1 Cronograma
+            %table.table.table-hover.table-striped
+                %thead
+                    %th Atividade/Mês
+                    %th ABR
+                    %th MAI
+                    %th JUN
+                    %th JUL
+                    %th AGO
+                    %th SET
+                    %th OUT
+                    %th NOV
+                %tbody
+                    %tr
+                        %td 1
+                        %td x
+                        %td x
+                        %td
+                        %td
+                        %td 
+                        %td
+                        %td
+                        %td
+                    %tr
+                        %td 2
+                        %td x
+                        %td x
+                        %td
+                        %td
+                        %td
+                        %td
+                        %td
+                        %td
+                    %tr
+                        %td 3
+                        %td 
+                        %td 
+                        %td x
+                        %td 
+                        %td
+                        %td
+                        %td
+                        %td    
+                    %tr
+                        %td 4
+                        %td 
+                        %td 
+                        %td x
+                        %td x
+                        %td
+                        %td
+                        %td
+                        %td
+                    %tr
+                        %td 5 
+                        %td 
+                        %td 
+                        %td
+                        %td x
+                        %td x
+                        %td x
+                        %td
+                        %td
+                    %tr
+                        %td 6
+                        %td 
+                        %td 
+                        %td
+                        %td
+                        %td 
+                        %td x
+                        %td x
+                        %td
+                    %tr
+                        %td 7
+                        %td 
+                        %td 
+                        %td
+                        %td
+                        %td 
+                        %td
+                        %td x
+                        %td x
+            %span.label.label-info Legenda
+            %ol
+                %li Estudo da linguagem Ruby
+                %li Estudo da plataforma Chipmunk (Engine de física) e Gosu (Biblioteca gráfica)
+                %li Implementação de alguns eps da POLI utilizando as ferramentas estudadas
+                %li Definir entrada da simulação e início da implementação da biblioteca
+                %li Criação de ambientes pré-definidos para ilustração em sala de aula
+                %li Preparação do pôster e apresentação do trabalho
+                %li Preparação da monografia
+            
+        %div#atividades
+            %div.page-header
+                %h1 Atividades realizadas
+            %p Após algumas semanas desenvolvendo a ideia do trabalho e pesquisando por ferramentas necessárias, estudamos a linguagem e bibliotecas que iremos utilizar, implementando alguns exemplos de teste.
+
+        %div#monografia
+            %div.page-header
+                %h1 Estrutura esperada da monografia
+            %p A monografia deverá conter as seguintes partes:
+            %ol
+                %li 
+                    %strong Parte técnica
+                    %ul
+                        %li 
+                            Introdução
+                            %ul
+                                %li Exposição do problema encontrado por muitos alunos do BCC e iniciativas do próprio departamento para solucioná-lo.
+                                %li Apresentação da abordagem escolhida em nosso trabalho.
+                        %li
+                            Conceitos e tecnologias estudadas
+                            %ul
+                                %li Síntese dos principais conceitos de computação gráfica utilizados.
+                                %li Apresentação das bibliotecas Chipmunk e Gosu.
+                                %li Breve descrição da linguagem Ruby.
+                        %li
+                            Atividades realizadas
+                            %ul
+                                %li Conversas com professores das áreas envolvidas e alunos do BCC.
+                                %li Apresentação da biblioteca desenvolvida e seus principais recursos.
+                        %li
+                            Resultados e produtos obtidos
+                            %ul
+                                %li O uso da biblioteca em um exercício-programa de exemplo e como pode ser utilizada em sala de aula.
+                        %li
+                            Próximos passos
+                            %ul
+                                %li Possíveis melhorias na biblioteca e sugestões para continuação do trabalho.
+                        %li 
+                            Conclusão
+                            %ul
+                                %li
+                                    Conclusão sobre o trabalho.
+                        %li Bibliografia
+                %li 
+                    %strong Parte subjetiva
+                    Nesta parte, cada integrante do grupo escreverá sobre as experiências vividas neste trabalho.

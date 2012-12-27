@@ -4,7 +4,7 @@ Além disso, como tínhamos em mente implementar um criador de cenários, a medi
 
 \begin{lstlisting}[language=Ruby, caption=Trecho de código do physics.rb]
 # @param [Hash] options : mapa com as opcoes de 
-#     configuracao do objeto fisico.
+#           configuracao do objeto fisico.
 def setup_trait(options = {})
   self.color =  options[:color] || Gosu::Color::WHITE
   self.zorder = options[:zorder] || 100

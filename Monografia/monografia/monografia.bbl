@@ -1,0 +1,59 @@
+\begin{thebibliography}{10}
+
+\bibitem{paca}
+Paca, ``Grupo de apoio ao bcc.''
+  \url{http://paca.ime.usp.br/course/view.php?id=511}.
+
+\bibitem{ruby:caelum}
+Caelum, ``Mais ruby: classes, objetos e métodos.''
+  \url{http://www.caelum.com.br/apostila-ruby-on-rails/mais-ruby-classes-objet%
+os-e-metodos/}.
+
+\bibitem{mario:bb}
+T.~Telegraph, ``Mario.''
+  \url{http://www.telegraph.co.uk/sponsored/technology/nintendo-dsi-xl/8187073%
+/Super-Mario-Bros-celebrates-25-years.html}.
+
+\bibitem{broad:sweep}
+jitter physics, ``Sweep and prune.''
+  \url{http://jitter-physics.com/wordpress/wp-content/uploads/2011/10/show.png%
+}.
+
+\bibitem{Chipmunk:image1}
+Chipmunk, ``Hash just right.''
+  \url{http://chipmunk-physics.net/release/ChipmunkLatest-Docs/images/hash_jus%
+t_right.png}.
+
+\bibitem{Chipmunk:image2}
+Chipmunk, ``Hash too small.''
+  \url{http://chipmunk-physics.net/release/ChipmunkLatest-Docs/images/hash_too%
+_small.png}.
+
+\bibitem{Chipmunk:image3}
+Chipmunk, ``Hash too big.''
+  \url{http://chipmunk-physics.net/release/ChipmunkLatest-Docs/images/hash_too%
+_big.png}.
+
+\bibitem{narrow:sat}
+K.~S. Chong, ``Separating axis theorem.''
+  \url{http://gamedev.tutsplus.com/tutorials/implementation/collision-detectio%
+n-with-the-separating-axis-theorem/}.
+
+\bibitem{box2d}
+Box2D, ``A 2d physic engine for games.'' \url{http://box2d.org/}.
+
+\bibitem{hotruby}
+HotRuby, ``Ruby on javascript and flash.'' \url{http://hotruby.yukoba.jp/}.
+
+\bibitem{lander}
+dunnbypaul.net, ``Lunar landing.'' \url{http://lander.dunnbypaul.net}.
+
+\bibitem{mario:physics}
+T.~Telegraph, ``Mario.''
+  \url{https://i.chzbgr.com/completestore/12/11/16/OPVaRMLIx0uw8-oT1WV7oA2.jpg%
+}.
+
+\bibitem{wii}
+J.~C. Lee, ``Wii.'' \url{http://johnnylee.net/projects/wii/}.
+
+\end{thebibliography}

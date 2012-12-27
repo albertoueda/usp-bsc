@@ -1,0 +1,56 @@
+%html
+    %head
+    %title Physimulation
+    %meta{'http-equiv' => 'Content-Type', content: 'text/html', charset: 'utf-8'}
+    %link{href: 'css/bootstrap.min.css', rel: 'stylesheet', media: 'screen'}
+    
+    %body
+        %div.navbar.navbar-fixed-top.navbar-inverse
+            %div.navbar-inner
+                %a.brand{href: 'index.html', style: 'margin-left: 5px'} 
+                    %i.icon-home.icon-white
+                    Physimulation
+                %ul.nav
+                    %li{class: [is_active('proposta.html', filename)]}
+                        %a{href: 'proposta.html'} 
+                            %i.icon-comment.icon-white
+                            Proposta
+                    %li{class: [is_active('demonstracoes.html', filename)]}
+                        %a{href: 'demonstracoes.html'}
+                            %i.icon-film.icon-white
+                            Animações
+                    %li{class: [is_active('instalacao.html', filename)]}
+                        %a{href: 'instalacao.html'} 
+                            %i.icon-book.icon-white
+                            Instalação
+                    %li{class: [is_active('tutorial.html', filename)]}
+                        %a{href: 'tutorial.html'} 
+                            %i.icon-list.icon-white
+                            Tutorial
+                    %li.dropdown{class: [is_active('arquivos.html', filename)]}
+                        %a.dropdown-toggle{href: '#', 'data-toggle' => 'dropdown'} 
+                            %i.icon-folder-open.icon-white
+                            Arquivos
+                            %b.caret
+                        %ul.dropdown-menu
+                            %li
+                                %a{href: 'pdfs/monografia.pdf'}
+                                    %i.icon-file
+                                    monografia.pdf
+                                %a{href: 'pdfs/apresentacao.pdf'}
+                                    %i.icon-file
+                                    apresentacao.pdf
+                                %a{href: 'pdfs/poster.pdf'}
+                                    %i.icon-file
+                                    poster.pdf
+        %div{style: 'padding-top: 60px;'}
+            = contents
+        %div.well.well-large{style: 'text-align: center'}
+            %p 
+                Site construído com 
+                %a{href: 'http://twitter.github.com/bootstrap/', target: '_blank'} Bootstrap.
+            %p 
+                %a{href: 'https://github.com/albertoueda/tcc', target: '_blank'} Physimulation
+                no GitHub.
+        %script{src: 'js/jquery-latest.js'}
+        %script{src: 'js/bootstrap.min.js'}

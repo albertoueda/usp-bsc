@@ -4,7 +4,6 @@
 require 'rubygems'
 require 'chipmunk'
 require 'chingu'
-require 'matrix'
 require 'gosu'
 require 'forwardable'
 require 'texplay'
@@ -24,25 +23,10 @@ class Numeric
   end
 end
 
-
 # Adição de método para faciliar a criação de Shapes do chipmunk.
 #
 # @author rafaelim, albertoueda
 module CP
-  class Vec2
-    
-    # Rotation Matrix [ cosΘ sinΘ     
-    #                  -sinΘ cosΘ ]
-    def rot_clockwise(angle)
-
-      rotation_matrix = Matrix[[Math::cos(angle),Math::sin(angle)], [-Math::sin(angle),Math::cos(angle)]] 
-      result_matrix = rotation_matrix * Matrix.column_vector([self.x, -self.y])
-
-      result_vector = result_matrix.column(0)
-      vec2(result_vector[0], -result_vector[1])
-    end
-  end
-
   module Shape
   
     Color = {CP::Shape::Circle => Gosu::Color::YELLOW, 
@@ -181,14 +165,10 @@ module Chingu
           when CP::Shape::Segment, CP::Shape::Poly
 
             for i in 0..@vectors.size 
-              vectorA = @vectors[i % @vectors.size]
-              vectorB = @vectors[(i+1) % @vectors.size]
+              vectorA = @vectors[i % @vectors.size] + @body.p
+              vectorB = @vectors[(i+1) % @vectors.size] + @body.p
               
-              rot_a = vectorA.rot_clockwise(@body.a) + @body.p
-              rot_b = vectorB.rot_clockwise(@body.a) + @body.p
-
-              p rot_a, rot_b
-              $window.draw_line(rot_a.x, rot_a.y, shape_color, rot_b.x, rot_b.y, shape_color) if $window
+              $window.draw_line(vectorA.x, vectorA.y, shape_color, vectorB.x, vectorB.y, shape_color) if $window
             end
           end
 

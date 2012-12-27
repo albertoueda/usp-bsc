@@ -1,0 +1,45 @@
+This is BibTeX, Version 0.99c (TeX Live 2009/Debian)
+The top-level auxiliary file: monografia.aux
+The style file: ieeetr.bst
+Database file #1: bibliografia.bib
+You've used 13 entries,
+            1876 wiz_defined-function locations,
+            528 strings with 4880 characters,
+and the built_in function-call counts, 1597 in all, are:
+= -- 130
+> -- 52
+< -- 0
++ -- 26
+- -- 13
+* -- 54
+:= -- 234
+add.period$ -- 13
+call.type$ -- 13
+change.case$ -- 13
+chr.to.int$ -- 0
+cite$ -- 13
+duplicate$ -- 52
+empty$ -- 235
+format.name$ -- 13
+if$ -- 404
+int.to.chr$ -- 0
+int.to.str$ -- 13
+missing$ -- 0
+newline$ -- 42
+num.names$ -- 13
+pop$ -- 65
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 77
+stack$ -- 0
+substring$ -- 0
+swap$ -- 0
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 0
+while$ -- 13
+width$ -- 15
+write$ -- 93

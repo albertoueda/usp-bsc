@@ -1,0 +1,176 @@
+<html>
+  <head></head>
+  <title>Physimulation</title>
+  <meta charset='utf-8' content='text/html' http-equiv='Content-Type' />
+  <link href='css/bootstrap.min.css' media='screen' rel='stylesheet' />
+  <body>
+    <div class='navbar navbar-fixed-top navbar-inverse'>
+      <div class='navbar-inner'>
+        <a class='brand' href='index.html' style='margin-left: 5px'>
+          <i class='icon-home icon-white'></i>
+          Physimulation
+        </a>
+        <ul class='nav'>
+          <li>
+            <a href='proposta.html'>
+              <i class='icon-comment icon-white'></i>
+              Proposta
+            </a>
+          </li>
+          <li>
+            <a href='demonstracoes.html'>
+              <i class='icon-film icon-white'></i>
+              Demonstrações
+            </a>
+          </li>
+          <li class='active'>
+            <a href='instalacao.html'>
+              <i class='icon-book icon-white'></i>
+              Instalação
+            </a>
+          </li>
+          <li>
+            <a href='tutorial.html'>
+              <i class='icon-list icon-white'></i>
+              Tutorial
+            </a>
+          </li>
+          <li class='dropdown'>
+            <a class='dropdown-toggle' data-toggle='dropdown' href='#'>
+              <i class='icon-folder-open icon-white'></i>
+              Arquivos
+              <b class='caret'></b>
+            </a>
+            <ul class='dropdown-menu'>
+              <li>
+                <a href='pdfs/monografia.pdf'>
+                  <i class='icon-file'></i>
+                  monografia.pdf
+                </a>
+                <a href='pdfs/apresentacao.pdf'>
+                  <i class='icon-file'></i>
+                  apresentacao.pdf
+                </a>
+                <a href='pdfs/poster.pdf'>
+                  <i class='icon-file'></i>
+                  poster.pdf
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div style='padding-top: 60px;'>
+      <div style='margin-left: 20px'>
+  <h1 id='configurao_do_ambiente_de_desenvolvimento'>Configuração do ambiente de desenvolvimento</h1>
+
+<h3 id='ruby_version_manager_rvm'>Ruby Version Manager (RVM)</h3>
+
+<p><a href='https://rvm.io/rvm/install'>RVM</a> (Ruby Version Manager) é um gerenciador de versões de Ruby. Podemos ter várias versões de ruby instalado na máquina e ainda podemos ter essa configuração por projeto.</p>
+
+<ol>
+<li>
+<p>Baixar o script rvm e instalar</p>
+
+<pre><code>	curl -L https://get.rvm.io | bash -s stable</code></pre>
+</li>
+
+<li>
+<p>Definir variaveis de ambiente (Colocar o comando no .bashrc)</p>
+
+<pre><code>	source ~/.rvm/scripts/rvm</code></pre>
+</li>
+
+<li>
+<p>Verificar se o RVM foi instalado corretamente</p>
+
+<pre><code>	type rvm | head -n 1&#x000A;	rvm is a function</code></pre>
+</li>
+</ol>
+
+<h3 id='ruby_193'>Ruby 1.9.3</h3>
+
+<p><a href='http://ruby-doc.org/core-1.9.3/'>Ruby 1.9.3</a> vem com atualizações interessantes que facilita e agiliza mais ainda o desenvolvimento de programas nesta linguagem. Vamos instalar utilizando o rvm</p>
+
+<ol>
+<li>
+<p>Instalando o ruby 1.9.3 com rvm</p>
+
+<pre><code>	rvm install 1.9.3</code></pre>
+</li>
+
+<li>
+<p>Verificando as versões intaladas</p>
+
+<pre><code>	rvm list</code></pre>
+</li>
+
+<li>
+<p>Definindo a versão do ruby que será utilizado</p>
+
+<pre><code>	rvm use 1.9.3</code></pre>
+</li>
+</ol>
+
+<blockquote>
+<p>É possíve voltar para a versão do ruby instalada no sistema com o comando: rvm use system</p>
+</blockquote>
+
+<h3 id='gem'>Gem</h3>
+
+<p>Dependências do simulador</p>
+
+<ol>
+<li>
+<p>Chipmunk</p>
+
+<pre><code>	gem install chipmunk</code></pre>
+</li>
+
+<li>
+<p>Gosu</p>
+
+<pre><code>	gem install gosu</code></pre>
+</li>
+
+<li>
+<p>Chingu</p>
+
+<pre><code>	gem install chingu</code></pre>
+</li>
+
+<li>
+<p>Visual Ruby</p>
+
+<pre><code>	gem install visualruby</code></pre>
+</li>
+</ol>
+
+<h3 id='glade'>Glade</h3>
+
+<p>Glade é uma IDE que facilita o desenvolvimento de interface. Visual Ruby é responsável por intergrar glade com ruby.</p>
+
+<ol>
+<li>
+<p>Instalação do editor</p>
+
+<pre><code>	sudo apt-get install glade-gnome	</code></pre>
+</li>
+</ol>
+</div>
+    </div>
+    <div class='well well-large' style='text-align: center'>
+      <p>
+        Site construído com
+        <a href='http://twitter.github.com/bootstrap/' target='_blank'>Bootstrap.</a>
+      </p>
+      <p>
+        <a href='https://github.com/albertoueda/tcc' target='_blank'>Physimulation</a>
+        no GitHub.
+      </p>
+    </div>
+    <script src='js/jquery-latest.js'></script>
+    <script src='js/bootstrap.min.js'></script>
+  </body>
+</html>
