@@ -176,7 +176,7 @@ module TestObjectConfig
 
   class Space
     attr_accessor :gravity, :damping, 
-                       :limited_space, :object_gravity
+                  :limited_space, :object_gravity
 
     def initialize
       @gravity = vec2(0, 100)
@@ -184,8 +184,9 @@ module TestObjectConfig
       @limited_space = true
       @object_gravity = false
     end
-
   end
+
+
 
   Circles = [{
     :mass => 100.0,
