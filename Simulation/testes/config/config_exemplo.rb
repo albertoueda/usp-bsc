@@ -63,7 +63,6 @@
                 :friction => 0.0,
                 :zorder => 100,
                 :collision_type => :undefined0,
-                :image_name => 'catapult.png',
                 :static => true
             }, {
                 :mass => 30.0,
@@ -80,7 +79,6 @@
                 :friction => 0.0,
                 :zorder => 100,
                 :collision_type => :undefined1,
-                :image_name => 'catapult.png',
                 :static => false
             }]
 
@@ -95,7 +93,6 @@
                 :friction => 0.0,
                 :zorder => 100,
                 :collision_type => :undefined0,
-                :image_name => 'catapult-b.png',
                 :static => true
             }, {
                 :mass => 4000.0,
@@ -108,7 +105,6 @@
                 :friction => 0.0,
                 :zorder => 100,
                 :collision_type => :undefined1,
-                :image_name => 'catapult-b.png',
                 :static => false
             }]
 
@@ -122,7 +118,6 @@
                 :friction => 0.0,
                 :zorder => 100,
                 :collision_type => :undefined0,
-                :image_name => 'catapult-b.png',
                 :static => true
             }, {
                 :x => 300,
@@ -134,7 +129,6 @@
                 :friction => 0.0,
                 :zorder => 100,
                 :collision_type => :undefined1,
-                :image_name => 'catapult-b.png',
                 :static => true
             }]
         end

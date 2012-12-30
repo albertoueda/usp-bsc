@@ -406,4 +406,8 @@ class ScenarioCreator
 		num_segments = @builder['segments_qtde'].value_as_int 
 		@builder['segments_hbox'].hide if num_segments == 0
 	end
+
+	def on_input_file_button_file_set
+		@builder['demobutton'].clicked
+	end
 end

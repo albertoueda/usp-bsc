@@ -35,7 +35,7 @@ Vamos instalar utilizando o rvm
 
 			rvm use 1.9.3
 
-> É possíve voltar para a versão do ruby instalada no sistema com o comando:
+> É possível voltar para a versão do ruby instalada no sistema com o comando:
 > 			rvm use system
 
 ### Gem ###

@@ -34,11 +34,10 @@ module CP
     # Rotation Matrix [ cosΘ sinΘ     
     #                  -sinΘ cosΘ ]
     def rot_clockwise(angle)
-
       rotation_matrix = Matrix[[Math::cos(angle),Math::sin(angle)], [-Math::sin(angle),Math::cos(angle)]] 
       result_matrix = rotation_matrix * Matrix.column_vector([self.x, -self.y])
-
       result_vector = result_matrix.column(0)
+      
       vec2(result_vector[0], -result_vector[1])
     end
   end
@@ -142,7 +141,8 @@ module Chingu
           (options[:radius]*3).ceil) if options[:radius]
         @vectors = options[:vectors] if options[:vectors]
 
-        @image = Gosu::Image[options[:image_name]] if options[:image_name] 
+        @image = Gosu::Image[options[:image_name]] if options[:image_name]
+        @default_segment_image = Gosu::Image["catapult-b.png"] 
         @shape_color = options[:shape_color] ? options[:shape_color] : CP::Shape::Color[@shape.class] 
         $all_objects << self
 
@@ -187,25 +187,30 @@ module Chingu
               rot_a = vectorA.rot_clockwise(@body.a) + @body.p
               rot_b = vectorB.rot_clockwise(@body.a) + @body.p
 
-              p rot_a, rot_b
               $window.draw_line(rot_a.x, rot_a.y, shape_color, rot_b.x, rot_b.y, shape_color) if $window
             end
           end
 
         else 
-
           case @shape
           when CP::Shape::Circle
 
-          @image.draw_rot(position.x, position.y, @zorder, @body.a.radians_to_degrees, 0.5, 0.5, 
-            @factor_x, @factor_y, @color, @mode) if @image && @visible && @body && @shape 
+            @image.draw_rot(position.x, position.y, @zorder, @body.a.radians_to_degrees, 0.5, 0.5, 
+              @factor_x, @factor_y, @color, @mode) if @image && @visible && @body && @shape 
 
           when CP::Shape::Segment, CP::Shape::Poly
 
             if (@vectors.size == 4)
+              @image = Gosu::Image["catapult.png"] if not @image
+
               @image.draw_rot(position.x, position.y, @zorder,  @body.a.radians_to_degrees, 0.5, 0.5, 
                 @factor_x, @factor_y, @color, @mode) if @image && @visible && @body && @shape
-            else 
+
+            elsif (@image)
+                @image.draw_rot(position.x, position.y, @zorder, @body.a.radians_to_degrees, 0.5, 0.5, 
+                 1, 1, @color, @mode) if @visible && @body && @shape 
+
+            else
               for i in 0..@vectors.size-1
                 vectorA = @vectors[i] + @body.p
                 vectorB = @vectors[(i+1) % @vectors.size] + @body.p
@@ -225,9 +230,8 @@ module Chingu
                 center_x = (vectorA.x + vectorB.x) / 2
                 center_y = (vectorA.y + vectorB.y) / 2
 
-                # +  @body.a.radians_to_degrees
-                @image.draw_rot(center_x, center_y, @zorder, angle + @body.a.radians_to_degrees, 0.5, 0.5, 
-                  distance/100, @factor_y, @color, @mode) if @image && @visible && @body && @shape 
+                @default_segment_image.draw_rot(center_x, center_y, @zorder, angle + @body.a.radians_to_degrees, 0.5, 0.5, 
+                  distance/100, @factor_y, @color, @mode) if @visible && @body && @shape 
               end
             end
           end
