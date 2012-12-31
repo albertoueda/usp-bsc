@@ -1,12 +1,20 @@
 %div.page-header
     %h1 Criando Cenários
 
-    / %a{:href => "videos/video-criando-cenario-1.ogv"} Vídeo 1
-
     %div.thumbnail{style: 'width: 700px'}
-        <iframe width=700" height="500" src="videos/video-criando-cenario-1.ogv" frameborder="0" allowfullscreen></iframe>
+        %video{width: '700', height:'500', autostart:'false', controls:'true'}
+            %source{src: 'videos/video-criando-cenario-1.ogv'}
         %h4 Exemplo 1
         %p Criação de um cenário com o Physimulation.
+        %a{:href => "http://www.youtube.com/watch?v=GEkZuRUkRe0"} YouTube
+    %br
+    %br
+    %div.thumbnail{style: 'width: 700px'}
+        %video{width: '700', height:'500', autostart:'false', controls:'true'}
+            %source{src: 'videos/video-criando-cenario-2-grav.ogv'}
+        %h4 Exemplo 2
+        %p Criação de um cenário que considera a atração gravitacional entre os corpos.
+        %a{:href => "http://www.youtube.com/watch?v=onhsHXqez5U"} YouTube
 
 
             

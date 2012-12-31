@@ -1,9 +1,26 @@
 %div.page-header
     %h1 Animações Produzidas
-
-    / %a{:href => "videos/video-demos.ogv"} Vídeo com demos
             
     %div.thumbnail{style: 'width: 700px'}
-        <iframe width="700" height="500" src="videos/video-demos.ogv" frameborder="0" allowfullscreen></iframe>
+        %video{width: '700', height:'500', autostart:'false', controls:'true'}
+            %source{src: 'videos/video-demos.ogv'}
         %h4 Ambientes de demonstração
-        %p Primeiras animações produzidas.
+        %p Primeiras animações produzidas. 
+        %a{:href => "http://www.youtube.com/watch?v=ElRVyryzIc8"} YouTube   
+    %br
+    %br
+    %div.thumbnail{style: 'width: 700px'}
+        %video{width: '700', height:'500', autostart:'false', controls:'true'}
+            %source{src: 'videos/video-integracao-angry-bixos.ogv'}
+        %h4 Integração com o Exercício-Progama Angry Bixos
+        %p Enunciado em "Arquivos". 
+        %a{:href => "http://www.youtube.com/watch?v=JlJVeWgBFW4"} YouTube
+    %br
+    %br
+    %div.thumbnail{style: 'width: 700px'}
+        %video{width: '700', height:'500', autostart:'false', controls:'true'}
+            %source{src: 'videos/video-integracao-apolo.ogv'}
+        %h4 Integração com o Exercício-Progama Apolo 13
+        %p Enunciado em "Arquivos". 
+        %a{:href => "http://www.youtube.com/watch?v=3pzE-8Yicug"} YouTube
+
