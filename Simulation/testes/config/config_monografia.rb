@@ -113,8 +113,7 @@
 			    :friction => 0.0,
 			    :zorder => 100,
 			    :collision_type => :undefined0,
-			    :image_name => 'catapult-b.png',
-				:static => true
+					:static => true
 			}]
 
 		  Segments = []

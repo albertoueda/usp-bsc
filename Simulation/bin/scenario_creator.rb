@@ -150,7 +150,7 @@ class ScenarioCreator
 			@triangle_moment[i] = @builder['triangle_moment_' + i.to_s].text.to_i  
 			@triangle_fixed[i] = value @builder['triangle_fixed_' + i.to_s]  
 			@triangle_id[i] = @builder['triangle_id_' + i.to_s].text.empty? ? ":undefined#{i}" : ":" + @builder['triangle_id_' + i.to_s].text 
-			@triangle_image[i] = "'catapult-b.png'"
+			@triangle_image[i] = @builder['triangle_image_' + i.to_s].filename
 			@triangle_zorder[i] = 100
 		end
 	end

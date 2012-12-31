@@ -126,8 +126,7 @@
 			    :friction => 0.0,
 			    :zorder => 100,
 			    :collision_type => :undefined0,
-			    :image_name => 'catapult-b.png',
-				:static => false
+					:static => false
 			}, {
 				:mass => 111.0,
 			    :x => 300,
@@ -139,8 +138,7 @@
 			    :friction => 0.0,
 			    :zorder => 100,
 			    :collision_type => :undefined1,
-			    :image_name => 'catapult-b.png',
-				:static => false
+					:static => false
 			}, {
 				:mass => 1111.0,
 			    :x => 500,
@@ -152,8 +150,7 @@
 			    :friction => 0.0,
 			    :zorder => 100,
 			    :collision_type => :undefined2,
-			    :image_name => 'catapult-b.png',
-				:static => true
+					:static => true
 			}]
 
 		  Segments = [{
@@ -166,7 +163,6 @@
 			    :friction => 0.0,
 			    :zorder => 100,
 			    :collision_type => :undefined0,
-			    :image_name => 'catapult-b.png',
 				:static => true
 			}, {
 			    :x => 500,
@@ -178,7 +174,6 @@
 			    :friction => 0.0,
 			    :zorder => 100,
 			    :collision_type => :undefined1,
-			    :image_name => 'catapult-b.png',
 				:static => true
 			}, {
 			    :x => 300,
@@ -190,7 +185,6 @@
 			    :friction => 0.0,
 			    :zorder => 100,
 			    :collision_type => :undefined2,
-			    :image_name => 'catapult-b.png',
 				:static => true
 			}]
 		end
