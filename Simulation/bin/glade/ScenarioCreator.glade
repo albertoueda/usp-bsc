@@ -343,6 +343,7 @@ Selecione as formas que deseja inserir e seus parâmetros físicos.</property>
                                                         <property name="secondary_icon_sensitive">True</property>
                                                         <property name="climb_rate">0.5</property>
                                                         <property name="snap_to_ticks">True</property>
+                                                        <property name="tooltip_text" translatable="yes">Valor obrigatório. Deve ser diferente de zero.</property>
                                                       </object>
                                                       <packing>
                                                         <property name="left_attach">1</property>
@@ -2014,6 +2015,7 @@ Selecione as formas que deseja inserir e seus parâmetros físicos.</property>
                                                         <property name="secondary_icon_sensitive">True</property>
                                                         <property name="climb_rate">0.5</property>
                                                         <property name="snap_to_ticks">True</property>
+                                                        <property name="tooltip_text" translatable="yes">Valor obrigatório. Deve ser diferente de zero.</property>
                                                       </object>
                                                       <packing>
                                                         <property name="left_attach">1</property>
@@ -3894,6 +3896,7 @@ Selecione as formas que deseja inserir e seus parâmetros físicos.</property>
                                                         <property name="secondary_icon_sensitive">True</property>
                                                         <property name="climb_rate">0.5</property>
                                                         <property name="snap_to_ticks">True</property>
+                                                        <property name="tooltip_text" translatable="yes">Valor obrigatório. Deve ser diferente de zero.</property>
                                                       </object>
                                                       <packing>
                                                         <property name="left_attach">1</property>

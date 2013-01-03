@@ -14,8 +14,10 @@
 \usepackage{caption}
 \usepackage{hyperref}
 \usepackage{epigraph}
+\usepackage[raggedright]{sidecap}
 
 \captionsetup[figure]{width=10cm, font=small}
+\captionsetup[SCfigure]{width=10cm, font=small}
 \DeclareCaptionFont{white}{\color{white}}
 \DeclareCaptionFormat{listing}{%
   \parbox{\textwidth}{\colorbox{gray}{\parbox{0.987\textwidth}{#1#2#3}}\vskip-4pt}}
@@ -110,5 +112,10 @@ Physimulation - Animação de Fenômenos Físicos}
 \bibliographystyle{ieeetr}
 \bibliography{bibliografia}
 \newpage
+
+\section{Imagens do Physimulation} \label{instalacao}
+\input{imagens.tex}
+\newpage
+
 \end{document}
 
