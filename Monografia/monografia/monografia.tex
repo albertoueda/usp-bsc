@@ -15,6 +15,7 @@
 \usepackage{hyperref}
 \usepackage{epigraph}
 \usepackage[raggedright]{sidecap}
+\usepackage[nottoc,numbib]{tocbibind}
 
 \captionsetup[figure]{width=10cm, font=small}
 \captionsetup[SCfigure]{width=10cm, font=small}
@@ -105,17 +106,17 @@ Physimulation - Animação de Fenômenos Físicos}
 \input{apendice.tex}
 \newpage
 
+\bibliographystyle{ieeetr}
+\bibliography{bibliografia}
+
+\section{Imagens do Physimulation}
+\input{imagens.tex}
+\newpage
+
 \part{Parte subjetiva}
 \input{subjetiva.tex}
 \newpage 
 
-\bibliographystyle{ieeetr}
-\bibliography{bibliografia}
-\newpage
-
-\section{Imagens do Physimulation} \label{instalacao}
-\input{imagens.tex}
-\newpage
 
 \end{document}
 
